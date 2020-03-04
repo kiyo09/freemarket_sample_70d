@@ -42,6 +42,7 @@
 | card_number | integer | null: false |
 | deadline | date | null: false |
 | security_cord | integer | null: false |
+| user_id |references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
