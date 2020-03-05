@@ -9,9 +9,9 @@
 | password | string | null: false |
 
 ### Association
-- has_many :items
-- has_one :user_detail
-- has_one :payment
+- has_many :items, dependent: :destroy
+- has_one :user_detail, dependent: :destroy
+- has_one :payment, dependent: :destroy
 
 
 ## user_detailsテーブル
@@ -19,10 +19,10 @@
 |Column|Type|Options|
 |------|----|-------|
 | name | string | null: false |
-| pseudonym | string | null: false |
+| name_kana | string | null: false |
 | birthday | integer | null: false |
 | destination_name | string | null: false |
-| destination_pseudonym | string | null: false |
+| destination_kana | string | null: false |
 | post_code | integer | null: false |
 | prefectures | string | null: false |
 | mayor | string | null: false |
@@ -39,8 +39,9 @@
 
 |Column|Type|Options|
 |------|----|-------|
-| card_number | integer | null: false |
-| deadline | date | null: false |
+| card_number | integer | null: false, unique:true |
+| exp_month | date | null: false |
+| exp_year | date | null: false |
 | security_cord | integer | null: false |
 | user_id |references|null: false, foreign_key: true|
 
@@ -56,15 +57,15 @@
 | description | text | null: false |
 | status | string | null: false |
 | fee_side | string | null: false |
-| shipping_area | string | null: false |
+| prefectures | string | null: false |
 | shipping_days | string | null: false |
 | price | integer | null: false |
 | saler_id |references|null: false, foreign_key: true|
-| buyer_id | references|null: false, foreign_key: true|
+| buyer_id | references|foreign_key: true|
 | user_id |references|null: false, foreign_key: true|
 | category_id |references|null: false, foreign_key: true|
 | size | string |  |
-| brand_id |references|null: false, foreign_key: true|
+| brand_id |references|foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -99,7 +100,7 @@
 
 |Column|Type|Options|
 |------|----|-------|
-| name | string | null: false |
+| name | string ||
 
 ### Association
 - has_many :items
