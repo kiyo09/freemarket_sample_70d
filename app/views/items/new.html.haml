@@ -1,0 +1,103 @@
+.wrapper
+  .content
+    .extop
+      .extop-logo
+        %img{alt: "logo", height: "49", src: "images/logo/logo.png", width: "100"}
+    .exmain
+      .exmain-image
+        .exmain-image__name
+          %p 出品画像
+          %span.exmain-label 必須
+        %p.exmain-image__limit
+          最大10枚までアップロードできます
+        .exmain-image__input
+          %img{alt: "logo", height: "49", src: "images/icon/icon_camera.png", width: "100"}
+        
+      .exmain-item
+        .exmain-item__name
+          %p 商品名
+          %span.exmain-label 必須
+        .exmain-item__name-input
+          %input(type="text")/
+        .exmain-item__explain
+          %p 商品の説明
+          %span.exmain-label 必須
+        .exmain-item__explain-input
+          %input(type="text")/
+
+      .exmain-detail
+        .exmain-detail-top
+          %p 商品の詳細
+        .exmain-detail-category
+          %p カテゴリー
+          %span.exmain-label 必須
+        .exmain-detail-category-input
+        %input(type="text")/
+        .exmain-detail-brand
+          %p ブランド
+          %span.exmain-label-gray 任意
+        .exmain-detail-brand-input
+        %input(type="text")/
+        .exmain-detail-status
+          %p 商品の状態
+          %span.exmain-label 必須
+        .exmain-detail-status-input
+        %input(type="text")/
+
+      .exmain-deliver
+        .exmain-deliver-top
+          %p 配送について
+          .exmain-deliver-top-qa
+        .exmain-deliver-fee
+          %p 配送料の負担
+          %span.exmain-label 必須
+        .exmain-deliver-fee-input
+          %input(type="text")/
+        .exmain-deliver-region
+          %p 配送元の地域
+          %span.exmain-label 必須
+        .exmain-deliver-region-input
+          %input(type="text")/
+        .exmain-deliver-date
+          %p 配送までの日数
+          %span.exmain-label 必須
+        .exmain-deliver-date-input
+          %input(type="text")/
+
+      .exmain-check
+        %p.exmain-check-top
+          価格(¥300〜9,999,999)
+          .exmain-check-top-qa
+        .exmain-check-price
+          %p 販売価格
+          %span.exmain-label 必須
+          .exmain-check-price-input
+            %input(type="text")/
+        .exmain-check-fee-box
+          %p.exmain-check-fee
+            販売手数料（10%）
+            %span.fee-span -
+        .exmain-check-profit-box
+          %p.exmain-check-profit
+            販売利益
+            %span.fee-span -
+        .check-button
+          %button.exmain-check-pay
+            出品する
+          %button.exmain-check-back
+            戻る
+        %p.exmain-check-detail
+          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+  .footer
+    .footer-content
+      .footer-content-main
+        %p.footer-privacy プライバシーポリシー          
+        %p.footer-term メルカリ利用規約
+        %p.footer-trade 特定商取引に関する表記
+      .footer-icon
+        %img(src="" alt="")/
+      %p.footer-copyright
+        © Mercari, Inc.
+      
+
