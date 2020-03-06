@@ -1,3 +1,12 @@
+$black: #222;
+$darkGray: #888888;
+$lightGray: #ccc;
+$gray: #dfdfdf;
+$red: #ff0211;
+$white: #fff;
+
+
+
 *{
   margin: 0;
   padding: 0;
@@ -7,7 +16,7 @@
 p label{
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.4em
+  line-height: 1.4em;
 }
 label.price{
   width: 100px;
@@ -15,16 +24,16 @@ label.price{
 .logo-image{
   margin: 5px;
 }
+
 button{
   cursor: pointer;
-
 }
 .span{
   display: inline;
 }
 
 input{
-  border: 1px solid #ccc;
+  border: 1px solid $gray;
   border-radius: 4px;
   box-sizing: border-box;
   font-family: inherit;
@@ -38,11 +47,11 @@ input{
 
 select{
   width: 100%;
-  background-color: #fff;
-  border: 1px solid #ccc;
+  background-color: $white;
+  border: 1px solid $lightGray;
   border-radius: 4px;
   box-sizing: border-box;
-  color: #222;
+  color: $black;
   font-size: 16px;
   height: 48px;
   line-height: 1;
@@ -52,8 +61,8 @@ select{
 }
 
 .exmain-label{
-  background-color: #ff0211;
-  color: #fff;
+  background-color: $red;
+  color: $white;
   border-radius: 2px;
   display: inline-block;
   font-style: normal;
@@ -64,8 +73,8 @@ select{
   height: 20px;
 }
 .exmain-label-gray{
-  background-color: #dfdfdf;
-  color: #fff;
+  background-color: $darkGray;
+  color: $white;
   border-radius: 2px;
   display: inline-block;
   font-style: normal;
@@ -78,18 +87,18 @@ select{
 html{
   width:100%;
   height:100%;
-
+  background-color: $gray;
 .wrapper{
   width: 100%;
   height: 100%;
-  background-color: #dfdfdf;
+  
   .content{
     width: 50vw;
     margin: 0 auto;
-    background-color: white;
+    background-color: $white;
     .extop{
-      background-color: #dfdfdf;
-      .extop-logo{
+      background-color: $gray;
+      &-logo{
         height: 49px;
         width: 100px;
         margin: 20px auto;
@@ -99,47 +108,55 @@ html{
     .exmain{
       display: flex;
       flex-direction: column;
-      .exmain-image{
+      &-image{
         height: 335px;
         width: 700px;
         padding: 40px;
-        border-bottom: 1px solid #dfdfdf;
-        .exmain-image__name{
+        border-bottom: 1px solid $gray;
+        &__name{
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
           
            }
-        .exmain-image__limit{
+        &__limit{
           margin-top: 16px;
           font-size: 12px;
           font-weight: 300;
           margin-top: 16px;
         }
-        .exmain-image__input{
-          background-color: rgb(245, 245, 245);
+        &__input{
+          background-color: $white;
           width: 620px;
           height: 150px;
-          border: 1px dashed #dfdfdf;
+          border: 1px dashed $gray;
           margin-top: 16px;
+          position: relative;
+          .fas.fa-camera{
+            position: absolute;
+            margin: 40px 30px 30px 300px;
+            cursor: pointer;
+          }
           .form-image{
-            border: 1px solid #ccc;
+            border: 1px solid $lightGray;
             border-radius: 4px;
             box-sizing: border-box;
             font-family: inherit;
             font-size: inherit;
-            height: 48px;
+            height: 150px;
             width: 620px;
             margin: 0;
             outline: none;
             padding: 0 16px;
-            width: inherit;
+            display: none;
+            z-index: 1;
           }
           .image-show{
             font-size: 12px;
             line-height: 100px;
             text-align: center;
             width: 100%;
+            margin-top: 30px;
           }
         }
         }
@@ -148,7 +165,7 @@ html{
         height: 444px;
         width: 700px;
         padding: 40px;
-        border-bottom: 1px solid #dfdfdf;
+        border-bottom: 1px solid $gray;
         &__name{
           font-size: 14px;
           font-weight: 600;
@@ -167,16 +184,16 @@ html{
           margin-top: 16px;
         }
         .input-explain{
-          border: 1px solid #ccc;
+          border: 1px solid $lightGray;
           border-radius: 4px;
           box-sizing: border-box;
           font-family: inherit;
           font-size: inherit;
-          height: 48px;
+          height: 152px;
           margin: 0;
           outline: none;
           padding: 0 16px;
-          width: inherit;
+          width: 620px;
           margin-top: 16px;
 
         }
@@ -187,35 +204,35 @@ html{
         height: 444px;
         width: 700px;
         padding: 40px;
-        border-bottom: 1px solid #dfdfdf;
-        .exmain-detail-top{
+        border-bottom: 1px solid $gray;
+        &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: #888888;
+          color: $darkGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
         }
-        .exmain-detail-category{
+        &-category{
 
         }
-        .exmain-detail-category-input{
+        &-input{
           margin-top: 16px;
 
         }
-        .exmain-detail-brand{
+        &-brand{
           margin-top: 16px;
 
         }
-        .exmain-detail-brand-input{
+        &-input{
           margin-top: 16px;
 
         }
-        .exmain-detail-status{
+        &-status{
           margin-top: 16px;
 
         }
-        .exmain-detail-status-input{
+        &-status-input{
           margin-top: 16px;
 
         }
@@ -225,43 +242,43 @@ html{
         height: 444px;
         width: 700px;
         padding: 40px;
-        border-bottom: 1px solid #dfdfdf;
-        .exmain-deliver-top{
+        border-bottom: 1px solid $gray;
+        &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: #888888;
+          color: $darkGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
-          .exmain-deliver-top-qa{
+          &-qa{
 
           }
         }
-        .exmain-deliver-fee{
+        &-fee{
 
         }
           
-        .exmain-deliver-fee-input{
+        &-fee-input{
           margin-top: 16px;
 
         }
           
-        .exmain-deliver-region{
+        &-region{
           margin-top: 16px;
 
         }
           
-        .exmain-deliver-region-input{
+        &-input{
           margin-top: 16px;
 
         }
           
-        .exmain-deliver-date{
+        &-date{
           margin-top: 16px;
 
         }
           
-        .exmain-deliver-date-input{
+        &-date-input{
           margin-top: 16px;
 
         }
@@ -272,22 +289,22 @@ html{
         height: 558px;
         width: 700px;
         padding: 40px 40px 64px 40px;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid $gray;
         &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: rgb(136, 136, 136);
+          color: $lightGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
           margin-bottom: 24px;
-          .exmain-check-top-qa{}
+          &-qa{}
         }
         &-price{
           display: flex;
           height: 46px;
           margin: 10px 0;
-          .exmain-check-price-title{
+          &-title{
             display: flex;
             width: 100%;
           .exmain-label{
@@ -337,19 +354,18 @@ html{
               margin-top: 30px;
               float: right;
             }
-        }
-
+          }
         .check-button{
           display: flex;
           flex-direction: column;
           margin-top: 100px;
           
 
-          .exmain-check-pay{
-            background-color: #ea352d;
-            color: #fff;
+          &-pay{
+            background-color: $red;
+            color: $white;
             margin: 5px;
-            border-radius: 3px;
+            border-radius: 5px;
             width:310px;
             height: 46px;
             padding:24px;
@@ -360,11 +376,11 @@ html{
             min-height: 48px;
             display: inline-block;
           }
-          .exmain-check-back{
-            background-color: #ccc;
+          &-back{
+            background-color: $lightGray;
             border-color: transparent;
-            color: #222;
-            border-radius: 3px;
+            color: $black;
+            border-radius: 5px;
             width: 310px;
             height: 46px;
             padding: 24px;
@@ -375,7 +391,7 @@ html{
             display: inline-block;
         }
         }
-        .exmain-check-detail{
+        &-detail{
           font-size: 12px;
           line-height: 1.4em;
           padding: 12px 0px;
@@ -396,25 +412,26 @@ html{
         display: flex;
         justify-content: center;
         margin: 0 auto;
-        .footer-privacy{
+        &-privacy{
           display: inline-block;
           margin-right: 10px;
+          margin-bottom: 10px;
         }
-        .footer-term{
+        &-term{
           display: inline-block;
           margin-right: 10px;
          
         }
-        .footer-trade{
+        &-trade{
           display: inline-block;
          
         }
     }
-    .footer-icon{
-
+    &-icon{
+      margin: 5px;
     }
-    .footer-copyright{
-      margin: 0 auto;
+    &-copyright{
+      margin: 5px auto;
       display: inline-block;
       
     }

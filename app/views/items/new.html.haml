@@ -2,16 +2,16 @@
   .content
     .extop
       .extop-logo
-        %img{alt: "logo", height: "49", src: "images/logo/logo.png", width: "100"}
+        %img{alt: "logo", height: "40", src: "../images/logo/logo.png", width: "100"}
     .exmain
       .exmain-image
         .exmain-image__name
           %label 出品画像
-          %span.exmain-label 必須
         %p.exmain-image__limit
           最大10枚までアップロードできます
         .exmain-image__input
-          %img{alt: "logo", height: "49", src: "images/icon/icon_camera.png", width: "100",class: "form-image"}
+          %label.fas.fa-camera
+            %input(type="image" class="form-image")/
           %p.image-show
             ドラッグアンドドロップ
             またはクリックしてファイルをアップロード
@@ -27,7 +27,8 @@
           %label 商品の説明
           %span.exmain-label 必須
         .exmain-item__explain-input
-          %input(type="text" name="name" value placeholder="商品の説明(必須1,000文字以内" class="input-explain")/
+          %textarea(type="text" name="name" value placeholder="商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
+          class="input-explain" cows="40" rows="7" )
 
       .exmain-detail
         .exmain-detail-top
@@ -37,7 +38,8 @@
           %span.exmain-label 必須
         .exmain-detail-category-input
           %select(type="text")
-            %option{"category" => "レディース", :value => "aaa"} レディース
+            %option --
+            %option{"category" => "レディース", :value => "レディース"} レディース
             %option{"category" => "メンズ", :value => "bbb"} メンズ
             %option{"category" => "ベビー・キッズ", :value => "ccc"} ベビー・キッズ
         .exmain-detail-brand
@@ -50,10 +52,10 @@
           %span.exmain-label 必須
         .exmain-detail-status-input
           %select(type="text")
-            %option{"category" => "新品、未使用", :value => " "} 新品、未使用
-            %option{"category" => "目立った傷なし", :value => " "} 目立った傷なし
-            %option{"category" => "傷や汚れあり", :value => " "} 傷や汚れあり
-
+            %option --
+            %option{"status" => "新品、未使用", :value => " "} 新品、未使用
+            %option{"status" => "目立った傷なし", :value => " "} 目立った傷なし
+            %option{"status" => "傷や汚れあり", :value => " "} 傷や汚れあり
       .exmain-deliver
         .exmain-deliver-top
           %label 配送について
@@ -63,24 +65,27 @@
           %span.exmain-label 必須
         .exmain-deliver-fee-input
           %select(type="text")
-            %option{"items" => "送料込み(出品者負担)", :value => " "} 送料込み(出品者負担)
-            %option{"category" => "着払い(購入者負担)", :value => " "} 着払い(購入者負担)
+            %option --
+            %option{"fee_side" => "送料込み(出品者負担)", :value => " "} 送料込み(出品者負担)
+            %option{"fee_side" => "着払い(購入者負担)", :value => " "} 着払い(購入者負担)
         .exmain-deliver-region
           %label 配送元の地域
           %span.exmain-label 必須
         .exmain-deliver-region-input
           %select(type="text")
-            %option{"category" => "北海道", :value => " "} 北海道
-            %option{"category" => "青森県", :value => " "} 目立った傷なし
-            %option{"category" => "岩手県", :value => " "} 傷や汚れあり
+            %option --
+            %option{"prefectures" => "北海道", :value => " "} 北海道
+            %option{"prefectures" => "青森県", :value => " "} 青森県
+            %option{"prefectures" => "岩手県", :value => " "} 岩手県
         .exmain-deliver-date
           %label 配送までの日数
           %span.exmain-label 必須
         .exmain-deliver-date-input
           %select(type="text")
-            %option{"category" => "1〜2日で発送", :value => " "} 1〜2日で発送
-            %option{"category" => "2〜3日で発送", :value => " "} 2〜3日で発送
-            %option{"category" => "4〜7日で発送", :value => " "} 4〜7日で発送
+            %option --
+            %option{"shipping_days" => "1〜2日で発送", :value => " "} 1〜2日で発送
+            %option{"shipping_days" => "2〜3日で発送", :value => " "} 2〜3日で発送
+            %option{"shipping_days" => "4〜7日で発送", :value => " "} 4〜7日で発送
 
       .exmain-check
         %label.exmain-check-top
@@ -98,9 +103,9 @@
           .exmain-check-profit 販売利益
           %p.fee-span -
         .check-button
-          %button.exmain-check-pay
+          %button.check-button-pay
             出品する
-          %button.exmain-check-back
+          %button.check-button-back
             戻る
         %p.exmain-check-detail
           禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
@@ -108,11 +113,11 @@
   .footer
     .footer-content
       .footer-content-main
-        %p.footer-privacy プライバシーポリシー          
-        %p.footer-term フリマ利用規約
-        %p.footer-trade 特定商取引に関する表記
+        %p.footer-content-main-privacy プライバシーポリシー          
+        %p.footer-content-main-term フリマ利用規約
+        %p.footer-content-main-trade 特定商取引に関する表記
       .footer-icon
-        %img(src="" alt="")/
+        %img{alt: "logo", height: "40", src: "../images/logo/logo.png", width: "100"}
       %p.footer-copyright
         © Furima, Inc.
       
