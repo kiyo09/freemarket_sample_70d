@@ -39,12 +39,12 @@ class ItemsController < ApplicationController
        :status,
        :fee_side,
        :prefectures,
-       :shipping_days, 
-       :price, 
-       :size
-       brand_id: ,
-       saler_id: ,
-       category_id:
+       :shipping_days,
+       :price,
+       :size,
+       :brand_id ,
+       :saler_id ,
+       :category_id
     ).merge(
        buyer_id: current_user.id,
     )

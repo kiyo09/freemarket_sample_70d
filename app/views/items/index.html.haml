@@ -1,0 +1,203 @@
+= render "shared/header"
+
+.topPage
+  .topMain
+    .topOne
+      %h2.topOne__title
+        %br
+        人生を変えるフリマアプリ
+      %p.topOne__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .topOne__btn
+        = link_to image_tag('app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', class: 'appleBtn'), "#"
+        = link_to image_tag('google-play-badge', class: 'googleBtn'), "#"
+
+  .topTwo
+    %h2.topTwo__title
+      FURIMAが選ばれる3つの理由
+    %ul.topTwoBox
+      %li.topTwoBox__first
+        .imageFirst
+          = image_tag 'pict-reason-01.jpg', class: 'imageFirst__tag'
+          .numberFirst
+            1
+        %h3.list__text
+          %span
+            3分
+          ですぐに出品
+        %p.list__explanation
+          スマホで入力するだけで簡単に出品できる！
+      %li.topTwoBox__second
+        .imageSecond
+          = image_tag 'pict-reason-02.jpg', class: 'imageSecond__tag'
+          .numberSecond
+            2
+        %h3.list__text
+          %span
+            シンプル
+          で使いやすい
+        %p.list__explanation
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+      %li.topTwoBox__third
+        .imageThird
+          = image_tag 'pict-reason-03.jpg', class: 'imageThird__tag'
+          .numberThird
+            3
+        %h3.list__text
+          手数料
+          %span
+            業界最安
+        %p.list__explanation
+          最大3%でお得に出品&購入！
+
+  .topThree
+    .topPublicity
+      %h2.topPublicity__title
+        会員数日本一位
+      .topPublicity__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .content__btn
+        = link_to image_tag('app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', class: 'appleBtn'), "#"
+        = link_to image_tag('google-play-badge', class: 'googleBtn'), "#"
+
+  .topFour
+    %h2.topFour__title
+      FURIMAの特徴
+    %ul.topItems
+      %li.topItem-A
+        .topItem-A__box
+          = image_tag 'icon-01.png', class: 'itemImage'
+        .topText
+          %h2.item__title
+            簡単に売り買いできる
+          %p.item__explanation
+            スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      %li.topItem-B
+        .topItem-B__box
+          = image_tag 'icon-03.png', class: 'itemImage'
+        .topText
+          %h2.item__title
+            売上金は即日振込みに対応
+          %p.item__explanation
+            午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+      %li.topItem-C
+        .topItem-C__box
+          = image_tag 'icon-04.png', class: 'itemImage'
+        .topText
+          %h2.item__title
+            様々な支払いに対応
+          %p.item__explanation
+            お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+  .topFive
+    .topFive__title
+      ピックアップカテゴリー
+    .pickuContainer
+      .containerHead
+        = link_to "#" do
+          %h3.title
+            新規投稿商品
+      .containerMain
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png')
+            .product__info
+              %h3.name
+                product3
+              %ul.description
+                %li
+                  3OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png')
+            .product__info
+              %h3.name
+                product2
+              %ul.description
+                %li
+                  2OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png')
+            .product__info
+              %h3.name
+                product1
+              %ul.description
+                %li
+                  1OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+
+  .topFive
+    .topFive__title
+      ピックアップブランド
+    .pickuContainer
+      .containerHead
+        = link_to "#" do
+          %h3.title
+            アーカイバ
+      .containerMain
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png')
+            .product__info
+              %h3.name
+                product3
+              %ul.description
+                %li
+                  3OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png')
+            .product__info
+              %h3.name
+                product2
+              %ul.description
+                %li
+                  2OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+        .containerList
+          = link_to '#' do
+            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png')
+            .product__info
+              %h3.name
+                product1
+              %ul.description
+                %li
+                  1OOOO円
+                %li.liking
+                  %i.fas.fa-star
+                  O
+              %p.tax
+                (税込)
+
+= render "shared/footer"
+= render "shared/sell_button"

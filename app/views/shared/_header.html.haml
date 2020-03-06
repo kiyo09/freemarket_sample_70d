@@ -1,0 +1,22 @@
+.header
+  .headerFrame
+    .mainHeader
+      %h1.icon
+        = link_to image_tag("logo.png", class: "iconBtn"), "#"
+      .searchBox
+        = form_with url: root_path, local: true do |form|
+          = form.text_field :text, class: "inputBox", placeholder: "キーワードから探す"
+          .searchBox__right
+            = button_tag type: :submit, class: "submitBtn" do
+              = image_tag("icon-search 1.png", width: '20px', height: '20px', class: "searchIcon")
+    .listsFrame
+      %ul.listsFrameLeft
+        %li.listsFrameLeft__item.listsFrameLeft__item--first
+          = link_to "カテゴリー", "#", id: "catBtn"
+        %li.listsFrameLeft__item.listsFrameRight__item--first
+          = link_to "ブランド", "#", id: "brandBtn"
+      %ul.listsFrameRight
+        %li.listsFrameRight__item
+          = link_to "ログイン", "#"
+        %li.listsFrameRight__item.listsFrameRight__item--new
+          = link_to "新規会員登録", "#"

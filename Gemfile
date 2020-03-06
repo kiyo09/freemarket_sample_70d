@@ -74,5 +74,6 @@ gem 'mini_magick'
 gem 'fog-aws'
 gem 'devise'
 gem "font-awesome-sass"
+gem "font-awesome-rails"
 gem 'pry-rails'
 gem 'haml-rails'
