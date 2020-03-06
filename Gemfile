@@ -75,3 +75,4 @@ gem 'fog-aws'
 gem 'devise'
 gem "font-awesome-sass"
 gem 'pry-rails'
+gem 'haml-rails'
