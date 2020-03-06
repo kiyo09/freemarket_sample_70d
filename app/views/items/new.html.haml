@@ -6,81 +6,97 @@
     .exmain
       .exmain-image
         .exmain-image__name
-          %p 出品画像
+          %label 出品画像
           %span.exmain-label 必須
         %p.exmain-image__limit
           最大10枚までアップロードできます
         .exmain-image__input
-          %img{alt: "logo", height: "49", src: "images/icon/icon_camera.png", width: "100"}
+          %img{alt: "logo", height: "49", src: "images/icon/icon_camera.png", width: "100",class: "form-image"}
+          %p.image-show
+            ドラッグアンドドロップ
+            またはクリックしてファイルをアップロード
+
         
       .exmain-item
         .exmain-item__name
-          %p 商品名
+          %label 商品名
           %span.exmain-label 必須
         .exmain-item__name-input
-          %input(type="text")/
+          %input(type="text" name="name" value placeholder="40文字まで")/
         .exmain-item__explain
-          %p 商品の説明
+          %label 商品の説明
           %span.exmain-label 必須
         .exmain-item__explain-input
-          %input(type="text")/
+          %input(type="text" name="name" value placeholder="商品の説明(必須1,000文字以内" class="input-explain")/
 
       .exmain-detail
         .exmain-detail-top
-          %p 商品の詳細
+          %label 商品の詳細
         .exmain-detail-category
-          %p カテゴリー
+          %label カテゴリー
           %span.exmain-label 必須
         .exmain-detail-category-input
-        %input(type="text")/
+          %select(type="text")
+            %option{"category" => "レディース", :value => "aaa"} レディース
+            %option{"category" => "メンズ", :value => "bbb"} メンズ
+            %option{"category" => "ベビー・キッズ", :value => "ccc"} ベビー・キッズ
         .exmain-detail-brand
-          %p ブランド
+          %label ブランド
           %span.exmain-label-gray 任意
         .exmain-detail-brand-input
-        %input(type="text")/
+          %input(type="text")
         .exmain-detail-status
-          %p 商品の状態
+          %label 商品の状態
           %span.exmain-label 必須
         .exmain-detail-status-input
-        %input(type="text")/
+          %select(type="text")
+            %option{"category" => "新品、未使用", :value => " "} 新品、未使用
+            %option{"category" => "目立った傷なし", :value => " "} 目立った傷なし
+            %option{"category" => "傷や汚れあり", :value => " "} 傷や汚れあり
 
       .exmain-deliver
         .exmain-deliver-top
-          %p 配送について
+          %label 配送について
           .exmain-deliver-top-qa
         .exmain-deliver-fee
-          %p 配送料の負担
+          %label 配送料の負担
           %span.exmain-label 必須
         .exmain-deliver-fee-input
-          %input(type="text")/
+          %select(type="text")
+            %option{"items" => "送料込み(出品者負担)", :value => " "} 送料込み(出品者負担)
+            %option{"category" => "着払い(購入者負担)", :value => " "} 着払い(購入者負担)
         .exmain-deliver-region
-          %p 配送元の地域
+          %label 配送元の地域
           %span.exmain-label 必須
         .exmain-deliver-region-input
-          %input(type="text")/
+          %select(type="text")
+            %option{"category" => "北海道", :value => " "} 北海道
+            %option{"category" => "青森県", :value => " "} 目立った傷なし
+            %option{"category" => "岩手県", :value => " "} 傷や汚れあり
         .exmain-deliver-date
-          %p 配送までの日数
+          %label 配送までの日数
           %span.exmain-label 必須
         .exmain-deliver-date-input
-          %input(type="text")/
+          %select(type="text")
+            %option{"category" => "1〜2日で発送", :value => " "} 1〜2日で発送
+            %option{"category" => "2〜3日で発送", :value => " "} 2〜3日で発送
+            %option{"category" => "4〜7日で発送", :value => " "} 4〜7日で発送
 
       .exmain-check
-        %p.exmain-check-top
+        %label.exmain-check-top
           価格(¥300〜9,999,999)
           .exmain-check-top-qa
         .exmain-check-price
-          %p 販売価格
-          %span.exmain-label 必須
-          .exmain-check-price-input
-            %input(type="text")/
-        .exmain-check-fee-box
-          %p.exmain-check-fee
-            販売手数料（10%）
-            %span.fee-span -
+          .exmain-check-price-title
+            %label.price 販売価格
+            %span.exmain-label 必須
+            %input(type="text" class="exmain-check-price-input")/
+        .exmain-check-fee
+          .exmain-check-fee-tax 販売手数料（10%）
+          %p.fee-span -
         .exmain-check-profit-box
-          %p.exmain-check-profit
-            販売利益
-            %span.fee-span -
+          .exmain-check-profit 販売利益
+          %p.fee-span -
         .check-button
           %button.exmain-check-pay
             出品する
@@ -93,11 +109,11 @@
     .footer-content
       .footer-content-main
         %p.footer-privacy プライバシーポリシー          
-        %p.footer-term メルカリ利用規約
+        %p.footer-term フリマ利用規約
         %p.footer-trade 特定商取引に関する表記
       .footer-icon
         %img(src="" alt="")/
       %p.footer-copyright
-        © Mercari, Inc.
+        © Furima, Inc.
       
 

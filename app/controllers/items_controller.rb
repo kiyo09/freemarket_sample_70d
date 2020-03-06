@@ -43,10 +43,10 @@ class ItemsController < ApplicationController
        :price, 
        :size
     ).merge(
-       brand_id: ,
-       saler_id: ,
+      #  brand_id: ,
+      #  saler_id: ,
        buyer_id: current_user.id,
-       category_id:
+      #  category_id:
     )
   end
 
