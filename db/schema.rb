@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_05_015859) do
     t.integer "price", null: false
     t.integer "saler_id", null: false
     t.integer "buyer_id"
-    t.integer "categ_idory", null: false
+    t.integer "category_id", null: false
     t.string "size"
     t.integer "brand_id"
     t.datetime "created_at", null: false
