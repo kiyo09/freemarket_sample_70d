@@ -1,0 +1,144 @@
+= render "shared/header"
+.body
+  %nav.category-menu
+    %ul
+      %li.root
+        = link_to 'FURIMA', '/'
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to '親カテゴリ', '#'
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to '子カテゴリ', '#'
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to '孫カテゴリ', '#'
+      %li
+        %i.fa.fa-angle-right
+      %li.item
+        = link_to 'product', '#'
+  .main
+    .contents
+      .item-content
+        %section.item-box
+          %h1.item-box__name
+            product
+          .item-box__photo
+            %ul
+              %li
+                = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png')
+                %ul
+                  %li
+                    = image_tag("https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png")
+                  %li
+                    = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/14/a001.png')
+                  %li
+                    = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/15/a003.png')
+          .item-box__price
+            .item-box__price__text
+              %span
+                ¥30000
+            .item-box__price__detail
+              %span
+                （税込）
+              %span
+                送料込み
+          .item-box__description
+            親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。新築の二階から首を出していたら、同級生の一人が冗談に、いくら威張っても、そこから飛び降りる事は出来まい。弱虫やーい。と囃したからである。小使に負ぶさって帰って来た時、おやじが大きな眼をして二階ぐらいから飛び降りて腰
+          %table.item-box__table
+            %tbody
+              %tr
+                %th
+                  出品者
+                %td
+                  = link_to 'ユーザ名', '#'
+                  -# TODO: いいね機能実装時
+                  -# %div
+                  -#   .item-user-ratings
+                  -#     😀
+                  -#   .item-user-ratings
+                  -#     😎
+                  -#   .item-user-ratings
+                  -#     😭
+              %tr
+                %th
+                  カテゴリ
+                %td
+                  .item-detail-table-category
+                    = link_to '親カテゴリ', '#'
+                  .item-detail-table-sub-category
+                    = link_to '子カテゴリ', '#'
+                  .item-detail-table-sub-sub-category
+                    = link_to '孫カテゴリ', '#'
+              %tr
+                %th
+                  ブランド
+                %td
+                  = link_to 'ブランド名', '#'
+              %tr
+                %th
+                  商品のサイズ
+                %td
+                  S/M/L
+              %tr
+                %th
+                  商品の状態
+                %td
+                  新品/中古
+              %tr
+                %th
+                  配送料の負担
+                %td
+                  出品者/購入者
+              %tr
+                %th
+                  配送の方法
+                %td
+                  未定
+              %tr
+                %th
+                  発送元地域
+                %td
+                  都道府県
+              %tr
+                %th
+                  発送日の目安
+                %td
+                  1−2日で発送
+          .item-box__button
+            %ul.item-box__button__left
+              %li.like-btn
+                %i.fa.fa-star
+                お気に入り 0
+            %ul.item-box__button__right
+              %li.report-btn
+                = link_to '#' do
+                  %i.fa.fa-flag
+                  不適切な商品の報告
+        .comment-box
+          .comment-box__form
+            %textarea
+            %p
+              相手のことを考え丁寧なコメントを心がけましょう。
+              %br
+                不快な言葉遣いなどは利用制限や退会処分となることがあります。
+            %button.submit-btn
+              %i.fa.fa-comment
+              コメントする
+        %ul.item-link
+          %li.item-link__prev
+            = link_to '#' do
+              %i.fa.fa-angle-left
+              前の商品
+          %li.item-link__next
+            = link_to '#' do
+              後の商品
+              %i.fa.fa-angle-right
+        .related-item
+          = link_to 'ベビー・キッズをもっと見る', '#'
+
+= render "shared/footer"
+= render "shared/sell_button"
