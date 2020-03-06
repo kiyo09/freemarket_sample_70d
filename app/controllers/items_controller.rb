@@ -32,23 +32,23 @@ class ItemsController < ApplicationController
 
 
   private
-  def item_params
-    params.require(:item).permit(
-       :name,
-       :description,
-       :status,
-       :fee_side,
-       :prefectures,
-       :shipping_days, 
-       :price, 
-       :size
-    ).merge(
-       brand_id: ,
-       saler_id: ,
-       buyer_id: current_user.id,
-       category_id:
-    )
-  end
+  # def item_params
+  #   params.require(:item).permit(
+  #      :name,
+  #      :description,
+  #      :status,
+  #      :fee_side,
+  #      :prefectures,
+  #      :shipping_days,
+  #      :price,
+  #      :size,
+  #      brand_id: ,
+  #      saler_id: ,
+  #      category_id:
+  #   ).merge(
+  #      buyer_id: current_user.id,
+  #   )
+  # end
 
 
 end
