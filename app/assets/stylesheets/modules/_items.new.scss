@@ -1,28 +1,60 @@
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-p{
+p label{
   font-size: 14px;
   font-weight: 600;
-  line-height: 1.4em
+  line-height: 1.4em;
+}
+label.price{
+  width: 100px;
 }
 .logo-image{
   margin: 5px;
 }
+
 button{
   cursor: pointer;
-
 }
 .span{
   display: inline;
 }
 
+input{
+  border: 1px solid $gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  height: 48px;
+  margin: 0;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+}
+
+select{
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $lightGray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $black;
+  font-size: 16px;
+  height: 48px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+}
+
 .exmain-label{
-  background-color: #ff0211;
-  color: #fff;
+  background-color: $blue;
+  color: $white;
   border-radius: 2px;
   display: inline-block;
   font-style: normal;
@@ -33,8 +65,8 @@ button{
   height: 20px;
 }
 .exmain-label-gray{
-  background-color: #dfdfdf;
-  color: #fff;
+  background-color: $darkGray;
+  color: $white;
   border-radius: 2px;
   display: inline-block;
   font-style: normal;
@@ -47,18 +79,18 @@ button{
 html{
   width:100%;
   height:100%;
-
+  background-color: $gray;
 .wrapper{
   width: 100%;
   height: 100%;
-  background-color: #dfdfdf;
+  
   .content{
-    width: 60vw;
+    width: 50vw;
     margin: 0 auto;
-    background-color: white;
+    background-color: $white;
     .extop{
-      background-color: #dfdfdf;
-      .extop-logo{
+      background-color: $gray;
+      &-logo{
         height: 49px;
         width: 100px;
         margin: 20px auto;
@@ -68,247 +100,332 @@ html{
     .exmain{
       display: flex;
       flex-direction: column;
-      .exmain-image{
-        height: 300px;
-        width: 100%;
+      &-image{
+        height: 335px;
+        width: 700px;
         padding: 40px;
-        border-bottom: 1px solid gray;
-        .exmain-image__name{
+        border-bottom: 1px solid $gray;
+        &__name{
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
-          margin-bottom: 24px;
+          
            }
-        .exmain-image__limit{
+        &__limit{
           margin-top: 16px;
           font-size: 12px;
           font-weight: 300;
+          margin-top: 16px;
         }
-        .exmain-image__input{
-          width: 30px;
-          border: 1px dashed rgb(204,204,204);
+        &__input{
+          background-color: $white;
+          width: 620px;
+          height: 150px;
+          border: 1px dashed $gray;
+          margin-top: 16px;
+          position: relative;
+          .fas.fa-camera{
+            position: absolute;
+            margin: 40px 30px 30px 300px;
+            cursor: pointer;
+          }
+          .form-image{
+            border: 1px solid $lightGray;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: inherit;
+            height: 150px;
+            width: 620px;
+            margin: 0;
+            outline: none;
+            padding: 0 16px;
+            display: none;
+            z-index: 1;
+          }
+          .image-show{
+            font-size: 12px;
+            line-height: 100px;
+            text-align: center;
+            width: 100%;
+            margin-top: 30px;
+          }
         }
-      }
+        }
         
       .exmain-item{
-        height: 300px;
-        width: 100%;
+        height: 444px;
+        width: 700px;
         padding: 40px;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid $gray;
         &__name{
-          margin-bottom: 24px;
+          font-size: 14px;
+          font-weight: 600;
+          line-height: 1.4em;
+          margin-bottom: 5px;
           }
         &__name-input{
-          
+          margin-top: 16px;
+
           
         }
         &__explain{
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
+          margin-top: 16px;
         }
-        &__explain-input{
-          
+        .input-explain{
+          border: 1px solid $lightGray;
+          border-radius: 4px;
+          box-sizing: border-box;
+          font-family: inherit;
+          font-size: inherit;
+          height: 152px;
+          margin: 0;
+          outline: none;
+          padding: 0 16px;
+          width: 620px;
+          margin-top: 16px;
+
         }
       }
     }
 
       .exmain-detail{
-        height: 300px;
-        width: 100%;
+        height: 444px;
+        width: 700px;
         padding: 40px;
-        border-bottom: 1px solid gray;
-        .exmain-detail-top{
+        border-bottom: 1px solid $gray;
+        &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: #888888;
+          color: $darkGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
         }
-        .exmain-detail-category{
+        &-category{
 
         }
-        .exmain-detail-category-input{
+        &-input{
+          margin-top: 16px;
 
         }
-        .exmain-detail-brand{
+        &-brand{
+          margin-top: 16px;
 
         }
-        .exmain-detail-brand-input{
+        &-input{
+          margin-top: 16px;
 
         }
-        .exmain-detail-status{
+        &-status{
+          margin-top: 16px;
 
         }
-        .exmain-detail-status-input{
+        &-status-input{
+          margin-top: 16px;
 
         }
       }
 
       .exmain-deliver{
-        height: 300px;
-        width: 100%;
+        height: 444px;
+        width: 700px;
         padding: 40px;
-        border-bottom: 1px solid gray;
-        .exmain-deliver-top{
+        border-bottom: 1px solid $gray;
+        &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: #888888;
+          color: $darkGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
-          .exmain-deliver-top-qa{
+          &-qa{
 
           }
         }
-        .exmain-deliver-fee{
+        &-fee{
 
         }
           
-        .exmain-deliver-fee-input{
+        &-fee-input{
+          margin-top: 16px;
 
         }
           
-        .exmain-deliver-region{
+        &-region{
+          margin-top: 16px;
 
         }
           
-        .exmain-deliver-region-input{
+        &-region-input{
+          margin-top: 16px;
 
         }
           
-        .exmain-deliver-date{
+        &-date{
+          margin-top: 16px;
 
         }
           
-        .exmain-deliver-date-input{
+        &-date-input{
+          margin-top: 16px;
 
         }
       }
           
 
       .exmain-check{
-        height: 620px;
-        width: 100%;
-        padding: 40px 40px 64px;
-        border-bottom: 1px solid gray;
-        .exmain-check-top{
+        height: 558px;
+        width: 700px;
+        padding: 40px 40px 64px 40px;
+        border-bottom: 1px solid $gray;
+        &-top{
           margin-bottom: 24px;
           display: inline-block;
-          color: rgb(136, 136, 136);
+          color: $lightGray;
           font-size: 14px;
           font-weight: 600;
           line-height: 1.4em;
           margin-bottom: 24px;
-          .exmain-check-top-qa{}
+          &-qa{}
         }
-        .exmain-check-price{
+        &-price{
+          display: flex;
+          height: 46px;
+          margin: 10px 0;
+          &-title{
+            display: flex;
+            width: 100%;
+          .exmain-label{
+            width: 60px;
+            margin-right: 80px;
+            padding-left: 5px;
+          }
+          .exmain-check-price-input{
+            float: right;
+          }
+        }
+        }
+
+        .exmain-check-fee{
+          height: 46px;
+          width: 100%;
+          display: flex;
+          &-tax{
+            width: 100%;
+            line-height: 46px;
+            display: inline-block;
+            padding: 12px 0px;
+            margin: 10px 0;
+          }
+          .fee-span{
+            line-height: 46px;
+            display: inline-block;
+            margin-top: 30px;
+          }
+         }
+          
+        .exmain-check-profit-box{
           display: flex;
           justify-content: space-between;
           height: 46px;
-          margin: 10px 0;
-          .exmain-check-price-input{
-
-          }
-        }
-
-        .exmain-check-fee-box{
-          height: 46px;
-          .exmain-check-fee{
-            display: flex;
-            display: inline-block;
-            justify-content: space-between;
-            padding: 12px 0px;
-            margin: 10px 0;
-            .fee-span{
-              
-            }
-        }
-      }
-          
-        .exmain-check-profit-box{
-          height: 46px;
           padding: 12px 0px;
+          margin-top: 16px;
           .exmain-check-profit{
-            display: flex;
+            line-height: 46px;
             display: inline-block;
-            justify-content: space-between;
             padding: 12px 0px;
             margin: 10px 0;
+          }
             .fee-span{
-              
+              line-height: 46px;
+              display: inline-block;
+              margin-top: 30px;
+              float: right;
             }
-        }
-      }
-          
+          }
         .check-button{
           display: flex;
           flex-direction: column;
-          .exmain-check-pay{
-            background-color: #ea352d;
-            color: #fff;
+          margin-top: 100px;
+          
+
+          &-pay{
+            background-color: $blue;
+            color: $white;
             margin: 5px;
-            border-radius: 3px;
+            border-radius: 5px;
             width:310px;
             height: 46px;
             padding:24px;
             margin: 0 auto;
-            line-height: 46px;
+            line-height: 5px;
             margin-bottom: 10px;
             font-size: 17px;
             min-height: 48px;
             display: inline-block;
           }
-          .exmain-check-back{
-            background-color: #ccc;
+          &-back{
+            background-color: $lightGray;
             border-color: transparent;
-            color: #222;
-            border-radius: 3px;
+            color: $black;
+            border-radius: 5px;
             width: 310px;
             height: 46px;
             padding: 24px;
             margin: 0 auto;
-            line-height: 46px;
+            line-height: 5px;
             font-size: 17px;
             min-height: 48px;
             display: inline-block;
         }
         }
-        .exmain-check-detail{
+        &-detail{
           font-size: 12px;
           line-height: 1.4em;
           padding: 12px 0px;
           display: inline-block;
+          margin-top: 15px;
         }
       }
     }
   }
 
   .footer{
-    
+    margin-top: 10px;
+    text-align: center;
     &-content{
       margin: 0 auto;
       &-main{
+        margin-top: 15px;
         display: flex;
-        .footer-privacy{
+        justify-content: center;
+        margin: 0 auto;
+        &-privacy{
           display: inline-block;
           margin-right: 10px;
+          margin-bottom: 10px;
         }
-        .footer-term{
+        &-term{
           display: inline-block;
           margin-right: 10px;
+         
         }
-        .footer-trade{
+        &-trade{
           display: inline-block;
+         
         }
     }
-    .footer-icon{
-
+    &-icon{
+      margin: 5px;
     }
-    .footer-copyright{
-      margin: 0 auto;
+    &-copyright{
+      margin: 5px auto;
       display: inline-block;
+      
     }
 
       }
