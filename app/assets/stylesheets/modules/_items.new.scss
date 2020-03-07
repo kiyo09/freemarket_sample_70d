@@ -1,11 +1,3 @@
-$black: #222;
-$darkGray: #888888;
-$lightGray: #ccc;
-$gray: #dfdfdf;
-$red: #ff0211;
-$white: #fff;
-
-
 
 *{
   margin: 0;
@@ -61,7 +53,7 @@ select{
 }
 
 .exmain-label{
-  background-color: $red;
+  background-color: $blue;
   color: $white;
   border-radius: 2px;
   display: inline-block;
@@ -268,7 +260,7 @@ html{
 
         }
           
-        &-input{
+        &-region-input{
           margin-top: 16px;
 
         }
@@ -362,7 +354,7 @@ html{
           
 
           &-pay{
-            background-color: $red;
+            background-color: $blue;
             color: $white;
             margin: 5px;
             border-radius: 5px;

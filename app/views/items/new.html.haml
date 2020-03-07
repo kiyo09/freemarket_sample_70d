@@ -2,7 +2,7 @@
   .content
     .extop
       .extop-logo
-        %img{alt: "logo", height: "40", src: "../images/logo/logo.png", width: "100"}
+        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
     .exmain
       .exmain-image
         .exmain-image__name
@@ -39,9 +39,9 @@
         .exmain-detail-category-input
           %select(type="text")
             %option --
-            %option{"category" => "レディース", :value => "レディース"} レディース
-            %option{"category" => "メンズ", :value => "bbb"} メンズ
-            %option{"category" => "ベビー・キッズ", :value => "ccc"} ベビー・キッズ
+            %option{category: "レディース", value: " "} レディース
+            %option{category: "メンズ", value: " "} メンズ
+            %option{category: "ベビー・キッズ", value: " "} ベビー・キッズ
         .exmain-detail-brand
           %label ブランド
           %span.exmain-label-gray 任意
@@ -53,9 +53,9 @@
         .exmain-detail-status-input
           %select(type="text")
             %option --
-            %option{"status" => "新品、未使用", :value => " "} 新品、未使用
-            %option{"status" => "目立った傷なし", :value => " "} 目立った傷なし
-            %option{"status" => "傷や汚れあり", :value => " "} 傷や汚れあり
+            %option{status: "新品、未使用", value: " "} 新品、未使用
+            %option{status: "目立った傷なし", value: " "} 目立った傷なし
+            %option{status: "傷や汚れあり", value: " "} 傷や汚れあり
       .exmain-deliver
         .exmain-deliver-top
           %label 配送について
@@ -66,26 +66,23 @@
         .exmain-deliver-fee-input
           %select(type="text")
             %option --
-            %option{"fee_side" => "送料込み(出品者負担)", :value => " "} 送料込み(出品者負担)
-            %option{"fee_side" => "着払い(購入者負担)", :value => " "} 着払い(購入者負担)
+            %option{fee_side: "送料込み(出品者負担)", value: " "} 送料込み(出品者負担)
+            %option{fee_side: "着払い(購入者負担)", value: " "} 着払い(購入者負担)
         .exmain-deliver-region
           %label 配送元の地域
           %span.exmain-label 必須
         .exmain-deliver-region-input
-          %select(type="text")
-            %option --
-            %option{"prefectures" => "北海道", :value => " "} 北海道
-            %option{"prefectures" => "青森県", :value => " "} 青森県
-            %option{"prefectures" => "岩手県", :value => " "} 岩手県
+          = form_for '' do |f|
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
         .exmain-deliver-date
           %label 配送までの日数
           %span.exmain-label 必須
         .exmain-deliver-date-input
           %select(type="text")
             %option --
-            %option{"shipping_days" => "1〜2日で発送", :value => " "} 1〜2日で発送
-            %option{"shipping_days" => "2〜3日で発送", :value => " "} 2〜3日で発送
-            %option{"shipping_days" => "4〜7日で発送", :value => " "} 4〜7日で発送
+            %option{shipping_days: "1〜2日で発送", value: " "} 1〜2日で発送
+            %option{shipping_days: "2〜3日で発送", value: " "} 2〜3日で発送
+            %option{shipping_days: "4〜7日で発送", value: " "} 4〜7日で発送
 
       .exmain-check
         %label.exmain-check-top
@@ -117,7 +114,7 @@
         %p.footer-content-main-term フリマ利用規約
         %p.footer-content-main-trade 特定商取引に関する表記
       .footer-icon
-        %img{alt: "logo", height: "40", src: "../images/logo/logo.png", width: "100"}
+        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
       %p.footer-copyright
         © Furima, Inc.
       
