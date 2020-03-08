@@ -100,8 +100,9 @@
           = link_to '#' do
             電話番号の確認
             = icon('fas', 'angle-right')
-        %li.user-mypage__side__nav__list__item
-          = link_to "ログアウト", destroy_user_session_path, method: :delete do
+        %li.user-mypage__side__nav__list__item__destroy
+          = link_to destroy_user_session_path, method: :delete, class: 'btn' do
+            ログアウト
             = icon('fas', 'angle-right')
 = render "shared/footer"
 = render "shared/sell_button"

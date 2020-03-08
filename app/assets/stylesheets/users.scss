@@ -112,6 +112,9 @@
           background: #fff;
           font-size: 14px;
           color: #333;
+          &__destroy {
+            background-color: rgb(106, 173, 170);
+          }
         }
       }
     }
