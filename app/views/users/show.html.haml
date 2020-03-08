@@ -1,27 +1,28 @@
-%h1 Users#show
-%p Find me in app/views/users/show.html.haml
+= render "shared/header"
+.body
+  %nav.category-menu
+    %ul
+      %li.root
+        = link_to 'FURIMA', '/'
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to 'マイページ', '#'
+        
 .user-mypage
   .user-mypage__content
-    .user-mypage__content__box
-      .user-mypage__content__box__one
-        = link_to "#" do
-          .user-mypage__content__box__icon
-      %h2.user-mypage__content__box__name name
-      %h2 評価
-      %h2 出品
-    .user-mypage__content__menu
-    .user-mypage__content__container
-      %h2.user-mypage__container__tab-head
-      %ul.user-mypage__container__transaction
-        %li.user-mypage__container__transaction__trading
-          %h3
-            =link_to
-        %li.user-mypage__container__transaction__past
-          %h3
-            =link_to
-      .user-mypage__container__items
-        %ul
-        %li
+    .user-mypage__content__icon
+      .user-mypage__content__icon__image
+        = image_tag("icon_camera", class: 'iconImage')
+      %h2.user-mypage__content__icon__name name
+      %h2.user-mypage__content__icon__status
+        %span 評価 0
+        %span 出品数 0
+    .user-mypage__content__product
+      %h2.user-mypage__content__product__text
+        購入した商品
+      .user-mypage__content__product__items
+        %span 取引中の商品がございません
   .user-mypage__side
     .user-mypage__side__nav
       %ul.user-mypage__side__nav__list
@@ -100,7 +101,7 @@
             電話番号の確認
             = icon('fas', 'angle-right')
         %li.user-mypage__side__nav__list__item
-          = link_to '#' do
-            ログアウト
+          = link_to "ログアウト", destroy_user_session_path, method: :delete do
             = icon('fas', 'angle-right')
-
+= render "shared/footer"
+= render "shared/sell_button"
