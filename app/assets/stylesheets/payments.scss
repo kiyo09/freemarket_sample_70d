@@ -33,7 +33,6 @@
   &__side {
     width: 280px;
     height: 100%;
-    // background-color: lightcoral;
     &__nav {
       h3 {
         font-size: 16px;
@@ -46,7 +45,6 @@
       }
       &__list {
         li {
-          // cursor: pointer;
           margin: 1px;
           &:hover{
             opacity: 0.6;

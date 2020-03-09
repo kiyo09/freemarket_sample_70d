@@ -29,7 +29,6 @@
     background-color:rgb(206, 223, 233);
     float: right;
     &__icon {
-      // background-color: lightblue;
       height: 300px;
       text-align: center;
       &__image {
@@ -57,10 +56,8 @@
         font-size: 18px;
         font-weight: bold;
         height: 50px;
-        // background-color: lightgoldenrodyellow;
       }
       &__items {
-        // background-color: lightgreen;
         height: 400px;
         text-align: center;
         line-height: 400px;
@@ -70,7 +67,6 @@
   &__side {
     width: 280px;
     height: 100%;
-    // background-color: lightcoral;
     &__nav {
       h3 {
         font-size: 16px;
@@ -83,7 +79,6 @@
       }
       &__list {
         li {
-          // cursor: pointer;
           margin: 1px;
           &:hover{
             opacity: 0.6;
