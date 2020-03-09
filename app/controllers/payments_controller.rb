@@ -1,4 +1,5 @@
 class PaymentsController < ApplicationController
-  def index  # indexアクションを定義した
+
+  def new
   end
 end
