@@ -24,45 +24,11 @@
 .user-mypage {
   margin: 0 auto ;
   width: 70%;
-  &__content {
+  &__payment {
     width: 660px;
-    background-color:rgb(206, 223, 233);
+    background-color:rgb(123, 221, 226);
+    text-align: center;
     float: right;
-    &__icon {
-      height: 300px;
-      text-align: center;
-      &__image {
-        padding-top: 50px;
-        height: 200px;
-        .iconImage {
-          height: 112px;
-          width: 120px;
-        }
-      }
-      &__name {
-        font-size: 14px;
-        font-weight: bold;
-      }
-      &__status {
-        font-size: 12px;
-        font-weight: bold;
-      }
-
-    }
-    &__product {
-      height: 450px;
-      &__text {
-        padding: 20px;
-        font-size: 18px;
-        font-weight: bold;
-        height: 50px;
-      }
-      &__items {
-        height: 400px;
-        text-align: center;
-        line-height: 400px;
-      }
-    }
   }
   &__side {
     width: 280px;
@@ -108,7 +74,7 @@
           font-size: 14px;
           color: #333;
           &__destroy {
-            background-color: rgb(106, 173, 170);
+            background-color: rgb(123, 196, 199);
           }
         }
       }
@@ -116,4 +82,3 @@
   }
 
 }
-
