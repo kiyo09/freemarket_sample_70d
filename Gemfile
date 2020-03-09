@@ -78,3 +78,4 @@ gem "font-awesome-rails"
 gem 'pry-rails'
 gem 'haml-rails'
 gem 'active_hash'
+gem 'ancestry'
