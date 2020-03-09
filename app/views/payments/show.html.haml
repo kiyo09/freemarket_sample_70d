@@ -1,0 +1,74 @@
+= render "shared/header"
+-# .open
+-#   .open_kurasu
+-#     .open_category 
+-#       カテゴリ
+-#     .open_logo
+-#       ブランド
+-#     .open_message
+-#       キーワードから探す
+      
+.header
+  .header_kurasu
+    .header__logo
+      = image_tag('title_p_step0 2',class:'gif')
+      %p.header__message
+        この商品を注文しますか？
+        %br.header__test
+          購入申請が承認された場合、商品代金を支払う義務が発生します。
+
+
+.contents
+  .contents__taitoru
+    .contents__test
+      = image_tag('peach-1',class:'gazo')
+      .contents__kuras
+      %p.contents__clas
+        山梨県 全国1位のモモの名産地 お中元 敬老の日 ギフト プレゼント
+        %br.contents__kane
+          ¥ XXX 
+
+.information 
+  .information__burokku
+    .information__Haiso
+      配送先
+    .information__name
+      名前
+    .information__Postal
+      郵便番号
+    .information__Street
+      住所
+    .information__phone
+      電話番号
+    .information__order
+      =link_to "配送先を選ぶ","#"
+    .information__desc
+      ※送付先住所は、商品代金を支払うまでは、都道府県のみが出品者に伝わります。
+
+.feeDesc
+  .feeDesc_order
+    ※お支払いの際、別途決済手数料がかかります。
+
+.feeTbl
+  .feeTbl__test
+    .feeTbl__order
+      決済手数料 
+    .feeTbl__Konbini
+      コンビニ　　　　　　　　　　¥200
+    .feeTbl__ATM
+      ATM 郵便局/銀行　　　　　　¥200
+    .feeTbl__credit
+      クレジット　　　　　　　　　¥200
+    .feeTbl__gift
+      ギフト支払い　　　　　　　　¥200
+    .feeTbl__zengaku
+      全額所持金支払い　　　　　　¥0
+
+
+
+.Decision
+  .Decision__test
+    .Decision__Decision
+      =link_to "確認","#"
+= render "shared/footer"
+= render "shared/sell_button"
