@@ -6,10 +6,18 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    # @item.images.new
+    # @item.build_brand
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create
-    item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -34,20 +42,23 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(
-       :name,
-       :description,
-       :status,
-       :fee_side,
-       :prefectures,
-       :shipping_days,
-       :price,
-       :size,
-       :brand_id ,
-       :saler_id ,
-       :category_id
-    ).merge(
-       buyer_id: current_user.id,
+      :image,
+      :name,
+      :description,
+      :status_id,
+      :fee_side_id,
+      :prefecture_id,
+      :shipping_days_id,
+      :price,
+      :size_id,
+      :brand_id,
+      :saler_id,
+      :category_id
     )
+    # ).merge(
+    #   # prefecture: params[:address]
+    #   #  buyer_id: current_user.id
+    # )
   end
 
 
