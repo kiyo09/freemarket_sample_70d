@@ -1,3 +1,13 @@
+# ブランド
+
+Brand.create(name: "シャネル")
+Brand.create(name: "ナイキ")
+Brand.create(name: "ルイヴィトン")
+Brand.create(name: "シュプリーム")
+Brand.create(name: "アディダス")
+
+# カテゴリー
+
 lady = Category.create(name: "レディース")
 men = Category.create(name: "メンズ")
 baby_kids = Category.create(name: "ベビー・キッズ")

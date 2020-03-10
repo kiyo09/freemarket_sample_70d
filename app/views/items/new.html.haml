@@ -13,9 +13,8 @@
           .exmain-image__input
             = f.fields_for :images do |i|
               %label.fas.fa-camera
-                %input(type="image" class="form-image")/
               %p.image-show
-                = i.file_field :image, multiple: true, name: "item[images_attributes][]", value:"", style: "display:none", id:"img-file"
+                = i.file_field :image, value:"", id:"img-file", class:"exmain-image__input"
                 ドラッグアンドドロップ
                 またはクリックしてファイルをアップロード
 
@@ -40,10 +39,11 @@
             %span.exmain-label 必須
             = f.collection_select :category_id, @category, :id, :name, class: "exmain-detail-category-input"
           .exmain-detail-brand
-            %label ブランド
-            %span.exmain-label-gray 任意
-          .exmain-detail-brand-input
-            %input(type="text")
+            = f.fields_for :brand do |b|
+              %label ブランド
+              %span.exmain-label-gray 任意
+              = b.text_field :name, placeholder: "例）シャネル", value: "" ,class: "exmain-detail-brand-input"
+            
           .exmain-detail-status
             %label 商品の状態
             %span.exmain-label 必須

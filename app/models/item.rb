@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
-  # has_many :images, dependent: :destroy
+  has_many :images, dependent: :destroy
   belongs_to :category
+  belongs_to :brand
+  accepts_nested_attributes_for :images, allow_destroy: true
+  accepts_nested_attributes_for :brand
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :fee_side
