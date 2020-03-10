@@ -11,12 +11,20 @@
           %p.exmain-image__limit
             最大10枚までアップロードできます
           .exmain-image__input
-            = f.fields_for :images do |i|
-              %label.fas.fa-camera
-              %p.image-show
-                = i.file_field :image, value:"", id:"img-file", class:"exmain-image__input"
-                ドラッグアンドドロップ
-                またはクリックしてファイルをアップロード
+            = f.fields_for :images do |image|
+              .js-file_group{"data-index" => "#{image.index}"}
+                %label.fas.fa-camera
+                %p.image-show
+                  = image.file_field :image, value:"", id:"img-file", class:"js-file"
+                  %span.js-remove　削除
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index" => "#{@item.images.count}"}
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  %span.js-remove　削除
 
           
         .exmain-item
@@ -37,7 +45,7 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.collection_select :category_id, @category, :id, :name, class: "exmain-detail-category-input"
+            = f.collection_select :category_id, @category, :id, :name, class: "exmain-detail-category-input", prompt: "---"
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
@@ -48,7 +56,7 @@
             %label 商品の状態
             %span.exmain-label 必須
           .exmain-detail-status-input
-            = f.collection_select :status_id, Status.all, :id, :name
+            = f.collection_select :status_id, Status.all, :id, :name, prompt: "---"
         .exmain-deliver
           .exmain-deliver-top
             %label 配送について
@@ -57,17 +65,17 @@
             %label 配送料の負担
             %span.exmain-label 必須
           .exmain-deliver-fee-input
-            = f.collection_select :fee_side_id, FeeSide.all, :id, :name
+            = f.collection_select :fee_side_id, FeeSide.all, :id, :name, prompt: "---"
           .exmain-deliver-region
             %label 配送元の地域
             %span.exmain-label 必須
           .exmain-deliver-region-input
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
           .exmain-deliver-date
             %label 配送までの日数
             %span.exmain-label 必須
           .exmain-deliver-date-input
-            = f.collection_select :shipping_days_id, ShippingDay.all, :id, :name
+            = f.collection_select :shipping_days_id, ShippingDay.all, :id, :name, prompt: "---"
 
         .exmain-check
           %label.exmain-check-top

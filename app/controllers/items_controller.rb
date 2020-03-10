@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_product, except: [:index, :new, :create]
 
   def index
     @items = Item.includes(:user)
@@ -14,6 +15,8 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
+      # params[:item_images][:image].each do |image|
+      # @item.item_images.create(image: image, item_id: @item.id)
       redirect_to root_path
     else
       render :new
@@ -21,20 +24,16 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def destroy
-    item = Item.find(params[:id])
     item.destroy
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
     item.update(item_params)
   end
 
@@ -53,7 +52,7 @@ class ItemsController < ApplicationController
       :saler_id,
       :category_id,
       brand_attributes: [:id, :name],
-      images_attributes: [:id, :image]
+      images_attributes: [:id, :image, :_destroy]
     )
     # ).merge(
     #   # prefecture: params[:address]
@@ -61,5 +60,8 @@ class ItemsController < ApplicationController
     # )
   end
 
+  def set_product
+    @item = Item.find(params[:id])
+  end
 
 end

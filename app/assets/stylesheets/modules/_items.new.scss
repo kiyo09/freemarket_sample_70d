@@ -118,6 +118,7 @@ html{
           margin-top: 16px;
         }
         &__input{
+          overflow: scroll;
           background-color: $white;
           width: 620px;
           height: 150px;
