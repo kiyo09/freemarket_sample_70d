@@ -1,0 +1,56 @@
+%h2 個人情報
+= form_for(@user_details, url: user_registration_path) do |f|
+  = render "devise/shared/error_messages", resource: @user_details
+
+  .field
+    = f.label :name, "名前"
+    %br/
+    = f.text_field :name
+
+  .field
+    = f.label :name_kana, "名前(カナ)"
+    %br/
+    = f.text_field :name_kana, autofocus: true
+
+  .field
+    = f.label :birthday, "生年月日"
+    %br/
+    = f.text_field :birthday, autofocus: true
+
+  .field
+    = f.label :desination_name, "送付先氏名"
+    %br/
+    = f.text_field :desination_name, autofocus: true
+
+  .field
+    = f.label :desination_kana, "送付先氏名(カナ)"
+    %br/
+    = f.text_field :desination_kana, autofocus: true
+  .field
+    = f.label :post_code, "郵便番号"
+    %br/
+    = f.text_field :post_code, autofocus: true
+  .field
+    = f.label :prefectures, "都道府県"
+    %br/
+    = f.text_field :prefectures, autofocus: true
+  .field
+    = f.label :mayor, "市長区村"
+    %br/
+    = f.text_field :mayor, autofocus: true
+  .field
+    = f.label :address, "番地"
+    %br/
+    = f.text_field :address, autofocus: true
+  .field
+    = f.label :building, "マンション名やビル名、部屋番号（任意）"
+    %br/
+    = f.text_field :building, autofocus: true
+  .field
+    = f.label :phone_no, "携帯電話（任意）"
+    %br/
+    = f.text_field :phone_no, autofocus: true
+
+  .actions
+    = f.submit "Sign up"
+= render "devise/shared/links"
