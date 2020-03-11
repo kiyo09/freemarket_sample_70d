@@ -125,6 +125,10 @@ html{
           border: 1px dashed $gray;
           margin-top: 16px;
           position: relative;
+          #previews{
+            display: flex;
+            flex-wrap: wrap;
+          }
           .fas.fa-camera{
             position: absolute;
             margin: 40px 30px 30px 300px;

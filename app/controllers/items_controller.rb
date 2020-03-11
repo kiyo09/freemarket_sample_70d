@@ -10,6 +10,7 @@ class ItemsController < ApplicationController
     @item.images.new
     @item.build_brand
     @category = Category.all.order("id ASC").limit(13)
+    @items = Item.includes(:images).order('created_at DESC')
   end
 
   def create
@@ -27,7 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item.destroy
+    @item.destroy
   end
 
   def edit

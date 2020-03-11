@@ -11,6 +11,10 @@
           %p.exmain-image__limit
             最大10枚までアップロードできます
           .exmain-image__input
+            #previews
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i |
+                  = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
             = f.fields_for :images do |image|
               .js-file_group{"data-index" => "#{image.index}"}
                 %label.fas.fa-camera
