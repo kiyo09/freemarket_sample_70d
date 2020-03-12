@@ -15,8 +15,6 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      # params[:item_images][:image].each do |image|
-      # @item.item_images.create(image: image, item_id: @item.id)
       redirect_to root_path
     else
       render :new
@@ -55,7 +53,6 @@ class ItemsController < ApplicationController
       images_attributes: [:id, :image, :_destroy]
     )
     .merge(
-      # prefecture: params[:address]
        buyer_id: current_user.id
     )
   end
