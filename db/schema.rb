@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_10_114818) do
     t.string "mayor", null: false
     t.string "address", null: false
     t.text "building"
-    t.integer "phone_no"
+    t.string "phone_no"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

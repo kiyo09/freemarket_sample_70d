@@ -11,7 +11,7 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
       t.string :mayor,            null:false
       t.string :address,          null:false
       t.text :building
-      t.integer :phone_no
+      t.string :phone_no
       t.references :user,          foreign_key: true
 
       t.timestamps
