@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_product, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create]
 
   def index
     @items = Item.includes(:user)
@@ -60,7 +60,7 @@ class ItemsController < ApplicationController
     )
   end
 
-  def set_product
+  def set_item
     @item = Item.find(params[:id])
   end
 
