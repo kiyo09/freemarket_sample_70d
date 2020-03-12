@@ -7,7 +7,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @item.images.new
+    @item.images.build
     @item.build_brand
     @category = Category.all.order("id ASC").limit(13)
   end
@@ -54,10 +54,10 @@ class ItemsController < ApplicationController
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image, :_destroy]
     )
-    # ).merge(
-    #   # prefecture: params[:address]
-    #   #  buyer_id: current_user.id
-    # )
+    .merge(
+      # prefecture: params[:address]
+       buyer_id: current_user.id
+    )
   end
 
   def set_product

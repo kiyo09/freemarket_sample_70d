@@ -45,7 +45,7 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.collection_select :category_id, @category, :id, :name, class: "exmain-detail-category-input", prompt: "---"
+            = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, class: "exmain-detail-category-input", prompt: "---"
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
