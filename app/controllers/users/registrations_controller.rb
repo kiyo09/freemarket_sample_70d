@@ -22,6 +22,19 @@ class Users::RegistrationsController < Devise::RegistrationsController
     render :new_user_detail
   end
 
+  def create_user_detail
+    @user = User.new(session["devise.regist_data"]["user"])
+    @user_detail = UserDetail.new(user_detail_params)
+    unless @user_detail.valid?
+      flash.now[:alert] = @address.errors.full_messages
+      render :new_user_detail and return
+    end
+    @user.build_user_detail(@user_detail.attributes)
+    # binding.pry
+    @user.save
+    sign_in(:user, @user)
+  end
+
   # GET /resource/edit
   # def edit
   #   super
@@ -51,6 +64,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
+  end
+
+  def user_detail_params
+    params.require(:user_detail).permit(
+      :name,
+      :name_kana,
+      :birthday,
+      :desination_name,
+      :desination_kana,
+      :post_code,
+      :prefectures,
+      :mayor,
+      :address,
+      :building,
+      :phone_no
+      # user_detail_attributes: [:id]
+    )
   end
 
   # If you have extra params to permit, append them to the sanitizer.
