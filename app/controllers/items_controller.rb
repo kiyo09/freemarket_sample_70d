@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, except: [:index, :new, :create]
 
   def index
     @items = Item.includes(:user)
@@ -6,27 +7,31 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
+    @item.build_brand
+    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create
-    item.create(item_params)
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
-    @item = Item.find(params[:id])
   end
 
   def destroy
-    item = Item.find(params[:id])
     item.destroy
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
     item.update(item_params)
   end
 
@@ -34,21 +39,26 @@ class ItemsController < ApplicationController
   private
   def item_params
     params.require(:item).permit(
-       :name,
-       :description,
-       :status,
-       :fee_side,
-       :prefectures,
-       :shipping_days,
-       :price,
-       :size,
-       :brand_id ,
-       :saler_id ,
-       :category_id
-    ).merge(
-       buyer_id: current_user.id,
+      :name,
+      :description,
+      :status_id,
+      :fee_side_id,
+      :prefecture_id,
+      :shipping_days_id,
+      :price,
+      :size_id,
+      :saler_id,
+      :category_id,
+      brand_attributes: [:id, :name],
+      images_attributes: [:id, :image, :_destroy]
+    )
+    .merge(
+       buyer_id: current_user.id
     )
   end
 
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
 end
