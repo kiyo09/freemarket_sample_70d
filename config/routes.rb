@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   resources :credit_cards, only: [:new, :index, :create, :destroy]
-  resources :payments, only: [:new]
+  resources :payments, only: [:new, :show]
 end

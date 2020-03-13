@@ -107,8 +107,12 @@
                 %th
                   発送日の目安
                 %td
-                  1−2日で発送
-          = button_to '購入画面に進む', "/items/purchase/#{@item.id}", class: 'confirm-btn', method: :get
+                  = @item.shipping_days.name
+          %button.item-buy
+            - if @item.user_id == current_user.id
+              = link_to "編集する", edit_item_path(@item), class: "edit-button"
+            - else
+              = link_to "購入する", purchase_item_path(@item), class: "buy-button"
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn
