@@ -1,0 +1,139 @@
+.category-menu {
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  padding: 0 60px;
+  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+  line-height: 50px;
+}
+
+.category-menu ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.category-menu ul .item {
+  font-weight: bold;
+}
+
+.category-menu ul li {
+  padding-right: 10px;
+}
+
+.category-menu ul li a {
+  color: black;
+}
+
+.user-mypage {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.user-mypage__content {
+  width: 660px;
+  background-color: #cedfe9;
+  float: right;
+}
+
+.user-mypage__content__icon {
+  height: 300px;
+  text-align: center;
+}
+
+.user-mypage__content__icon__image {
+  padding-top: 50px;
+  height: 200px;
+}
+
+.user-mypage__content__icon__image .iconImage {
+  height: 112px;
+  width: 120px;
+}
+
+.user-mypage__content__icon__name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.user-mypage__content__icon__status {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.user-mypage__content__product {
+  height: 450px;
+}
+
+.user-mypage__content__product__text {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  height: 50px;
+}
+
+.user-mypage__content__product__items {
+  height: 400px;
+  text-align: center;
+  line-height: 400px;
+}
+
+.user-mypage__side {
+  width: 280px;
+  height: 100%;
+}
+
+.user-mypage__side__nav h3 {
+  font-size: 16px;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+  font-weight: bold;
+}
+
+.user-mypage__side__nav ul {
+  margin-top: 20px;
+  list-style: none;
+}
+
+.user-mypage__side__nav__list li {
+  margin: 1px;
+}
+
+.user-mypage__side__nav__list li:hover {
+  opacity: 0.6;
+}
+
+.user-mypage__side__nav__list li i {
+  display: list-item;
+  float: right;
+  opacity: 0.5;
+}
+
+.user-mypage__side__nav__list li i:hover {
+  -webkit-transform: translate(3px, 0);
+          transform: translate(3px, 0);
+  opacity: 1;
+}
+
+.user-mypage__side__nav__list li a {
+  display: block;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  padding: 16px;
+}
+
+.user-mypage__side__nav__list__item {
+  position: relative;
+  display: block;
+  min-height: 48px;
+  background: #fff;
+  font-size: 14px;
+  color: #333;
+}
+
+.user-mypage__side__nav__list__item__destroy {
+  background-color: #6aadaa;
+}
+/*# sourceMappingURL=users.css.map */

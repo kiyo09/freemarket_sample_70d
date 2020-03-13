@@ -1,8 +1,8 @@
 FactoryBot.define do
-  factory :UserDetail do
-    
-    user              {"1"}
-    first_name        {"name"}
+  factory :user_detail do
+
+    # user:
+    first_name        {"name123"}
     first_name_kana   {"カタカナ"}
     last_name         {"name"}
     last_name_kana    {"カタカナ"}
