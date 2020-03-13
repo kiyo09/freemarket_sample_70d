@@ -1,121 +1,100 @@
 .wrapper
   .content
-    .extop
-      .extop-logo
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
+    = render "shared/subHeader" 
     .exmain
-      .exmain-image
-        .exmain-image__name
-          %label 出品画像
-        %p.exmain-image__limit
-          最大10枚までアップロードできます
-        .exmain-image__input
-          %label.fas.fa-camera
-            %input(type="image" class="form-image")/
-          %p.image-show
-            ドラッグアンドドロップ
-            またはクリックしてファイルをアップロード
+      = form_with model: @item, local: true do |f|
+        .exmain-image
+          .exmain-image__name
+            %label 出品画像
+          %p.exmain-image__limit
+            最大10枚までアップロードできます
+          .exmain-image__input
+            = f.fields_for :images do |image|
+              .js-file_group{"data-index" => "#{image.index}"}
+                %label.fas.fa-camera
+                %p.image-show
+                  = image.file_field :image, value:"", id:"img-file", class:"js-file"
+                  %span.js-remove　削除
+                  ドラッグアンドドロップ
+                  またはクリックしてファイルをアップロード
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                - if @item.persisted?
+                  .js-file_group{"data-index" => "#{@item.images.count}"}
+                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+                  %span.js-remove　削除
 
-        
-      .exmain-item
-        .exmain-item__name
-          %label 商品名
-          %span.exmain-label 必須
-        .exmain-item__name-input
-          %input(type="text" name="name" value placeholder="40文字まで")/
-        .exmain-item__explain
-          %label 商品の説明
-          %span.exmain-label 必須
-        .exmain-item__explain-input
-          %textarea(type="text" name="name" value placeholder="商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。"
-          class="input-explain" cows="40" rows="7" )
-
-      .exmain-detail
-        .exmain-detail-top
-          %label 商品の詳細
-        .exmain-detail-category
-          %label カテゴリー
-          %span.exmain-label 必須
-        .exmain-detail-category-input
-          %select(type="text")
-            %option --
-            %option{category: "レディース", value: " "} レディース
-            %option{category: "メンズ", value: " "} メンズ
-            %option{category: "ベビー・キッズ", value: " "} ベビー・キッズ
-        .exmain-detail-brand
-          %label ブランド
-          %span.exmain-label-gray 任意
-        .exmain-detail-brand-input
-          %input(type="text")
-        .exmain-detail-status
-          %label 商品の状態
-          %span.exmain-label 必須
-        .exmain-detail-status-input
-          %select(type="text")
-            %option --
-            %option{status: "新品、未使用", value: " "} 新品、未使用
-            %option{status: "目立った傷なし", value: " "} 目立った傷なし
-            %option{status: "傷や汚れあり", value: " "} 傷や汚れあり
-      .exmain-deliver
-        .exmain-deliver-top
-          %label 配送について
-          .exmain-deliver-top-qa
-        .exmain-deliver-fee
-          %label 配送料の負担
-          %span.exmain-label 必須
-        .exmain-deliver-fee-input
-          %select(type="text")
-            %option --
-            %option{fee_side: "送料込み(出品者負担)", value: " "} 送料込み(出品者負担)
-            %option{fee_side: "着払い(購入者負担)", value: " "} 着払い(購入者負担)
-        .exmain-deliver-region
-          %label 配送元の地域
-          %span.exmain-label 必須
-        .exmain-deliver-region-input
-          = form_for '' do |f|
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "--"
-        .exmain-deliver-date
-          %label 配送までの日数
-          %span.exmain-label 必須
-        .exmain-deliver-date-input
-          %select(type="text")
-            %option --
-            %option{shipping_days: "1〜2日で発送", value: " "} 1〜2日で発送
-            %option{shipping_days: "2〜3日で発送", value: " "} 2〜3日で発送
-            %option{shipping_days: "4〜7日で発送", value: " "} 4〜7日で発送
-
-      .exmain-check
-        %label.exmain-check-top
-          価格(¥300〜9,999,999)
-          .exmain-check-top-qa
-        .exmain-check-price
-          .exmain-check-price-title
-            %label.price 販売価格
+          
+        .exmain-item
+          .exmain-item__name
+            %label 商品名
             %span.exmain-label 必須
-            %input(type="text" class="exmain-check-price-input")/
-        .exmain-check-fee
-          .exmain-check-fee-tax 販売手数料（10%）
-          %p.fee-span -
-        .exmain-check-profit-box
-          .exmain-check-profit 販売利益
-          %p.fee-span -
-        .check-button
-          %button.check-button-pay
-            出品する
-          %button.check-button-back
-            戻る
-        %p.exmain-check-detail
-          禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+          .exmain-item__name-input
+            = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form__group__name"
+          .exmain-item__explain
+            %label 商品の説明
+            %span.exmain-label 必須
+          .exmain-item__explain-input
+            = f.text_area :description, placeholder:"商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "input-explain",cows: "40", rows: "7"
 
-  .footer
-    .footer-content
-      .footer-content-main
-        %p.footer-content-main-privacy プライバシーポリシー          
-        %p.footer-content-main-term フリマ利用規約
-        %p.footer-content-main-trade 特定商取引に関する表記
-      .footer-icon
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
-      %p.footer-copyright
-        © Furima, Inc.
-      
+        .exmain-detail
+          .exmain-detail-top
+            %label 商品の詳細
+          .exmain-detail-category
+            %label カテゴリー
+            %span.exmain-label 必須
+            = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, class: "exmain-detail-category-input", prompt: "---"
+          .exmain-detail-brand
+            = f.fields_for :brand do |b|
+              %label ブランド
+              %span.exmain-label-gray 任意
+              = b.text_field :name, placeholder: "例）シャネル", value: "" ,class: "exmain-detail-brand-input"
+            
+          .exmain-detail-status
+            %label 商品の状態
+            %span.exmain-label 必須
+          .exmain-detail-status-input
+            = f.collection_select :status_id, Status.all, :id, :name, prompt: "---"
+        .exmain-deliver
+          .exmain-deliver-top
+            %label 配送について
+            .exmain-deliver-top-qa
+          .exmain-deliver-fee
+            %label 配送料の負担
+            %span.exmain-label 必須
+          .exmain-deliver-fee-input
+            = f.collection_select :fee_side_id, FeeSide.all, :id, :name, prompt: "---"
+          .exmain-deliver-region
+            %label 配送元の地域
+            %span.exmain-label 必須
+          .exmain-deliver-region-input
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
+          .exmain-deliver-date
+            %label 配送までの日数
+            %span.exmain-label 必須
+          .exmain-deliver-date-input
+            = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "---"
 
+        .exmain-check
+          %label.exmain-check-top
+            価格(¥300〜9,999,999)
+            .exmain-check-top-qa
+          .exmain-check-price
+            .exmain-check-price-title
+              %label.price 販売価格
+              %span.exmain-label 必須
+              = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
+          .exmain-check-fee
+            .exmain-check-fee-tax 販売手数料（10%）
+            %p.fee-span -
+          .exmain-check-profit-box
+            .exmain-check-profit 販売利益
+            %p.fee-span -
+          .check-button
+            = f.submit "出品する", class: "check-button-pay"
+            %button.check-button-back
+              戻る
+          %p.exmain-check-detail
+            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+    = render "shared/subFooter" 

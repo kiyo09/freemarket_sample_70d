@@ -2,7 +2,7 @@
   .headerFrame
     .mainHeader
       %h1.icon
-        = link_to image_tag("logo.png", class: "iconBtn"), "#"
+        = link_to image_tag("logo.png", class: "iconBtn"), root_path
       .searchBox
         = form_with url: root_path, local: true do |form|
           = form.text_field :text, class: "inputBox", placeholder: "キーワードから探す"
@@ -16,6 +16,7 @@
         %li.listsFrameLeft__item.listsFrameRight__item--first
           = link_to "ブランド", "#", id: "brandBtn"
       %ul.listsFrameRight
+
         - if user_signed_in?
           %li.listsFrameRight__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete
@@ -25,5 +26,4 @@
             = link_to "ログイン", new_user_session_path
           %li.listsFrameRight__item.listsFrameRight__item--new
             = link_to "新規会員登録", new_user_registration_path
-
 
