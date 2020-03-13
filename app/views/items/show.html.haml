@@ -49,6 +49,7 @@
                 %th
                   出品者
                 %td
+                  - if @item.use.present?
                   = link_to @item.user.nickname, '#'
                   -# TODO: いいね機能実装時
                   -# %div
@@ -72,6 +73,7 @@
                 %th
                   ブランド
                 %td
+                  - if @item.brand.presense?
                   = link_to @item.brand.name, '#'
               %tr
                 %th

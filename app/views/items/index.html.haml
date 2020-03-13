@@ -107,7 +107,7 @@
         - @items.each do |item|
           .containerList
             = link_to item_path(item.id) do
-              = image_tag "#{item.images[0].image.url}"
+              -# = image_tag "#{item.images[0].image.url}"
 
             .product__info
               %h3.name
