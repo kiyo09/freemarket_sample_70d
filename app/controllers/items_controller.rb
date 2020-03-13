@@ -2,7 +2,9 @@ class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
 
   def index
-    @items = Item.includes(:user)
+    @items = Item.includes(:user).limit(6)
+
+    # @image = Image.find(item_id).first
   end
 
   def new
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @items = Item.includes(:user)
   end
 
   def destroy
@@ -47,13 +50,13 @@ class ItemsController < ApplicationController
       :shipping_days_id,
       :price,
       :size_id,
-      :saler_id,
+      :buyer_id,
       :category_id,
       brand_attributes: [:id, :name],
       images_attributes: [:id, :image, :_destroy]
     )
     .merge(
-       buyer_id: current_user.id
+       user_id: current_user.id
     )
   end
 
