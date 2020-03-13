@@ -18,9 +18,6 @@ class CreditCardsController < ApplicationController
     if @creditCard
       redirect_to credit_cards_path unless @creditCard
       render 'credit_cards' unless @creditCard
-    # else
-    #   redirect_to new_credit_card_path
-    #   # render 'mypages/create-card'
     end
   end
 
@@ -34,13 +31,12 @@ class CreditCardsController < ApplicationController
       customer = Payjp::Customer.create( # ここで先ほど生成したトークンを顧客情報と紐付け、PAY.JP管理サイトに送信
       email: current_user.email,
       card: params['payjp-token'],
-        # metadata: {user_id: current_user.id} # 記述しなくても大丈夫です
+      metadata: {user_id: current_user.id} # TODO: 要調査
       )
       @creditCard = CreditCard.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
       if @creditCard.save
         redirect_to credit_cards_path
       else
-        # render 'mypages/create-card'
         redirect_to credit_cards_path
       end
     end

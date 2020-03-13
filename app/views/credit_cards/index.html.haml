@@ -3,15 +3,15 @@
   %nav.category-menu
     %ul
       %li.root
-        = link_to 'FURIMA', '/'
+        = link_to 'FURIMA', root_path
       %li
         %i.fa.fa-angle-right
       %li.category
-        = link_to 'マイページ', '/users/show'
+        = link_to 'マイページ', user_path(current_user.id)
       %li
         %i.fa.fa-angle-right
       %li.category
-        = link_to 'クレジットカード登録', '/credit_cards/new'
+        = link_to new_credit_card_path
 
   .content
     .user-mypage

@@ -13,8 +13,4 @@ Rails.application.routes.draw do
   resources :users, only: [:show]
   resources :credit_cards, only: [:new, :index, :create, :destroy]
   resources :payments, only: [:new, :show]
-<<<<<<< HEAD
 end
-=======
-end
->>>>>>> e0fc68290d012b2d690fd1c55fa4d60e646b3b2c

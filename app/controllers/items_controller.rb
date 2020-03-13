@@ -1,12 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :purchase]
 
   require 'payjp'
 
   def index
     @items = Item.includes(:user).limit(6)
-
-    # @image = Image.find(item_id).first
   end
 
   def new
@@ -31,7 +29,6 @@ class ItemsController < ApplicationController
 
   # 購入確認
   def purchase
-    @item = Item.find(params[:id])
     # FIXME: itemテーブルから画像取得
     # @image = @item.images.first
     card = CreditCard.where(user_id: current_user.id).first
