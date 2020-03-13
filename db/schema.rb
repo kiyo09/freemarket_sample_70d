@@ -38,8 +38,10 @@ ActiveRecord::Schema.define(version: 2020_03_10_114818) do
   end
 
   create_table "user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "name_kana", null: false
+    t.string "first_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name", null: false
+    t.string "last_name_kana", null: false
     t.integer "birthday", null: false
     t.string "desination_name", null: false
     t.string "desination_kana", null: false

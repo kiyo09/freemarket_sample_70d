@@ -1,8 +1,10 @@
 class CreateUserDetails < ActiveRecord::Migration[5.2]
   def change
     create_table :user_details do |t|
-      t.string :name,             null:false
-      t.string :name_kana,        null:false
+      t.string :first_name,       null:false
+      t.string :first_name_kana,  null:false
+      t.string :last_name,        null:false
+      t.string :last_name_kana,   null:false
       t.integer :birthday,        null:false
       t.string :desination_name,  null:false
       t.string :desination_kana,  null:false
@@ -18,3 +20,4 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
     end
   end
 end
+

@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user = User.new(session["devise.regist_data"]["user"])
     @user_detail = UserDetail.new(user_detail_params)
     unless @user_detail.valid?
-      flash.now[:alert] = @address.errors.full_messages
+      flash.now[:alert] = @user.errors.full_messages
       render :new_user_detail and return
     end
     @user.build_user_detail(@user_detail.attributes)
@@ -68,8 +68,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_detail_params
     params.require(:user_detail).permit(
-      :name,
-      :name_kana,
+      :first_name,
+      :first_name_kana,
+      :last_name,
+      :last_name_kana,
       :birthday,
       :desination_name,
       :desination_kana,

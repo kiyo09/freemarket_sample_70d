@@ -3,14 +3,22 @@
   = render "devise/shared/error_messages", resource: @user_details
 
   .field
-    = f.label :name, "名前"
+    = f.label :first_name, "苗字"
     %br/
-    = f.text_field :name
+    = f.text_field :first_name
+  .field
+    = f.label :first_name_kana, "苗字(カナ)"
+    %br/
+    = f.text_field :first_name_kana
+  .field
+    = f.label :last_name, "名前"
+    %br/
+    = f.text_field :last_name
 
   .field
-    = f.label :name_kana, "名前(カナ)"
+    = f.label :last_name_kana, "名前(カナ)"
     %br/
-    = f.text_field :name_kana
+    = f.text_field :last_name_kana
 
   .field
     = f.label :birthday, "生年月日"
