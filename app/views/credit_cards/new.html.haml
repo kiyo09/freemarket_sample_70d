@@ -1,0 +1,75 @@
+= render "shared/header"
+.body
+  %nav.category-menu
+    %ul
+      %li.root
+        = link_to 'FURIMA', root_path
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to 'マイページ', user_path(current_user.id)
+      %li
+        %i.fa.fa-angle-right
+      %li.category
+        = link_to 'クレジットカード登録', new_credit_card_path
+
+  .content
+    .user-mypage
+      = render 'shared/mypage-side'
+      .credit-update
+        .credit-update__label
+          クレジットカード情報入力
+        .card-form
+          .card-form__box
+            = form_tag(credit_cards_path, method: :post, id: 'charge-form', name: "inputForm") do |f|
+              .card-form__box__number
+                %label{class:'box-group--label', for: 'card_number'} カード番号
+                %span.input-require
+                  必須
+                = text_field_tag "number", "", class: 'card-number--input', type: "text", id: 'card_number', maxlength: "16", placeholder: "半角数字のみ"
+                .registration-error{type: "hidden", value: "必須項目です"}
+                %ul.card-list
+                  -# assets/imagesにimageを設置しており、それをimage_tagで呼び出しています。
+                  %li.card-list--item{ style: "margin-left: 0;"}
+                    = image_tag "visa.svg", width:"49", height:"20"
+                  %li.card-list--item
+                    = image_tag "master.svg", width:"34", height:"20"
+                  -# %li.card-list--item
+                  -#   = image_tag "saison-card.svg", width:"30", height:"20"
+                  %li.card-list--item
+                    = image_tag "jcb.svg", width:"32", height:"20"
+                  %li.card-list--item
+                    = image_tag "american_express.svg", width:"21", height:"20"
+                  %li.card-list--item
+                    = image_tag "diners_club.svg", width:"32", height:"20"
+                  %li.card-list--item 
+                    = image_tag "discover.svg", width:"32", height:"20"
+
+              .card-form__box__expire
+                %label.box-group--label 有効期限
+                %span.input-require
+                  必須
+                .card-expire
+                  .card-expire__select-month
+                    = select_tag 'exp_month', options_for_select([["01", 1], ["02", 2], ["03", 3], ["04", 4], ["05", 5], ["06", 6], ["07", 7], ["08", 8], ["09", 9], ["10", 10], ["11", 11], ["12", 12]])
+                    -# %i.card-form-expire-icon
+                    -#   = image_tag "arrow-bottom.png", size:"16x10",class:"arrow-bottom-icon5"
+                    %span{class: "month"} 月
+                  .card-expire__select-year
+                    = select_tag 'exp_year',  options_for_select([["19", 2019], ["20", 2020], ["21", 2021], ["22", 2022], ["23", 2023], ["24", 2024], ["25", 2025], ["26", 2026], ["27", 2027], ["28", 2028], ["29", 2029]])
+                    -# %i.card-form-expire-icon
+                    -#   = image_tag "arrow-bottom.png", size: "16x10",class:"arrow-bottom-icon6"
+                    %span{class:"year"} 年
+
+              .card-form__box__security-code
+                %label.box-group--label{for: "cvc"} セキュリティーコード
+                %span.input-require
+                  必須
+                = text_field_tag "cvc", "", class: 'payment__security-code', type: "text", id: "cvc", maxlength: "4" ,placeholder: "カード背面４桁もしくは３桁の番号"
+                .question-form
+                  %span.question-form__mark ?
+                  %span.question-form__text
+                    カード裏面の番号とは？
+              #card_token
+              = submit_tag "追加する", class: "card-form__box__add", id: "token_submit", type: 'button'
+  = render "shared/footer"
