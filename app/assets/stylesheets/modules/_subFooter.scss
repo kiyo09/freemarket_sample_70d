@@ -1,0 +1,35 @@
+.subFooter{
+  margin-top: 10px;
+  text-align: center;
+  &-content{
+    margin: 0 auto;
+    &-main{
+      margin-top: 15px;
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      &-privacy{
+        display: inline-block;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+      &-term{
+        display: inline-block;
+        margin-right: 10px;
+       
+      }
+      &-trade{
+        display: inline-block;
+       
+      }
+  }
+  &-icon{
+    margin: 5px;
+  }
+  &-copyright{
+    margin: 5px auto;
+    display: inline-block;
+    
+  }
+}
+}
