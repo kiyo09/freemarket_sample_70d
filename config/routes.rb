@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+  get 'users/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
   resources :items do
@@ -11,5 +12,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show]
   resources :credit_cards, only: [:new, :index, :create, :destroy]
-  resources :payments, only: [:new]
+  resources :payments, only: [:new, :show]
 end
