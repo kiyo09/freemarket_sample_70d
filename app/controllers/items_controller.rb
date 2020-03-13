@@ -1,10 +1,10 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create]
+  before_action :set_item, except: [:index, :new, :create, :purchase]
+
+  require 'payjp'
 
   def index
     @items = Item.includes(:user).limit(6)
-
-    # @image = Image.find(item_id).first
   end
 
   def new
@@ -27,6 +27,39 @@ class ItemsController < ApplicationController
     @items = Item.includes(:user)
   end
 
+  # 購入確認
+  def purchase
+    # FIXME: itemテーブルから画像取得
+    # @image = @item.images.first
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.present?
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @customer_card = customer.cards.retrieve(card.card_id)
+    end
+  end
+
+ # 購入完了
+  def done
+  end
+
+  # 購入
+  def pay
+    card = CreditCard.where(user_id: current_user.id).first
+    if card.blank?
+      redirect_to controller: "credit_cards", action: "new"
+    else
+      @item = Item.find(params[:id])
+      Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
+      charge = Payjp::Charge.create(
+      amount: @item.price,
+      customer: card.customer_id,
+      currency: 'jpy'
+      )
+      Item.where(id: @item.id).update_all(buyer_id: current_user.id)
+      redirect_to action: 'done'
+    end
+  end
+
   def destroy
     item.destroy
   end
@@ -37,7 +70,6 @@ class ItemsController < ApplicationController
   def update
     item.update(item_params)
   end
-
 
   private
   def item_params

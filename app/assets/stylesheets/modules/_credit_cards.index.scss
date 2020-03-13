@@ -1,0 +1,184 @@
+// ===============================================================
+// クレジットカード情報ページ
+// ===============================================================
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+button{
+  cursor: pointer;
+}
+.span{
+  display: inline;
+}
+
+input{
+  border: 1px solid $gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  height: 48px;
+  margin: 0;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+}
+
+select{
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $lightGray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $black;
+  font-size: 16px;
+  height: 48px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+}
+
+
+.input-require{
+  background-color: $blue;
+  color: $white;
+  border-radius: 5px;
+}
+label{
+  font-weight: bold;
+}
+
+html{
+  width:100%;
+  height:100%;
+  background-color: $gray;
+  .body{
+    width: 100%;
+    height: 100%;
+
+    .content{
+      margin: 40px 150px;
+      .user-mypage{
+        margin: 0 auto ;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        &__side{
+          margin-right: 40px;
+        }
+        .credit-update{
+          background-color: $white;
+          width: 700px;
+          height: 100%;
+          &__label{
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 1px solid $gray;
+            padding: 8px 24px;
+          }
+          .card-info{
+            padding: 64px;
+            &__label{
+              font-weight: bold;
+              margin: 0 auto;
+              width: 320px;
+            }
+            &__list{
+              padding: 24px 0;
+              border-bottom: 1px solid $gray;
+              position: relative;
+              &__payment{
+                width: 320px;
+                margin: 0 auto;
+                &__number{
+                  margin-top: 8px;
+                }
+                &__expire{
+                  margin-top: 8px;
+                }
+                &__delete-btn{
+                  border-radius: 10px;
+                  border: $blue 1px solid;
+                  color: $blue;
+                  position: absolute;
+                  padding: 5px;
+                  width: 70px;
+                  height: 30px;
+                  top: 60px;
+                  right: 150px;
+                  font-size: 14px;
+                }
+              }
+            }
+            .how-not-regist{
+              margin-top: 24px;
+              color: $blue;
+              text-align: end;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// ===============================================================
+// サイドバー
+// ===============================================================
+
+.side-bar {
+  width: 280px;
+  height: 100%;
+  &__nav {
+    h3 {
+      font-size: 16px;
+      margin-block-start: 1em;
+      font-weight: bold;
+    }
+    ul {
+      margin-top: 20px;
+      list-style: none;
+    }
+    &__list {
+      li {
+        margin: 1px;
+        &:hover{
+          opacity: 0.6;
+        }
+        i {
+          display: list-item;
+          float: right;
+          opacity: 0.5;
+          &:hover {
+            transform: translate(3px, 0);
+            opacity: 1;
+          }
+        }
+        a {
+          display: block;
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+          padding: 16px;
+        }
+      }
+      &__item {
+        position: relative;
+        display: block;
+        min-height: 48px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        &__destroy {
+          background-color: rgb(123, 196, 199);
+        }
+      }
+    }
+  }
+}

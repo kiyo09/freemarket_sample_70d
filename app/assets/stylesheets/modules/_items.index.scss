@@ -389,6 +389,7 @@
     padding: 15px;
     border-radius: 4%;
     background-color: #3CCACE;
+    z-index: 1;
     &:hover{
       opacity: 0.9;
     }
@@ -418,6 +419,7 @@
 .header{
   padding: 0 60px;
   font-family: "Source Sans Pro", Helvetica, Arial, "游ゴシック体", "YuGothic", "メイリオ", "Meiryo", sans-serif;
+  background-color: $white;
   .headerFrame{
     max-width: 1040px;
     min-height: 82px;
