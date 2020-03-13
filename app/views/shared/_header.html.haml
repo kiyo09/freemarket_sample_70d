@@ -16,7 +16,6 @@
         %li.listsFrameLeft__item.listsFrameRight__item--first
           = link_to "ブランド", "#", id: "brandBtn"
       %ul.listsFrameRight
-
         - if user_signed_in?
           %li.listsFrameRight__item
             = link_to "ログアウト", destroy_user_session_path, method: :delete
