@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_035824) do
+ActiveRecord::Schema.define(version: 2020_03_10_114818) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "prefecture_id"
@@ -67,6 +67,26 @@ ActiveRecord::Schema.define(version: 2020_03_10_035824) do
     t.index ["name"], name: "index_items_on_name"
   end
 
+  create_table "user_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name", null: false
+    t.string "first_name_kana", null: false
+    t.string "last_name", null: false
+    t.string "last_name_kana", null: false
+    t.integer "birthday", null: false
+    t.string "desination_name", null: false
+    t.string "desination_kana", null: false
+    t.integer "post_code", null: false
+    t.string "prefectures", null: false
+    t.string "mayor", null: false
+    t.string "address", null: false
+    t.text "building"
+    t.string "phone_no"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_user_details_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -82,4 +102,5 @@ ActiveRecord::Schema.define(version: 2020_03_10_035824) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "user_details", "users"
 end
