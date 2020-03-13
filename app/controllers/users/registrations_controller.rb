@@ -28,12 +28,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user_detail = UserDetail.new(user_detail_params)
     unless @user_detail.valid?
       flash.now[:alert] = @user_detail.errors.full_messages
-      render :new_user_detail and return
+      render :new and return
     end
     @user.build_user_detail(@user_detail.attributes)
-    @user.save
+    if @user.save
     sign_in(:user, @user)
+    else
+      render :new
+    end
   end
+
 
   # GET /resource/edit
   # def edit
