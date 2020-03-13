@@ -31,7 +31,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new_user_detail and return
     end
     @user.build_user_detail(@user_detail.attributes)
-    binding.pry
     @user.save
     sign_in(:user, @user)
   end
