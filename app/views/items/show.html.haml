@@ -108,6 +108,7 @@
                   発送日の目安
                 %td
                   1−2日で発送
+          = button_to '購入画面に進む', "/items/purchase/#{@item.id}", class: 'confirm-btn', method: :get
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn
