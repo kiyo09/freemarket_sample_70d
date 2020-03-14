@@ -1,17 +1,13 @@
 .wrapper
   .content
-    .extop
-      .extop-logo
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
+    = render "shared/subHeader"
     .exmain
       .exmain__label
         購入内容の確認
       .exmain__container
         .exmain__container__item
           .exmain__container__item__image
-            -# TODO: itemテーブルから画像取得
-            -# = image_tag @image, size: "90x90"
-            = image_tag "a007.png", size: "90x90"
+            = image_tag "#{@item.images[0].image.url}", size: "90x90"
           .exmain__container__item__detail
             .exmain__container__item__detail__name
               = "#{@item.name}"
@@ -40,15 +36,10 @@
             - exp_month = @customer_card.exp_month.to_s
             - exp_year = @customer_card.exp_year.to_s.slice(2,3)
             = "有効期限 #{exp_month} / #{exp_year}"
-        = form_tag(action: :pay, method: :post) do
-          %button.pay-btn 購入する
-  .footer
-    .footer-content
-      .footer-content-main
-        %p.footer-content-main-privacy プライバシーポリシー
-        %p.footer-content-main-term フリマ利用規約
-        %p.footer-content-main-trade 特定商取引に関する表記
-      .footer-icon
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
-      %p.footer-copyright
-        © Furima, Inc.
+        -if @customer_card.blank?
+          = form_tag(action: :pay, method: :post) do
+            = button_tag "購入する", {class: :"pay-btn", disabled: :true}
+        -else
+          = form_tag(action: :pay, method: :post) do
+            = button_tag "購入する", {class: :"pay-btn"}
+  = render "shared/subFooter"

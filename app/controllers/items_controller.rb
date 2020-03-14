@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, except: [:index, :new, :create, :purchase]
+  before_action :set_item, except: [:index, :new, :create]
 
   require 'payjp'
 

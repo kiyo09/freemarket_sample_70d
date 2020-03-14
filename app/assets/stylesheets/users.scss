@@ -24,10 +24,12 @@
 .user-mypage {
   margin: 0 auto ;
   width: 70%;
+  display: flex;
+  justify-content: center;
   &__content {
     width: 660px;
     background-color:rgb(206, 223, 233);
-    float: right;
+    height: 100%;
     &__icon {
       height: 300px;
       text-align: center;
@@ -64,56 +66,5 @@
       }
     }
   }
-  &__side {
-    width: 280px;
-    height: 100%;
-    &__nav {
-      h3 {
-        font-size: 16px;
-        margin-block-start: 1em;
-        font-weight: bold;
-      }
-      ul {
-        margin-top: 20px;
-        list-style: none;
-      }
-      &__list {
-        li {
-          margin: 1px;
-          &:hover{
-            opacity: 0.6;
-          }
-          i {
-            display: list-item;
-            float: right;
-            opacity: 0.5;
-            &:hover {
-              transform: translate(3px, 0);
-              opacity: 1;
-            }
-          }
-          a {
-            display: block;
-            text-decoration: none;
-            color: black;
-            cursor: pointer;
-            padding: 16px;
-          }
-        }
-        &__item {
-          position: relative;
-          display: block;
-          min-height: 48px;
-          background: #fff;
-          font-size: 14px;
-          color: #333;
-          &__destroy {
-            background-color: rgb(106, 173, 170);
-          }
-        }
-      }
-    }
-  }
-
 }
 

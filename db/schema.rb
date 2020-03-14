@@ -52,15 +52,15 @@ ActiveRecord::Schema.define(version: 2020_03_10_114818) do
   create_table "items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
     t.text "description", null: false
-    t.string "status", null: false
-    t.string "fee_side", null: false
-    t.string "prefectures", null: false
-    t.string "shipping_days", null: false
+    t.integer "status_id", null: false
+    t.integer "fee_side_id", null: false
+    t.integer "shipping_days_id", null: false
+    t.integer "prefecture_id", null: false
     t.integer "price", null: false
-    t.integer "saler_id", null: false
     t.integer "buyer_id"
+    t.integer "user_id", null: false
     t.integer "category_id", null: false
-    t.string "size"
+    t.integer "size_id"
     t.integer "brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

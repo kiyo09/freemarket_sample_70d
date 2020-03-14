@@ -93,15 +93,12 @@ html{
     width: 100%;
     height: 100%;
     .content{
-      margin: 40px 150px;
+      margin: 40px auto;
       .user-mypage{
         margin: 0 auto ;
         width: 100%;
         display: flex;
-        justify-content: space-between;
-        &__side{
-          margin-right: 40px;
-        }
+        justify-content: center;
         .credit-update{
           background-color: $white;
           width: 700px;
@@ -164,46 +161,8 @@ html{
             }
 
           }
-
         }
-      }
-    }
-}
-
-  .footer{
-    margin-top: 10px;
-    text-align: center;
-    &-content{
-      margin: 0 auto;
-      &-main{
-        margin-top: 15px;
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        &-privacy{
-          display: inline-block;
-          margin-right: 10px;
-          margin-bottom: 10px;
-        }
-        &-term{
-          display: inline-block;
-          margin-right: 10px;
-         
-        }
-        &-trade{
-          display: inline-block;
-         
-        }
-    }
-    &-icon{
-      margin: 5px;
-    }
-    &-copyright{
-      margin: 5px auto;
-      display: inline-block;
-      
-    }
-
       }
     }
   }
+}

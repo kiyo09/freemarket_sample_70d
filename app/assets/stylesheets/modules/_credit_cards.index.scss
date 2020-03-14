@@ -62,7 +62,7 @@ html{
     height: 100%;
 
     .content{
-      margin: 40px 150px;
+      margin: 40px auto;
       .user-mypage{
         margin: 0 auto ;
         width: 100%;
@@ -122,61 +122,6 @@ html{
               text-align: end;
             }
           }
-        }
-      }
-    }
-  }
-}
-
-// ===============================================================
-// サイドバー
-// ===============================================================
-
-.side-bar {
-  width: 280px;
-  height: 100%;
-  &__nav {
-    h3 {
-      font-size: 16px;
-      margin-block-start: 1em;
-      font-weight: bold;
-    }
-    ul {
-      margin-top: 20px;
-      list-style: none;
-    }
-    &__list {
-      li {
-        margin: 1px;
-        &:hover{
-          opacity: 0.6;
-        }
-        i {
-          display: list-item;
-          float: right;
-          opacity: 0.5;
-          &:hover {
-            transform: translate(3px, 0);
-            opacity: 1;
-          }
-        }
-        a {
-          display: block;
-          text-decoration: none;
-          color: black;
-          cursor: pointer;
-          padding: 16px;
-        }
-      }
-      &__item {
-        position: relative;
-        display: block;
-        min-height: 48px;
-        background: #fff;
-        font-size: 14px;
-        color: #333;
-        &__destroy {
-          background-color: rgb(123, 196, 199);
         }
       }
     }

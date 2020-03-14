@@ -1,0 +1,55 @@
+// ===============================================================
+// サイドバー
+// ===============================================================
+
+.side-bar {
+  width: 280px;
+  height: 1100px;
+  margin-right: 40px;
+  &__nav {
+    h3 {
+      font-size: 16px;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      font-weight: bold;
+    }
+    ul {
+      list-style: none;
+    }
+    &__list {
+      li {
+        margin: 1px;
+        &:hover{
+          opacity: 0.6;
+        }
+        i {
+          display: list-item;
+          float: right;
+          opacity: 0.5;
+          &:hover {
+            transform: translate(3px, 0);
+            opacity: 1;
+          }
+        }
+        a {
+          display: block;
+          text-decoration: none;
+          color: black;
+          cursor: pointer;
+          padding: 16px;
+        }
+      }
+      &__item {
+        position: relative;
+        display: block;
+        min-height: 48px;
+        background: #fff;
+        font-size: 14px;
+        color: #333;
+        &__destroy {
+          background-color: rgb(123, 196, 199);
+        }
+      }
+    }
+  }
+}
