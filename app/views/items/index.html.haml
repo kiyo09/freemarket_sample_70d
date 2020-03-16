@@ -1,4 +1,4 @@
-= render "shared/header"
+= render "shared/header", category: @category
 
 .topPage
   .topMain
@@ -104,43 +104,17 @@
           %h3.title
             新規投稿商品
       .containerMain
-        .containerList
-          = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png')
+        - @items.each do |item|
+          .containerList
+            = link_to item_path(item.id) do
+              = image_tag "#{item.images[0].image.url}"
+
             .product__info
               %h3.name
-                product3
+                = item.name
               %ul.description
                 %li
-                  3OOOO円
-                %li.liking
-                  %i.fas.fa-star
-                  O
-              %p.tax
-                (税込)
-        .containerList
-          = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png')
-            .product__info
-              %h3.name
-                product2
-              %ul.description
-                %li
-                  2OOOO円
-                %li.liking
-                  %i.fas.fa-star
-                  O
-              %p.tax
-                (税込)
-        .containerList
-          = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png')
-            .product__info
-              %h3.name
-                product1
-              %ul.description
-                %li
-                  1OOOO円
+                  = "¥#{item.price.to_s(:delimited)}"
                 %li.liking
                   %i.fas.fa-star
                   O
@@ -158,13 +132,13 @@
       .containerMain
         .containerList
           = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/13/a007.png')
+            = image_tag('a007.png')
             .product__info
               %h3.name
                 product3
               %ul.description
                 %li
-                  3OOOO円
+                  ¥3O,OOO
                 %li.liking
                   %i.fas.fa-star
                   O
@@ -172,13 +146,13 @@
                 (税込)
         .containerList
           = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/10/a004.png')
+            = image_tag('a004.png')
             .product__info
               %h3.name
                 product2
               %ul.description
                 %li
-                  2OOOO円
+                  ¥2O,OOO
                 %li.liking
                   %i.fas.fa-star
                   O
@@ -186,13 +160,13 @@
                 (税込)
         .containerList
           = link_to '#' do
-            = image_tag('https://s3-ap-northeast-1.amazonaws.com/mercarimaster/uploads/captured_image/content/7/a001.png')
+            = image_tag('a001.png')
             .product__info
               %h3.name
                 product1
               %ul.description
                 %li
-                  1OOOO円
+                  ¥1O,OOO
                 %li.liking
                   %i.fas.fa-star
                   O

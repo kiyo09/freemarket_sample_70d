@@ -1,8 +1,6 @@
 .wrapper
   .content
-    .extop
-      .extop-logo
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
+    = render "shared/subHeader" 
     .exmain
       = form_with model: @item, local: true do |f|
         .exmain-image
@@ -45,7 +43,7 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.collection_select :category_id, Category.all.order("id ASC").limit(13), :id, :name, class: "exmain-detail-category-input", prompt: "---"
+            = f.select :category, @category_parent_array, {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
@@ -75,7 +73,7 @@
             %label 配送までの日数
             %span.exmain-label 必須
           .exmain-deliver-date-input
-            = f.collection_select :shipping_days_id, ShippingDay.all, :id, :name, prompt: "---"
+            = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "---"
 
         .exmain-check
           %label.exmain-check-top
@@ -99,15 +97,4 @@
           %p.exmain-check-detail
             禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
 
-    .footer
-      .footer-content
-        .footer-content-main
-          %p.footer-content-main-privacy プライバシーポリシー          
-          %p.footer-content-main-term フリマ利用規約
-          %p.footer-content-main-trade 特定商取引に関する表記
-        .footer-icon
-          = image_tag("logo.png", height: "40", width: "100", alt: "logo")
-        %p.footer-copyright
-          © Furima, Inc.
-      
-
+    = render "shared/subFooter" 

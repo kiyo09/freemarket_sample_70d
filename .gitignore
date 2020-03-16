@@ -23,6 +23,7 @@
 /public/assets
 .byebug_history
 
+*.coffee
 /public/uploads/
 
 # Ignore master key for decrypting credentials and more.

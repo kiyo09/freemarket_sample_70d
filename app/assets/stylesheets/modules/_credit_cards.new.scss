@@ -1,0 +1,168 @@
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p label{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4em;
+}
+label.price{
+  width: 100px;
+}
+.logo-image{
+  margin: 5px;
+}
+
+button{
+  cursor: pointer;
+}
+.span{
+  display: inline;
+}
+
+input{
+  border: 1px solid $gray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: inherit;
+  height: 48px;
+  margin: 0;
+  outline: none;
+  padding: 0 16px;
+  width: 100%;
+}
+
+select{
+  width: 100%;
+  background-color: $white;
+  border: 1px solid $lightGray;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: $black;
+  font-size: 16px;
+  height: 48px;
+  line-height: 1;
+  margin: 0;
+  outline: none;
+  padding: 0 56px 0 16px;
+}
+
+.exmain-label{
+  background-color: $blue;
+  color: $white;
+  border-radius: 2px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0 2px;
+  height: 20px;
+}
+.exmain-label-gray{
+  background-color: $darkGray;
+  color: $white;
+  border-radius: 2px;
+  display: inline-block;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 1.4em;
+  margin: 0;
+  padding: 0 2px;
+}
+
+.input-require{
+  background-color: $blue;
+  color: $white;
+  border-radius: 5px;
+}
+label{
+  font-weight: bold;
+}
+
+html{
+  width:100%;
+  height:100%;
+  background-color: $gray;
+  .body{
+    width: 100%;
+    height: 100%;
+    .content{
+      margin: 40px auto;
+      .user-mypage{
+        margin: 0 auto ;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .credit-update{
+          background-color: $white;
+          width: 700px;
+          height: 100%;
+          &__label{
+            font-weight: bold;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 1px solid $gray;
+            padding: 8px 24px;
+          }
+          .card-form{
+            padding: 40px;
+            &__box{
+              margin: 0 auto;
+              width: 50%;
+              &__number{
+                margin-top: 32px;
+                #card_number{
+                  margin-top: 8px;
+                }
+                .card-list{
+                  margin-top: 8px;
+                  display: flex;
+                }
+              }
+              &__expire{
+                margin-top: 32px;
+                .card-expire{
+                  margin-top: 8px;
+                  display: flex;
+                  line-height: 50px;
+                  justify-content: space-between;
+                  &__select-month{
+                    display: flex;
+                    width: 45%;
+                  }
+                  &__select-year{
+                    display: flex;
+                    width: 45%;
+                  }
+                }
+              }
+              &__security-code{
+                margin-top: 32px;
+                #cvc{
+                  margin-top: 8px;
+                }
+                .question-form{
+                  margin-top: 8px;
+                  display: flex;
+                  justify-content: flex-end;
+                }
+              }
+              &__add{
+                margin-top: 32px;
+                background-color: $blue;
+                color: $white;
+              }
+            }
+
+          }
+        }
+      }
+    }
+  }
+}

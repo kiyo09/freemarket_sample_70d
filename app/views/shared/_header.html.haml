@@ -2,7 +2,7 @@
   .headerFrame
     .mainHeader
       %h1.icon
-        = link_to image_tag("logo.png", class: "iconBtn"), "#"
+        = link_to image_tag("logo.png", class: "iconBtn"), root_path
       .searchBox
         = form_with url: root_path, local: true do |form|
           = form.text_field :text, class: "inputBox", placeholder: "キーワードから探す"
@@ -12,11 +12,27 @@
     .listsFrame
       %ul.listsFrameLeft
         %li.listsFrameLeft__item.listsFrameLeft__item--first
+        .category_lists
           = link_to "カテゴリー", "#", id: "catBtn"
+          .category_list
+            .parents_list
+              -# jquery導入後hover表示
+              -# - @parents.each do |parent|
+              -#   = link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}"
+            .children_list
+              
+            .grand_children_list
+              
         %li.listsFrameLeft__item.listsFrameRight__item--first
           = link_to "ブランド", "#", id: "brandBtn"
       %ul.listsFrameRight
-        %li.listsFrameRight__item
-          = link_to "ログイン", "#"
-        %li.listsFrameRight__item.listsFrameRight__item--new
-          = link_to "新規会員登録", "#"
+
+        - if user_signed_in?
+          %li.listsFrameRight__item
+            = link_to "ログアウト", destroy_user_session_path, method: :delete
+            = link_to "マイページ", user_path(current_user)
+        - else
+          %li.listsFrameRight__item
+            = link_to "ログイン", new_user_session_path
+          %li.listsFrameRight__item.listsFrameRight__item--new
+            = link_to "新規会員登録", new_user_registration_path
