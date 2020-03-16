@@ -1,0 +1,45 @@
+.wrapper
+  .content
+    = render "shared/subHeader"
+    .exmain
+      .exmain__label
+        購入内容の確認
+      .exmain__container
+        .exmain__container__item
+          .exmain__container__item__image
+            = image_tag "#{@item.images[0].image.url}", size: "90x90"
+          .exmain__container__item__detail
+            .exmain__container__item__detail__name
+              = "#{@item.name}"
+            .exmain__container__item__detail__price
+              = "￥#{@item.price.to_s(:delimited)}（税込）送料込み"
+        .exmain__container__price
+          .exmain__container__price__box
+            .exmain__container__price__box__info
+              %span
+                支払い金額
+              %span
+                = "￥#{@item.price.to_s(:delimited)}"
+            .exmain__container__price__box__point
+              ポイントを使用
+        .exmain__container__payment
+          支払い方法
+          %br
+          -if @customer_card.blank?
+            = link_to "カード情報を登録する", new_credit_card_path
+          -else
+            %br
+              クレジットカード
+            %br
+            = "**** **** **** #{@customer_card.last4}"
+            %br
+            - exp_month = @customer_card.exp_month.to_s
+            - exp_year = @customer_card.exp_year.to_s.slice(2,3)
+            = "有効期限 #{exp_month} / #{exp_year}"
+        -if @customer_card.blank?
+          = form_tag(action: :pay, method: :post) do
+            = button_tag "購入する", {class: :"pay-btn--disabled", disabled: :true}
+        -else
+          = form_tag(action: :pay, method: :post) do
+            = button_tag "購入する", {class: :"pay-btn"}
+  = render "shared/subFooter"

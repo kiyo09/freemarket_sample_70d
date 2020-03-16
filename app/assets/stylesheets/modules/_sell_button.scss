@@ -1,0 +1,37 @@
+// ===============================================================
+// 出品ボタン
+// ===============================================================
+
+.sellButton{
+  text-decoration: none;
+  .sellBtn{
+    height: 112px;
+    width: 120px;
+    text-align: center;
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    padding: 15px;
+    border-radius: 4%;
+    background-color: #3CCACE;
+    z-index: 1;
+    &:hover{
+      opacity: 0.9;
+    }
+    &__text{
+      font-size: 18px;
+      margin-bottom: 5px;
+      line-height: 1.5;
+      color: #fff;
+    }
+    &__icon{
+      .image{
+        width: 60%;
+        margin: 0 auto;
+        .cameraImage{
+          width: 100%;
+        }
+      }
+    }
+  }
+}
