@@ -49,18 +49,6 @@
 - belongs_to :user
 
 
-
-## addressテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-| city |string||
-
-### Association
-- belongs_to_active_hash :prefecture
-
-
-
 ## itemsテーブル
 
 |Column|Type|Options|
