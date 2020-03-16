@@ -16,6 +16,7 @@
           = link_to "カテゴリー", "#", id: "catBtn"
           .category_list
             .parents_list
+              -# jquery導入後hover表示
               -# - @parents.each do |parent|
               -#   = link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}"
             .children_list

@@ -1,11 +1,6 @@
 class CategoriesController < ApplicationController
   def index
     @categories = Category.all.order("id ASC").limit(13)
-    # @children = Category.find(params[:parent_id]).children
-    #   respond_to do |format|
-    #     format.html
-    #     format.json
-    #   end
   end
 
   def show
