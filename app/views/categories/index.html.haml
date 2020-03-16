@@ -1,0 +1,25 @@
+= render "shared/header"
+.category
+  .category-main
+    .category-title
+      カテゴリー一覧
+    %ul.main-category
+      - @categories.each do |category|
+        %li.main-category__list
+          = link_to "#" do    
+            %ul.main-category__list__show
+              = category.name
+
+      - @categories.each do |category|
+        %li.parent__list
+          = link_to "#" do    
+            %ul.category2
+              = "#{category.name}"
+        - category.children.each do |child|
+          %li.child__list
+            = "#{child.name}"
+          - child.children.each do |grandchild|
+            = link_to "#" do
+              = grandchild.name
+
+
