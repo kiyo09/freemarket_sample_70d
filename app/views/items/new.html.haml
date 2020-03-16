@@ -43,7 +43,7 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.select :category, @category_parent_array, {}, { class: "exmain-detail-category-input", id: "category_select" }
+            = f.select :category, @category_parent_array, {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド

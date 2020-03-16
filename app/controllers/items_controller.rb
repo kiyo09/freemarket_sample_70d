@@ -11,13 +11,10 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
-    @category_parent_array = ["---"]
-      Category.where(ancestry: nil).each do |parent|
-         @category_parent_array << parent.name
-      end
+    @category = Category.all.order("id ASC").limit(13)
+    @category_parent_array = Category.roots.pluck(:name)
     @item.images.build
     @item.build_brand
-    @category = Category.all.order("id ASC").limit(13)
   end
 
   def create

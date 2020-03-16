@@ -33,7 +33,6 @@ $(function(){
 
   $(document).on('change', '#category_select', function(){  // 親セレクトボックスの選択肢を変えたらイベント発火
     var productcategory = document.querySelector('#category_select').value;
-    console.log(productcategory);
   // ↑ productcategoryに選択した親のvalueを代入
     if (productcategory != ''){
  // ↑ productcategoryが空ではない場合のみAjax通信を行う｡選択肢を初期選択肢'---'に変えると､通信失敗となってしまうため｡
@@ -57,7 +56,7 @@ $(function(){
         })
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
-        // 通信失敗時の処理
+        // 通信失敗時の処理、後から編集実装の人の為残し
         alert('ファイルの取得に失敗しました。');
         console.log("ajax通信に失敗しました");
         console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
@@ -98,7 +97,7 @@ $(function(){
       }
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      // 通信失敗時の処理
+      // 通信失敗時の処理、後から編集実装の人の為残し
       alert('ファイルの取得に失敗しました。');
       console.log("ajax通信に失敗しました");
       console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得

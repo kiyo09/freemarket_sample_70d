@@ -18,12 +18,10 @@ Rails.application.routes.draw do
   end
   resources :categories, only: [:index, :show, :new]
   
-  resources :payments, only: [:new, :show]
+  resources :payments, only: [:new, :show] 
       get  'purchase/:id'=>  'items#purchase', as: 'purchase'
       post 'pay/:id'=>   'items#pay', as: 'pay'
       get  'done'=>      'items#done', as: 'done'
-    end
-  end
 
   resources :users, only: [:show]
   resources :credit_cards, only: [:new, :index, :create, :destroy]
