@@ -38,7 +38,7 @@
             = "有効期限 #{exp_month} / #{exp_year}"
         -if @customer_card.blank?
           = form_tag(action: :pay, method: :post) do
-            = button_tag "購入する", {class: :"pay-btn", disabled: :true}
+            = button_tag "購入する", {class: :"pay-btn--disabled", disabled: :true}
         -else
           = form_tag(action: :pay, method: :post) do
             = button_tag "購入する", {class: :"pay-btn"}

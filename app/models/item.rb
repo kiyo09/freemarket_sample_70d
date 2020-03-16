@@ -12,7 +12,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :size
   belongs_to_active_hash :status
 
-  validates :images, presence: true, length: {manimum: 1, maximum: 10}
+  validates :images, presence: true, length: {minimum: 1, maximum: 10}
   validates :name, presence: true, length: { maximum: 40 }
   validates :description, presence: true, length: { maximum: 1000 }
   validates :status_id, :fee_side_id, :shipping_days_id, :prefecture_id, :user_id, :category_id, presence: true
