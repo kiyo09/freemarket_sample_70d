@@ -38,6 +38,8 @@ a {
     }
   }
   .item-box{
+    position: relative;
+    overflow: hidden;
     padding: 24px 40px 40px;
     background-color: $white;
     &__name{
@@ -49,6 +51,25 @@ a {
       margin-top: 16px;
       height: 420px;
       text-align:center;
+      &__buy{
+        position: absolute;
+        font-size: 30px;
+        top: -15px;
+        left: -15px;
+        width: 300px;
+        height: 100px;
+        text-align: center;
+        line-height: 4;
+        border-width: 200px 200px 0 0;
+        -webkit-transform: rotate(-45deg) translate(-70px,-70px);
+        -moz-transform: rotate(-45deg) translate(-70px,-70px);
+        -ms-transform: rotate(-45deg) translate(-70px,-70px);
+        -o-transform: rotate(-45deg) translate(-70px,-70px);
+        transform: rotate(-45deg) translate(-70px,-70px);
+        background-color: $blue;
+        color: $white;
+        font-weight: bold;
+      }
     }
     &__show{
       text-align:center
