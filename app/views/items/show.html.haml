@@ -35,7 +35,7 @@
           .item-box__price
             .item-box__price__text
               %span
-                = "¥#{@item.price}"
+                = "¥#{@item.price.to_s(:delimited)}"
             .item-box__price__detail
               %span
                 （税込）
@@ -77,7 +77,7 @@
                 %th
                   商品のサイズ
                 %td
-                  - if @item.size.present?
+                  -if @item.size
                     = @item.size.name
               %tr
                 %th
@@ -108,8 +108,7 @@
             - if @item.user_id == current_user.id
               = link_to "編集する", edit_item_path(@item), class: "edit-button"
             - else
-              = link_to "購入する", purchase_item_path(@item), class: "buy-button"
-
+              = link_to "購入する", purchase_items_path(@item), class: "buy-button"
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn
