@@ -170,7 +170,7 @@ a {
     }
   }
 
-  .item-buy{
+  .item-btn{
     background-color: $blue;
     color: $white;
     width: 400px;
@@ -180,11 +180,8 @@ a {
     border: 1px solid;
     margin: 10px 100px 10px 100px;
     padding: 2px 7px;
-    .edit-button{
+    &__link{
       color: $white
-    }
-    .buy-button{
-      color: $white;
     }
   }
 
