@@ -108,7 +108,7 @@
             - if @item.user_id == current_user.id
               = link_to "編集する", edit_item_path(@item), class: "edit-button"
             - else
-              = link_to "購入する", purchase_items_path(@item), class: "buy-button"
+              = link_to "購入する", purchase_path(@item), class: "buy-button"
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn

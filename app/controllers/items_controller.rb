@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :destroy, :update]
+  before_action :set_item, only: [:show, :edit, :destroy, :update, :purchase]
   before_action :set_category, except: [:create, :destroy, :category_grandchildren]
 
   require 'payjp'
