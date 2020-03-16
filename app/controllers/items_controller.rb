@@ -1,10 +1,15 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:show, :edit, :destroy, :update]
   before_action :set_category, except: [:create, :destroy, :category_grandchildren]
+  before_action :set_item, except: [:index, :new, :create, :done]
+
+  require 'payjp'
 
   require 'payjp'
   def index
     @items = Item.includes(:user).limit(6)
+
     @parents = Category.where(ancestry: nil)
 
   end
@@ -74,6 +79,7 @@ class ItemsController < ApplicationController
     item.update(item_params)
   end
 
+
   def search
     respond_to do |format|
       format.html
@@ -92,6 +98,7 @@ class ItemsController < ApplicationController
   def category_grandchildren
     @category_grandchildren = Category.find("#{params[:productcategory]}").children
   end
+
 
   private
   def item_params

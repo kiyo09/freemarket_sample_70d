@@ -1,3 +1,4 @@
+
 .single
   .single__header
     = link_to image_tag('logo.svg',class: 'mercari'),"#"
@@ -36,4 +37,34 @@
     .actions
       = f.submit "次に進む", class: "btn"
   = render "devise/shared/links"
+
+=======
+%h2 Sign up
+
+= form_for(@user, url: user_registration_path) do |f|
+  = render "devise/shared/error_messages", resource: @user
+
+  .field
+    = f.label :nickname, "ニックネーム"
+    %br/
+    = f.text_field :nickname
+  .field
+    = f.label :email, "メールアドレス"
+    %br/
+    = f.email_field :email, autofocus: true, autocomplete: "email"
+  .field
+    = f.label :password, "パスワード"
+
+    - if @minimum_password_length
+      %em
+        (#{@minimum_password_length} characters minimum)
+    %br/
+    = f.password_field :password, autocomplete: "new-password"
+  .field
+    = f.label :password_confirmation, "パスワード(確認)"
+    %br/
+    = f.password_field :password_confirmation, autocomplete: "new-password"
+  .actions
+    = f.submit "次へ進む"
+= render "devise/shared/links"
 

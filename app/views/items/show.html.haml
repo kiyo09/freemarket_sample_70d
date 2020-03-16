@@ -8,6 +8,8 @@
         %i.fa.fa-angle-right
       %li.category-show
         = link_to @item.category.parent.parent.name, '#'
+      %li.category
+        = link_to "#{@item.category.name}", '#'
       %li
         %i.fa.fa-angle-right
       %li.category-show
