@@ -6,20 +6,20 @@
         = link_to 'FURIMA', root_path
       %li
         %i.fa.fa-angle-right
-      %li.category
-        = link_to "#{@item.category.name}", '#'
+      %li.category-show
+        = link_to @item.category.parent.parent.name, '#'
       %li
         %i.fa.fa-angle-right
-      %li.category
-        = link_to '子カテゴリ', '#'
+      %li.category-show
+        = link_to @item.category.parent.name, '#'
       %li
         %i.fa.fa-angle-right
-      %li.category
-        = link_to '孫カテゴリ', '#'
+      %li.category-show
+        = link_to @item.category.name, '#'
       %li
         %i.fa.fa-angle-right
       %li.item
-        = link_to 'product', '#'
+        = link_to @item.name, '#'
   .main
     .contents
       .item-content
@@ -63,11 +63,11 @@
                   カテゴリ
                 %td
                   .item-detail-table-category
-                    = link_to  @item.category.name, '#'
-                  -# .item-detail-table-sub-category
-                  -#   = link_to '子カテゴリ', '#'
-                  -# .item-detail-table-sub-sub-category
-                  -#   = link_to '孫カテゴリ', '#'
+                    = link_to @item.category.parent.parent.name, '#'
+                  .item-detail-table-sub-category
+                    = link_to @item.category.parent.name, '#'
+                  .item-detail-table-sub-sub-category
+                    = link_to @item.category.name, '#'
               %tr
                 %th
                   ブランド
@@ -141,7 +141,7 @@
                 後の商品
                 %i.fa.fa-angle-right
         .related-item
-          = link_to "#{@item.category.name}をもっと見る", '#'
+          = link_to "#{@item.category.parent.parent.name}をもっと見る", '#'
 
 = render "shared/footer"
 = render "shared/sell_button"
