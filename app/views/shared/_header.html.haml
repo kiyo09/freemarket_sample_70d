@@ -12,7 +12,16 @@
     .listsFrame
       %ul.listsFrameLeft
         %li.listsFrameLeft__item.listsFrameLeft__item--first
+        .category_lists
           = link_to "カテゴリー", "#", id: "catBtn"
+          .category_list
+            .parents_list
+              -# - @parents.each do |parent|
+              -#   = link_to "#{parent.name}", category_path(parent), class: "parent_category",id: "#{parent.id}"
+            .children_list
+              
+            .grand_children_list
+              
         %li.listsFrameLeft__item.listsFrameRight__item--first
           = link_to "ブランド", "#", id: "brandBtn"
       %ul.listsFrameRight
