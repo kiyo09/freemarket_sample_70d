@@ -180,7 +180,7 @@ a {
     border: 1px solid;
     margin: 10px 100px 10px 100px;
     padding: 2px 7px;
-    #item-button{
+    &__link{
       color: $white
     }
   }
