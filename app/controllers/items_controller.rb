@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
 
-  before_action :set_item, only: [:show, :edit, :destroy, :update]
+  before_action :set_item, only: [:show, :edit, :destroy, :update, :purchase]
   before_action :set_category, except: [:create, :destroy, :category_grandchildren]
-  before_action :set_item, except: [:index, :new, :create, :done]
-
-  require 'payjp'
 
   require 'payjp'
   def index
@@ -69,7 +66,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item.destroy
+    if @item.destroy
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
   def edit

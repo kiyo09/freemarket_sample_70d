@@ -30,6 +30,8 @@
             = @item.name
           .item-box__photo
             = image_tag "#{@item.images[0].image.url}", size: "560x346"
+            %p.item-box__photo__buy
+              SOLD
           .item-box__show
             - @item.images.each do |image|
               = image_tag "#{image.image.url}", size: "100x100", class: "item-showImage"
@@ -106,11 +108,13 @@
                   発送日の目安
                 %td
                   = @item.shipping_days.name
+        - unless @item.buyer_id.presence
           %button.item-buy
             - if @item.user_id == current_user.id
-              = link_to "編集する", edit_item_path(@item), class: "edit-button"
+              = link_to "編集する", edit_item_path(@item), class: "item-btn__link", id: "item-btn-edit"
             - else
-              = link_to "購入する", purchase_items_path(@item), class: "buy-button"
+              = link_to "購入する", purchase_path(@item), class: "buy-button"
+
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn
