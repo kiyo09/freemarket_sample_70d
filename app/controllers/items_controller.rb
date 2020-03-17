@@ -90,8 +90,8 @@ class ItemsController < ApplicationController
     #   @category_grandchild_array << grandchild.name
     # end
 
-    # @category_child_array =
-
+    # @category_child_array = ["--"]
+    # Categor.where(ancestry: @child.ancestry).ec
 
 
     # @parents = Category.where(ancestry:nil)
