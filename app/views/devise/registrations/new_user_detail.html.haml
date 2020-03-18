@@ -22,7 +22,7 @@
   .field
     = f.label :birthday, "生年月日"
     %br/
-    = f.text_field :birthday
+    = f.date_select :birthday, {include_blank: true, start_year: Time.now.year, end_year:1950, use_month_numbers: true}, {class: 'time-box'}
 
   .field
     = f.label :desination_name, "送付先氏名"
@@ -40,7 +40,7 @@
   .field
     = f.label :prefectures, "都道府県"
     %br/
-    = f.text_field :prefectures
+    = f.select :prefectures, UserDetail.prefectures.keys, {prompt: "選択してください"}, class: "prefecture-select"
   .field
     = f.label :mayor, "市長区村"
     %br/
