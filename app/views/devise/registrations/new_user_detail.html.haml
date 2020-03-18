@@ -32,10 +32,11 @@
       %br/
       = f.text_field :last_name_kana
 
+
     .Description 
       = f.label :birthday, "生年月日"
       %br/
-      = f.text_field :birthday
+      = f.date_select :birthday, {include_blank: true, start_year: Time.now.year, end_year:1950, use_month_numbers: true}, {class: 'time-box'}
 
     .Description 
       = f.label :desination_name, "送付先氏名"
@@ -53,7 +54,7 @@
     .Description 
       = f.label :prefectures, "都道府県"
       %br/
-      = f.text_field :prefectures
+      = f.select :prefectures, UserDetail.prefectures.keys, {prompt: "選択してください"}, class: "prefecture-select"
     .Description 
       = f.label :mayor, "市長区村"
       %br/
@@ -70,6 +71,8 @@
       = f.label :phone_no, "お届け先の電話番号（任意）"
       %br/
       = f.text_field :phone_no
+ 
+  
 
   .actions
     = f.submit "次へ進む",class: "color"
