@@ -94,8 +94,8 @@ html{
       display: flex;
       flex-direction: column;
       &-image{
-        height: 335px;
-        width: 700px;
+        overflow: visible;
+        width: 730px;
         padding: 40px;
         border-bottom: 1px solid $gray;
         &__name{
@@ -106,14 +106,14 @@ html{
            }
         &__limit{
           margin-top: 16px;
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 300;
-          margin-top: 16px;
+          margin: 16px 16px 0 16px;
         }
         &__input{
-          overflow: scroll;
+          
           background-color: $white;
-          width: 620px;
+          width: 100%;
           height: 150px;
           border: 1px dashed $gray;
           margin-top: 16px;
@@ -386,4 +386,57 @@ html{
         }
       }
     }
+  }
+
+  #previews{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .image-preview_btn{
+    display: flex;
+  }
+  .image-preview{
+    width: 128px;
+    height: 128px;
+    margin: 30px 0;
+  }
+  .preview{
+    width: 128px;
+    height: 128px;
+  }
+  .input-area{
+    height: 100%;
+    display: none;
+  }
+  .image_upload{
+
+  }
+  .image-preview_btn_delete{
+    color: #00b0ff;
+    height: 50px;
+    line-height: 50px;
+    margin: 0 auto;
+    cursor: pointer;
+  }
+  .preview__input{
+
+  }
+  .input{
+    width: 620px;
+    height: 150px;
+    border: 1px solid $gray;
+    background-color: $gray;
+    margin: 30px 0;
+  }
+  .upload-label__text{
+    height: 100%;
+    margin-top: 15px;
+    text-align: center;
+
+  }
+
+  .fa-camera:before {
+    font-size: 2em;
+    margin-top: 50px;
+    display: block;
   }
