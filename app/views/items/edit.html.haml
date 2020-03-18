@@ -42,15 +42,9 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            .exmain-detail-category__added#parent_wrapper
-              .exmain-detail-category__box
-                = f.select :category, options_for_select(@category_parent_array, @category_parent_name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
-            .exmain-detail-category__added#children_wrapper
-              .exmain-detail-category__box
-                = f.select :category, options_for_select(@category_children_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_children_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "child_category"}
-            .exmain-detail-category__added#grandchildren_wrapper
-              .exmain-detail-category__box
-                = f.select :category, options_for_select(@category_grandchildren_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_grandchildren_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "grandchild_category"}
+            = f.select :category, options_for_select(@category_parent_array, @category_parent_name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
+            = f.select :category, options_for_select(@category_children_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_children_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "child_category"}
+            = f.select :category, options_for_select(@category_grandchildren_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_grandchildren_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "grandchild_category"}
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
