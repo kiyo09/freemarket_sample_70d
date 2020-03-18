@@ -1,0 +1,81 @@
+.single{
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  &__header {
+    display: flex;
+    text-align:center;
+    margin: auto 0;
+    .single_progress{
+      padding: 40px 0 0 44px;
+      border: 0;
+    }
+  }
+  
+}
+
+.single_stat {
+  display: flex;
+  margin: 40px 0 0;
+  &_list{
+    padding: 12px;
+    bottom: 75px;
+    right: -25px;
+    &_class_red{
+      color: red;
+      padding: 12px;
+      bottom: 75px;
+      right: -25px;
+    }
+  }
+}
+
+.mercari{
+  margin: 40px 0 0;
+  width: 185px;
+}
+
+.title{
+  font-size: 22px;
+  padding: 32px;
+  line-height: 1.5;
+  text-align: center;
+  background-color: white;
+  width: 700px;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.class{
+  width: 700px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+  background-color: white;
+  border-top: 1px solid #f5f5f5;
+  text-align:center
+}
+
+.field {
+  font-weight: 600;
+  width: 300px;
+  margin: 0 auto;
+  padding: 2px 16px 9px;
+}
+
+.actions{
+  width: 300px;
+  margin: 0 auto;
+  color: #fff;
+  padding: 24px 16px 40px;
+  text-align:center
+}
+
+.button{
+  background-color:$blue;
+  color: #fff;
+}
+
+
+
