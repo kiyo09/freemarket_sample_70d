@@ -5,11 +5,11 @@ class CreateUserDetails < ActiveRecord::Migration[5.2]
       t.string :first_name_kana,  null:false
       t.string :last_name,        null:false
       t.string :last_name_kana,   null:false
-      t.integer :birthday,        null:false
+      t.date :birthday,        null:false
       t.string :desination_name,  null:false
       t.string :desination_kana,  null:false
       t.integer :post_code,       null:false
-      t.string :prefectures,      null:false
+      t.integer :prefectures,      null:false
       t.string :mayor,            null:false
       t.string :address,          null:false
       t.text :building
