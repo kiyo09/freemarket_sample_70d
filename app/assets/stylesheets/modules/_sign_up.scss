@@ -11,7 +11,6 @@
     .single_progress{
       padding: 40px 0 0 44px;
       border: 0;
-
     }
   }
   
@@ -20,18 +19,17 @@
 .single_stat {
   display: flex;
   margin: 40px 0 0;
-  
   &_list{
     padding: 12px;
     bottom: 75px;
     right: -25px;
-    &--current-location{
+    &_class_red{
       color: red;
       padding: 12px;
       bottom: 75px;
       right: -25px;
     }
-}
+  }
 }
 
 .mercari{
@@ -39,7 +37,7 @@
   width: 185px;
 }
 
-.taitoru{
+.title{
   font-size: 22px;
   padding: 32px;
   line-height: 1.5;
@@ -50,12 +48,13 @@
   font-weight: 600;
 }
 
-.curasu{
+.class{
   width: 700px;
   margin: 0 auto;
   padding: 24px 16px 40px;
   background-color: white;
   border-top: 1px solid #f5f5f5;
+  text-align:center
 }
 
 .field {
@@ -73,8 +72,8 @@
   text-align:center
 }
 
-.btn{
-  background-color: blue;
+.button{
+  background-color:$blue;
   color: #fff;
 }
 

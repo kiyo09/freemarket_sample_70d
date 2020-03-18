@@ -1,7 +1,33 @@
 .image{
   height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
   &_box{
-    text-align: center;
+    display: flex;
+    text-align:center;
+    margin: auto 0;
+    .image_box_progress{
+      padding: 40px 0 0 44px;
+      border: 0;
+    }
+  }
+}
+
+.image_stat{
+  display: flex;
+  margin: 40px 0 0;
+  &_list{
+    padding: 12px;
+    bottom: 75px;
+    right: -25px;
+    &_color_red{
+      color: red;
+      padding: 12px;
+      bottom: 75px;
+      right: -25px;
+    }
   }
 }
 

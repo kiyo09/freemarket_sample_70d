@@ -1,12 +1,17 @@
 .single{
   height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
 }
+
 .mercari{
   width: 185px;
   height: 49px;
 }
 
-.curasu{
+.class{
   padding: 24px 64px 32px;
 }
 .field{
@@ -14,7 +19,7 @@
   width: 100%;
 }
 
-.dtn{
-  background-color: blue;
+.button{
+  background-color: $blue;
   color: #fff;
 }

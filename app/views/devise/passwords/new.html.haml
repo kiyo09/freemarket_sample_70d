@@ -1,10 +1,14 @@
-%h2 Forgot your password?
+.image
+  .image_furima
+    = link_to image_tag('logo-white',class: 'furima'),"#"
+.password
+  %h2 パスワードお忘れですか?
 = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
   = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
+  .mail
+    = f.label :email, "Eメール"
     %br/
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .actions
-    = f.submit "Send me reset password instructions"
+    = f.submit "パスワードのリセット手順を送ってください。",class: "reset"
 = render "devise/shared/links"

@@ -1,22 +1,37 @@
 .the{
   height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
   &_above{
-    text-align: center;
+    display: flex;
+    text-align:center;
+    margin: auto 0;
+    .the_above_progress{
+      padding: 40px 0 0 44px;
+      border: 0;
+    }
+  }
+}
+
+.the_stat{
+  display: flex;
+  margin: 40px 0 0;
+  &_list{
+    padding: 12px;
+    &_color_red{
+      color: red;
+      padding: 12px;
+      bottom: 75px;
+      right: -25px;
+    }
   }
 }
 
 .mercari{
+  margin: 40px 0 0;
   width: 185px;
-  height: 49px;
-}
-
-.Individual{
-  background-color: white;
-  width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 22px;
-  padding: 32px;
 }
 
 .box{
@@ -33,6 +48,6 @@
 }
 
 .color{
-  background-color: blue;
+  background-color: $blue;
   color: White;
 }
