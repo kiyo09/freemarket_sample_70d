@@ -8,9 +8,40 @@
     //div（this）から要素を辿ればinputを指定することが可能。
 
     //$liに追加するためのプレビュー画面のHTML。
-    var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><div class="image-preview_btn_delete">削除</div></div>'); 
+    // var preview = $('<div class="image-preview__wapper"><img class="preview"></div><div class="image-preview_btn"><div class="image-preview_btn_delete">削除</div></div>'); 
     //次の画像を読み込むためのinput。 
-    var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text"><i class="fa fa-camera"></i><div class="input-area"><input name="item[images_attributes][#{@item.images.count}][src]",class="hidden image_upload" type="file"></div></div></label></li>`)
+    // var append_input = $(`<li class="input"><label class="upload-label"><div class="upload-label__text"><i class="fa fa-camera"></i><div class="input-area"><input name="item[images_attributes][#{@item.images.count}][src]",class="hidden image_upload" type="file"></div></div></label></li>`)
+
+    const append_input = (index)=> {
+      const html = `<li data-index="${index}" class="input">
+                      <div class="upload-label__text">
+                        <i class="fa fa-camera"></i>
+                        <div class="input-area">
+                          <input name="item[images_attributes][${index}][image]",class="hidden image_upload" type="file">
+                        </div>
+                      </div>
+                    </li>`
+      return html;
+    }
+
+    const preview = (index, url)=> {
+      const html = `<div class="image-preview__wapper">
+                      <img data-index="${index}" src="${url}" class="preview">
+                    </div>
+                    <div class="image-preview_btn">
+                      <div class="image-preview_btn_delete">削除</div>
+                    </div>` 
+      return html;
+    }
+    
+
+  //   const buildImg = (index, url)=> {
+  //   const html = `<img data-index="${index}" src="${url}" width="100px" height="100px">`;
+  //   return html;
+  // }
+
+
+
     $ul = $('#previews')
     $li = $(this).parents('li');
     $label = $(this).parents('.upload-label');
@@ -191,17 +222,17 @@ $(document).on('click','.image-preview_btn_delete',function(){
 
 
 
-$(document).on('turbolinks:load', ()=> {
-  // 画像用のinputを生成する関数
-  const buildFileField = (index)=> {
-    const html = `<div data-index="${index}" class="js-file_group">
-                    <input class="js-file" type="file"
-                    name="item[images_attributes][${index}][image]"
-                    id="item_images_attributes_${index}_image"><br>
-                    <div class="js-remove">削除</div>
-                  </div>`;
-    return html;
-  }
+// $(document).on('turbolinks:load', ()=> {
+//   // 画像用のinputを生成する関数
+//   const buildFileField = (index)=> {
+//     const html = `<div data-index="${index}" class="js-file_group">
+//                     <input class="js-file" type="file"
+//                     name="item[images_attributes][${index}][image]"
+//                     id="item_images_attributes_${index}_image"><br>
+//                     <div class="js-remove">削除</div>
+//                   </div>`;
+//     return html;
+//   }
 
 //   // file_fieldのnameに動的なindexをつける為の配列
 //   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
