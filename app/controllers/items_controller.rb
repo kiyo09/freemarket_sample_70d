@@ -13,12 +13,11 @@ class ItemsController < ApplicationController
     @item = Item.new
     @category = Category.all.order("id ASC").limit(13)
     @category_parent_array = Category.roots.pluck(:name)
-    @item.images.new
+    @item.images.build()
     @item.build_brand
   end
 
   def create
-    binding.pry
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
