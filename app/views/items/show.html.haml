@@ -108,7 +108,7 @@
             - if @item.user_id == current_user.id
               = link_to "編集する", edit_item_path(@item), class: "item-btn__link", id: "item-btn-edit"
             - else
-              = link_to "購入する", purchase_items_path(@item), class: "item-btn__link", id: "item-btn-buy"
+              = link_to "購入する", purchase_path(@item), class: "item-btn__link", id: "item-btn-buy"
           - if @item.user_id == current_user.id
             %button.item-btn
               = link_to "削除する", item_path(@item), class: "item-btn__link", id: "item-btn-delete", method: :delete

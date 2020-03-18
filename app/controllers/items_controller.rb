@@ -18,6 +18,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @category_parent_array = Category.roots.pluck(:name)
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -72,6 +73,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    item_category = Category.find("#{@item.category_id}")
+    @category_parent_array = Category.roots.pluck(:name)
+    @category_parent_name = item_category.root.name
+    @category_children_siblings = item_category.parent.siblings
+    @category_children_name = item_category.parent.name
+    @category_grandchildren_name = item_category.name
+    @category_grandchildren_siblings = item_category.siblings
   end
 
   def update
@@ -87,9 +95,9 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
-  def category_children  
-    @category_children = Category.find_by(name: "#{params[:productcategory]}").children 
+
+  def category_children
+    @category_children = Category.find_by(name: "#{params[:productcategory]}").children
   end
   # Ajax通信で送られてきたデータをparamsで受け取り､childrenで子を取得
 
