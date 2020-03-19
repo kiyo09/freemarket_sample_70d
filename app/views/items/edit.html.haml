@@ -8,25 +8,36 @@
             %label 出品画像
           %p.exmain-image__limit
             最大10枚までアップロードできます
-          = f.fields_for :images do |image|
-            .dropzone-container
-              #preview
+          #image-box
+            #previews
               - if @item.persisted?
                 - @item.images.each_with_index do |image, i|
-                  = image_tag image.image.url, data: { index: i }, size: '112x112'
-                  .image-preview_btn
-                    .image-preview_btn_edit 編集
-                    .image-preview_btn_delete 削除
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
-                  %i.fa.fa-camera
-            .dropzone-container
-              #preview2
-              .dropzone-area2
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  %i.fa.fa-camera
+                  .preview{data:{index:i}}
+                    = image_tag image.image.url,data:{index:i}, class: "js-file_group" ,width:"100px",height:'100px'
+                  
+                    %a{ class: "js-remove" }削除
+                    
+                    %a{ class: "abc"}
+                    #form-wrapper
+                      %i.fa.fa.camera
+                      = f.fields_for :images do |image|
+                        .js-file_group{"data-index" => "#{image.index}"}
+                          = image.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                          - if @item.persisted?
+                            = image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
+                          - if @item.persisted?
+                            .js-file_group{"data-index"=>"#{@item.images.count}"}
+                              = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'abc'
+                              .js-remove
+
+          -# #previews
+          -#   - if @item.persisted?
+          -#     - @item.images.each_with_index do |image, i|
+          -#       = image_tag image.image.url, data: { index: i }, width: "120", height: '120'
+          -# #image-box
+          -#   = f.fields_for :images do |image|
+          -#     .js-file_group{"data-index" => "#{image.index}"}
+          -#       = image.file_field :image, class: 'js-file'
 
         .exmain-item
           .exmain-item__name

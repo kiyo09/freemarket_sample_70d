@@ -8,19 +8,60 @@
             %label 出品画像
           %p.exmain-image__limit
             最大10枚までアップロードできます
-          = f.fields_for :images do |image|
-            .dropzone-container
-              #preview
-              .dropzone-area
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  .input_area
-                    = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
-                  %i.fa.fa-camera
-            .dropzone-container
-              #preview2
-              .dropzone-area2
-                = image.label :image, class: "dropzone-box", for: "upload-image" do
-                  %i.fa.fa-camera
+            #image-box
+              #previews
+
+              = f.fields_for :images do |t|
+                #form-wrapper
+                  .js-file_group{"data-index" => "#{t.index}"}
+                    = t.file_field :image,type: "file" ,class:"abc",value:"textarea"
+                    %i.fa.fa-camera
+                    - if @item.persisted?
+                      = image.check_box :_destroy,data:{index:image.index},class:"hidden-destroy"
+                    - if @item.persisted?
+                      .js-file_group{"data-index"=>"#{@item.images.count}"}
+                        = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][:image]", class: 'abc'
+                      .js-remove
+                -#   %br/
+                -#   %span.js-remove 削除
+                -# - if @item.persisted?
+                -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                -# - if @item.persisted?
+                -#   .js-file_group{"data-index" => "#{@item.images.count}"}
+                -#     = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][image]", class: 'js-file'
+                -#     .js-remove 削除
+                -#     .js-edit　編集
+
+
+          -# .exmain-image__input
+          -#   = f.fields_for :images do |image|
+          -#     .js-file_group{"data-index" => "#{image.index}"}
+          -#       %label.fa.fa-camera
+          -#       %p.image-show
+          -#         = image.file_field :image, value:"", id:"img-file", class:"js-file"
+          -#         %span.js-remove　削除
+          -#         ドラッグアンドドロップ
+          -#         またはクリックしてファイルをアップロード
+          -#       - if @item.persisted?
+          -#         = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+          -#       - if @item.persisted?
+          -#         .js-file_group{"data-index" => "#{@item.images.count}"}
+          -#         = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
+          -#         %span.js-remove　削除
+
+          -# = f.fields_for :images do |image|
+          -#   .dropzone-container
+          -#     #preview
+          -#     .dropzone-area
+          -#       = image.label :image, class: "dropzone-box", for: "upload-image" do
+          -#         .input_area
+          -#           = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
+          -#         %i.fa.fa-camera
+          -#   .dropzone-container
+          -#     #preview2
+          -#     .dropzone-area2
+          -#       = image.label :image, class: "dropzone-box", for: "upload-image" do
+          -#         %i.fa.fa-camera
 
         .exmain-item
           .exmain-item__name
