@@ -34,23 +34,22 @@ $(function(){
         data: { productcategory: productcategory },
         dataType: 'json'
       })
-      .done(function(children){  // 送られてきたデータをchildrenに代入
-        $('#child_category').remove(); 
+      .done(function(children){
+        // 子カテゴリ以下を削除した後、送られてきたデータをchildrenに代入
+        $('#child_category').remove();
         $('#grandchild_category').remove();
-        var insertHTML = '';
-        children.forEach(function(child){  
+        // TODO: サイズ実装時にオブジェクト名を変更する
+        $('#size_wrapper').remove();
+        $('.exmain-detail-brand-input').val('');
+          var insertHTML = '';
+        children.forEach(function(child){
         // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
-          insertHTML += appendOption(child); 
+          insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML); 
-        $(document).on('change', '#category_select', function(){
-        // 通信成功時に親の選択肢を変えたらイベント発火｡子と孫を削除｡selectのidにかけるのではなく､親要素にかけないと残ってしまう
-          $('#child_category').remove(); 
-          $('#grandchild_category').remove();
-        })
+        appendChidrenBox(insertHTML);
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
-        // 通信失敗時の処理、後から編集実装の人の為残し
+        // TODO: 通信失敗時の処理、後から編集実装の人の為残し
         alert('ファイルの取得に失敗しました。');
         console.log("ajax通信に失敗しました");
         console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
@@ -61,8 +60,9 @@ $(function(){
     }else{
       $('#child_category').remove(); //親カテゴリーが初期値になった時、子以下を削除する
       $('#grandchild_category').remove();
+      // TODO: サイズ実装時にオブジェクト名を変更する
       $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
+      $('.exmain-detail-brand-input').val('');
     }
   });
 
@@ -80,8 +80,9 @@ $(function(){
     .done(function(grandchildren){
       if (grandchildren.length != 0) {
         $('#grandchild_category').remove(); //子が変更された時、孫以下を削除する
+        // TODO: サイズ実装時にオブジェクト名を変更する
         $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
+        $('.exmain-detail-brand-input').val('');
         var insertHTML = '';
         grandchildren.forEach(function(grandchild){
           insertHTML += appendOption(grandchild);
@@ -90,7 +91,7 @@ $(function(){
       }
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      // 通信失敗時の処理、後から編集実装の人の為残し
+      // TODO: 通信失敗時の処理、後から編集実装の人の為残し
       alert('ファイルの取得に失敗しました。');
       console.log("ajax通信に失敗しました");
       console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
@@ -100,8 +101,9 @@ $(function(){
     })
     }else{
       $('#grandchild_category').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      // TODO: サイズ実装時にオブジェクト名を変更する
       $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
+      $('.exmain-detail-brand-input').val('');
     }
   });
 });
