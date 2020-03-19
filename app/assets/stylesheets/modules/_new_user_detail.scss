@@ -1,0 +1,53 @@
+.the{
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  &_above{
+    display: flex;
+    text-align:center;
+    margin: auto 0;
+    .the_above_progress{
+      padding: 40px 0 0 44px;
+      border: 0;
+    }
+  }
+}
+
+.the_stat{
+  display: flex;
+  margin: 40px 0 0;
+  &_list{
+    padding: 12px;
+    &_color_red{
+      color: red;
+      padding: 12px;
+      bottom: 75px;
+      right: -25px;
+    }
+  }
+}
+
+.mercari{
+  margin: 40px 0 0;
+  width: 185px;
+}
+
+.box{
+  background-color: white;
+  border-top: 1px solid #f5f5f5;
+  margin: 0 auto;
+  width: 700px;
+}
+
+.Description {
+  background-color: white;
+  text-align:center;
+  padding: 9px 80px 9px;
+}
+
+.color{
+  background-color: $blue;
+  color: White;
+}

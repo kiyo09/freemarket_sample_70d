@@ -8,6 +8,8 @@
         %i.fa.fa-angle-right
       %li.category-show
         = link_to @item.category.parent.parent.name, '#'
+      %li.category
+        = link_to "#{@item.category.name}", '#'
       %li
         %i.fa.fa-angle-right
       %li.category-show
@@ -28,6 +30,8 @@
             = @item.name
           .item-box__photo
             = image_tag "#{@item.images[0].image.url}", size: "560x346"
+            %p.item-box__photo__buy
+              SOLD
           .item-box__show
             - @item.images.each do |image|
               = image_tag "#{image.image.url}", size: "100x100", class: "item-showImage"
@@ -104,7 +108,8 @@
                   発送日の目安
                 %td
                   = @item.shipping_days.name
-          %button.item-btn
+        - unless @item.buyer_id.presence
+          %button.item-buy
             - if @item.user_id == current_user.id
               = link_to "編集する", edit_item_path(@item), class: "item-btn__link", id: "item-btn-edit"
             - else

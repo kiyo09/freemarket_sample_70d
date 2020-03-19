@@ -108,6 +108,10 @@
           .containerList
             = link_to item_path(item.id) do
               = image_tag "#{item.images[0].image.url}"
+              - if item.buyer_id.presence
+                %p.containerList__buy
+                  SOLD
+
 
             .product__info
               %h3.name

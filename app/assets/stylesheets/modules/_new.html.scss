@@ -1,0 +1,41 @@
+.image{
+  height: 128px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:center;
+  &_furima{
+    display: flex;
+    text-align:center;
+    margin: auto 0;
+  }
+}
+
+.furima{
+  margin: 40px 0 0;
+  width: 185px;
+}
+
+.password{
+  font-size: 22px;
+  padding: 20px;
+  line-height: 1.5;
+  text-align: center;
+  background-color: white;
+  width: 700px;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+.mail{
+  background-color: white;
+  width: 700px;
+  margin: 0 auto;
+  padding: 10px 50px 60px
+}
+
+.reset{
+  background-color: $blue;
+  color: White;
+  font-size: 10px;
+}

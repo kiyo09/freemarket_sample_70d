@@ -1,28 +1,41 @@
-%h2 Sign up
+.single
+  .single__header
+    = link_to image_tag('logo-white',class: 'mercari'),"#"
+  .single__progress
+    %ul.single_stat
+      %li.single_stat_list_class_red
+        会員情報
+      %li.single_stat_list
+        電話番号認証
+      %li.single_stat_list
+        完了
 
+.title
+  %h2 会員情報入力
 = form_for(@user, url: user_registration_path) do |f|
   = render "devise/shared/error_messages", resource: @user
+  .class
+    .field
+      = f.label :nickname, "ニックネーム"
+      %br/
+      = f.text_field :nickname
+    .field
+      = f.label :email, "メールアドレス"
+      %br/
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+    .field
+      = f.label :password, "パスワード"
 
-  .field
-    = f.label :nickname, "ニックネーム"
-    %br/
-    = f.text_field :nickname
-  .field
-    = f.label :email, "メールアドレス"
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password, "パスワード"
+      - if @minimum_password_length
+        %em
+          (#{@minimum_password_length} characters minimum)
+      %br/
+      = f.password_field :password, autocomplete: "new-password"
+    .field
+      = f.label :password_confirmation, "パスワード(確認)"
+      %br/
+      = f.password_field :password_confirmation, autocomplete: "new-password"
+    .actions
+      = f.submit "次へ進む", class: "button"
+  = render "devise/shared/links"
 
-    - if @minimum_password_length
-      %em
-        (#{@minimum_password_length} characters minimum)
-    %br/
-    = f.password_field :password, autocomplete: "new-password"
-  .field
-    = f.label :password_confirmation, "パスワード(確認)"
-    %br/
-    = f.password_field :password_confirmation, autocomplete: "new-password"
-  .actions
-    = f.submit "次へ進む"
-= render "devise/shared/links"

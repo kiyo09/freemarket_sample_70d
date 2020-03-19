@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
+
   before_action :set_item, only: [:show, :edit, :destroy, :update, :purchase]
   before_action :set_category, except: [:create, :destroy, :category_grandchildren]
 
   require 'payjp'
   def index
     @items = Item.includes(:user).limit(6)
+
     @parents = Category.where(ancestry: nil)
 
   end
@@ -13,7 +15,7 @@ class ItemsController < ApplicationController
     @item = Item.new
     @category = Category.all.order("id ASC").limit(13)
     @category_parent_array = Category.roots.pluck(:name)
-    @item.images.build
+    @item.images.build()
     @item.build_brand
   end
 
@@ -91,6 +93,7 @@ class ItemsController < ApplicationController
     end
   end
 
+
   def search
     respond_to do |format|
       format.html
@@ -110,6 +113,7 @@ class ItemsController < ApplicationController
     @category_grandchildren = Category.find("#{params[:productcategory]}").children
   end
 
+
   private
   def item_params
     params.require(:item).permit(
@@ -127,7 +131,7 @@ class ItemsController < ApplicationController
       images_attributes: [:id, :image, :_destroy]
     )
     .merge(
-       user_id: current_user.id
+      user_id: current_user.id
     )
   end
 

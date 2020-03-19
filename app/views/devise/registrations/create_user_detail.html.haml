@@ -1,2 +1,16 @@
-%h2 登録が完了しました
-= link_to "トップへ戻る", root_path
+.image
+  .image_box
+    = link_to image_tag('logo-white',class: 'mercari'),"#"
+  .image_box_progress
+    %ul.image_stat
+      %li.image_stat_list
+        会員情報
+      %li.image_stat_list
+        電話番号認証
+      %li.image_stat_list_color_red
+        完了
+
+.title
+  登録が完了しました
+
+= link_to "トップへ戻る", root_path, class: "Move"

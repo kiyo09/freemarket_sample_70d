@@ -1,63 +1,79 @@
-%h2 個人情報
+.the
+  .the_above 
+    = link_to image_tag('logo-white',class: 'mercari'),"#"
+  .the_above_progress
+    %ul.the_stat
+      %li.the_stat_list
+        会員情報
+      %li.the_stat_list_color_red
+        電話番号認証
+      %li.the_stat_list
+        完了
+
+.title
+  %h2 電話番号認証入力
 = form_for(@user_details, url: user_detail_path, method: :post ) do |f|
   = render "devise/shared/error_messages", resource: @user_details
+  .box
+    .Description
+      = f.label :first_name, "苗字"
+      = f.text_field :first_name
+    .Description 
+      = f.label :first_name_kana, "苗字(カナ)"
+      %br/
+      = f.text_field :first_name_kana
+    .Description 
+      = f.label :last_name, "名前"
+      %br/
+      = f.text_field :last_name
 
-  .field
-    = f.label :first_name, "苗字"
-    = f.text_field :first_name
-  .field
-    = f.label :first_name_kana, "苗字(カナ)"
-    %br/
-    = f.text_field :first_name_kana
-  .field
-    = f.label :last_name, "名前"
-    %br/
-    = f.text_field :last_name
+    .Description 
+      = f.label :last_name_kana, "名前(カナ)"
+      %br/
+      = f.text_field :last_name_kana
 
-  .field
-    = f.label :last_name_kana, "名前(カナ)"
-    %br/
-    = f.text_field :last_name_kana
 
-  .field
-    = f.label :birthday, "生年月日"
-    %br/
-    = f.text_field :birthday
+    .Description 
+      = f.label :birthday, "生年月日"
+      %br/
+      = f.date_select :birthday, {include_blank: true, start_year: Time.now.year, end_year:1950, use_month_numbers: true}, {class: 'time-box'}
 
-  .field
-    = f.label :desination_name, "送付先氏名"
-    %br/
-    = f.text_field :desination_name
+    .Description 
+      = f.label :desination_name, "送付先氏名"
+      %br/
+      = f.text_field :desination_name
 
-  .field
-    = f.label :desination_kana, "送付先氏名(カナ)"
-    %br/
-    = f.text_field :desination_kana
-  .field
-    = f.label :post_code, "郵便番号"
-    %br/
-    = f.text_field :post_code
-  .field
-    = f.label :prefectures, "都道府県"
-    %br/
-    = f.text_field :prefectures
-  .field
-    = f.label :mayor, "市長区村"
-    %br/
-    = f.text_field :mayor
-  .field
-    = f.label :address, "番地"
-    %br/
-    = f.text_field :address
-  .field
-    = f.label :building, "マンション名やビル名、部屋番号（任意）"
-    %br/
-    = f.text_field :building
-  .field
-    = f.label :phone_no, "お届け先の電話番号（任意）"
-    %br/
-    = f.text_field :phone_no
+    .Description 
+      = f.label :desination_kana, "送付先氏名(カナ)"
+      %br/
+      = f.text_field :desination_kana
+    .Description 
+      = f.label :post_code, "郵便番号"
+      %br/
+      = f.text_field :post_code
+    .Description 
+      = f.label :prefectures, "都道府県"
+      %br/
+      = f.select :prefectures, UserDetail.prefectures.keys, {prompt: "選択してください"}, class: "prefecture-select"
+    .Description 
+      = f.label :mayor, "市長区村"
+      %br/
+      = f.text_field :mayor
+    .Description 
+      = f.label :address, "番地"
+      %br/
+      = f.text_field :address
+    .Description 
+      = f.label :building, "マンション名やビル名、部屋番号（任意）"
+      %br/
+      = f.text_field :building
+    .Description 
+      = f.label :phone_no, "お届け先の電話番号（任意）"
+      %br/
+      = f.text_field :phone_no
+ 
+  
 
   .actions
-    = f.submit "Sign up"
+    = f.submit "次へ進む",class: "color"
 = render "devise/shared/links"
