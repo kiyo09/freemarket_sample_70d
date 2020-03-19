@@ -38,8 +38,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render :new
     end
   end
-
-
   # GET /resource/edit
   # def edit
   #   super
