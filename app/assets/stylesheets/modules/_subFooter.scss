@@ -1,3 +1,7 @@
+// ===============================================================
+// メイン外のフッター
+// ===============================================================
+
 .subFooter{
   margin-top: 10px;
   text-align: center;
@@ -6,30 +10,27 @@
     &-main{
       margin-top: 15px;
       display: flex;
-      justify-content: center;
       margin: 0 auto;
+      justify-content: center;
       &-privacy{
-        display: inline-block;
         margin-right: 10px;
         margin-bottom: 10px;
+        display: inline-block;
       }
       &-term{
-        display: inline-block;
         margin-right: 10px;
-       
+        display: inline-block;
       }
       &-trade{
         display: inline-block;
-       
       }
-  }
+    }
   &-icon{
     margin: 5px;
   }
   &-copyright{
     margin: 5px auto;
     display: inline-block;
-    
   }
-}
+ }
 }
