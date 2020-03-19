@@ -1,5 +1,5 @@
 .wrapper
-  .content
+  .contentNew
     = render "shared/subHeader" 
     .exmain
       = form_with model: @item, local: true do |f|
@@ -9,35 +9,19 @@
           %p.exmain-image__limit
             最大10枚までアップロードできます
           = f.fields_for :images do |image|
-            .preview__input
-              .clearfix
-              %ul#previews
-                %li.input
-                  %label.upload-label
-                    .upload-label__text
-                      %i.fa.fa-camera
-                      .input-area
-                        .js-file_group{"data-index" => "#{image.index}"}
-                          = image.file_field :image, name: "item[images_attributes][#{@item.images.count}][src]",class: "hidden image_upload"
+            .dropzone-container
+              #preview
+              .dropzone-area
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
+                  %i.fa.fa-camera
+            .dropzone-container
+              #preview2
+              .dropzone-area2
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  %i.fa.fa-camera
 
-
-              -# .js-file_group
-              -#   %label.fas.fa-camera
-              -#   %p.image-show
-              -#     = image.file_field  :image, type: 'file', name: "item[images_attributes][][image]", value:"", id:"img-file"
-              -#     %span.js-remove　削除
-              -#     ドラッグアンドドロップ
-              -#     またはクリックしてファイルをアップロード
-                -# - if @item.persisted?
-                -#   = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-                -# - if @item.persisted?
-                -#   .js-file_group{"data-index" => "#{@item.images.count}"}
-                -#   = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                -#   %span.js-remove　削除
-
-                -#   -# {"data-index" => "#{image.index}"}
-
-          
         .exmain-item
           .exmain-item__name
             %label 商品名
@@ -99,10 +83,10 @@
               = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
           .exmain-check-fee
             .exmain-check-fee-tax 販売手数料（10%）
-            %p.fee-span -
+            %p.fee-span 
           .exmain-check-profit-box
             .exmain-check-profit 販売利益
-            %p.fee-span -
+            %p.profit-span
           .check-button
             = f.submit "出品する", class: "check-button-pay"
             %button.check-button-back
