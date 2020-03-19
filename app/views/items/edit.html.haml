@@ -1,0 +1,104 @@
+.wrapper
+  .contentNew
+    = render "shared/subHeader" 
+    .exmain
+      = form_with model: @item, local: true do |f|
+        .exmain-image
+          .exmain-image__name
+            %label 出品画像
+          %p.exmain-image__limit
+            最大10枚までアップロードできます
+          = f.fields_for :images do |image|
+            .dropzone-container
+              #preview
+              - if @item.persisted?
+                - @item.images.each_with_index do |image, i|
+                  = image_tag image.image.url, data: { index: i }, size: '112x112'
+                  .image-preview_btn
+                    .image-preview_btn_edit 編集
+                    .image-preview_btn_delete 削除
+              .dropzone-area
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
+                  %i.fa.fa-camera
+            .dropzone-container
+              #preview2
+              .dropzone-area2
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  %i.fa.fa-camera
+
+        .exmain-item
+          .exmain-item__name
+            %label 商品名
+            %span.exmain-label 必須
+          .exmain-item__name-input
+            = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form__group__name"
+          .exmain-item__explain
+            %label 商品の説明
+            %span.exmain-label 必須
+          .exmain-item__explain-input
+            = f.text_area :description, placeholder:"商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "input-explain",cows: "40", rows: "7"
+
+        .exmain-detail
+          .exmain-detail-top
+            %label 商品の詳細
+          .exmain-detail-category
+            %label カテゴリー
+            %span.exmain-label 必須
+            = f.select :category, Category.roots.pluck(:name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
+          .exmain-detail-brand
+            = f.fields_for :brand do |b|
+              %label ブランド
+              %span.exmain-label-gray 任意
+              = b.text_field :name, placeholder: "例）シャネル", value: "" ,class: "exmain-detail-brand-input"
+            
+          .exmain-detail-status
+            %label 商品の状態
+            %span.exmain-label 必須
+          .exmain-detail-status-input
+            = f.collection_select :status_id, Status.all, :id, :name, prompt: "---"
+        .exmain-deliver
+          .exmain-deliver-top
+            %label 配送について
+            .exmain-deliver-top-qa
+          .exmain-deliver-fee
+            %label 配送料の負担
+            %span.exmain-label 必須
+          .exmain-deliver-fee-input
+            = f.collection_select :fee_side_id, FeeSide.all, :id, :name, prompt: "---"
+          .exmain-deliver-region
+            %label 配送元の地域
+            %span.exmain-label 必須
+          .exmain-deliver-region-input
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
+          .exmain-deliver-date
+            %label 配送までの日数
+            %span.exmain-label 必須
+          .exmain-deliver-date-input
+            = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "---"
+
+        .exmain-check
+          %label.exmain-check-top
+            価格(¥300〜9,999,999)
+            .exmain-check-top-qa
+          .exmain-check-price
+            .exmain-check-price-title
+              %label.price 販売価格
+              %span.exmain-label 必須
+              %span.priceTag ¥
+              = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
+          .exmain-check-fee
+            .exmain-check-fee-tax 販売手数料（10%）
+            %span.fee-span
+          .exmain-check-profit-box
+            .exmain-check-profit 販売利益
+            %span.profit-span
+          .check-button
+            = f.submit "出品する", class: "check-button-pay"
+            %button.check-button-back
+              戻る
+          %p.exmain-check-detail
+            禁止されている行為および出品物を必ずご確認ください。偽ブランド品や盗品物などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして加盟店規約に同意したことになります。
+
+    = render "shared/subFooter" 
