@@ -72,55 +72,62 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
+    gon.item = @item
+    gon.item_images = @item.item_images
+
+    require 'base64'
+    require 'aws-sdk'
+
+    gon.item_iamges_binary_dates = []
+    if Rails.env.production?
+      client = Aws::S3::Client.new(
+        region: 'ap-northeast-1',
+        access_key_id: Rails.application.credentials.aws[:access_key_id],
+        secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+        )
+      @item.item_images.each do |image|
+        binary_date = client.get_object(bucket: 'frema2020',key: image.image_url.file.file.path)
+        gon.item_images_binary_dates << Base64.strict_encode64(binary_data)
+      end
+    else
+      @item.item_images.each do |image|
+        binary_data = File.read(image.image_url.file.file)
+        gon.item_images_binary_datas << Base64.strict_encode64(binary_data)
+      end
+    end
+
+
+    # @selected_grandchild_category = @item.category
+
+    # @category_grandchildren_array = [{id: "", name: ""}]
+    # Category.find("#{@selected_grandchild_category.id}")siblings.each do |grandchild|
+    #   grandchildren_hash = {id: "#{grandchild.id}", name: "#{grandchild.name}"}
+    #   @category_grandchildren_array << grandchildren_hash
+    # end
+
+    # @selected_child_category = @selected_grandchild_category.parent
+    # @category_children_array = [{id: "---", name "---" }]
+    # Category.find("#{@selected_child_category.id}").siblings.each do |child|
+    #   children_hash = {id: "#{child.id}", name: "#{child.name}"}
+    #   @category_children_array << children_hash
+    # end
+
+    # @selected_parent_category = @selected_child_category.parent
+    # @category_parents_array = [{id: "---", name: "---"}]
+    # Category.find("#{@selected_parent_category.id}").siblings.each do |parent|
+    #   parent_hash = {id: "#{parent.id}", name: "#{parent.name}"}
+    #   @category_parents_array << parent_hash
+    # end
+
+    @images = @item.images
+    @parents = Category.where(ancestry: nil)
     @items = Item.includes(:user)
     @parents = Category.where(ancestry: nil)
     @category_parent_array = Category.roots.pluck(:name)
     @category_parent_name = Category.find("#{@item.category_id}").root.name
     @category_children_name = Category.find("#{@item.category_id}").parent.name
     @category_grandchildren_name = Category.find("#{@item.category_id}").name
-
-
-
-    # @grandchild = @item.category
-    # @child = @grandchild.parent
-    # @parent = @grandchild.parent.parent
-    # @category_parent_array = ["---"]
-
-    # Category.where(ancestry: @grandchild.ancestry).each do |grandchild|
-    #   @category_grandchild_array << grandchild.name
-    # end
-
-    # @category_child_array = ["--"]
-    # Categor.where(ancestry: @child.ancestry).ec
-
-
-    # @parents = Category.where(ancestry:nil)
-    # # 編集する商品を選択
-    # @item = Item.find(params[:id])
-    # # 登録されている商品の孫カテゴリーのレコードを取得
-    # @selected_grandchild_category = @item.category
-    # # 孫カテゴリー選択肢用の配列作成
-    # @category_grandchildren_array = [{id: "---", name: "---"}]
-    # Category.find("#{@selected_grandchild_category.id}").siblings.each do |grandchild|
-    #   grandchildren_hash = {id: "#{grandchild.id}", name: "#{grandchild.name}"}
-    #   @category_grandchildren_array << grandchildren_hash
-    # end
-    # # 選択されている子カテゴリーのレコードを取得
-    # @selected_child_category = @selected_grandchild_category.parent
-    # # 子カテゴリー選択肢用の配列作成
-    # @category_children_array = [{id: "---", name: "---"}]
-    # Category.find("#{@selected_child_category.id}").siblings.each do |child|
-    #   children_hash = {id: "#{child.id}", name: "#{child.name}"}
-    #   @category_children_array << children_hash
-    # end
-    # # 選択されている親カテゴリーのレコードを取得
-    # @selected_parent_category = @selected_child_category.parent
-    # # 親カテゴリー選択肢用の配列作成
-    # @category_parents_array = [{id: "---", name: "---"}]
-    # Category.find("#{@selected_parent_category.id}").siblings.each do |parent|
-    #   parent_hash = {id: "#{parent.id}", name: "#{parent.name}"}
-    #   @category_parents_array << parent_hash
-    # end
   end
 
   def update
