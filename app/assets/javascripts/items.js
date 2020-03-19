@@ -4,15 +4,35 @@
 // ===============================================================
 
 $(function(){
-  $("#item_price").change(function(){
-    var price = $('#item_price').val();
-    var priceI = parseInt(price);
-    var fee = (priceI / 10);
-    var profit = (priceI - fee);
-    $(".fee-span").append(fee);
-    $(".profit-span").append(profit);
+  $("#item_price").on('keyup', function(e){
+    e.preventDefault();
+    var price = $("#item_price").val();
+    if( 300 <= price && price <= 9999999) {
+    var fee = Math.floor(price / 10);
+    var profit = (price - fee);
+    $(".fee-span").text(fee);
+    $(".profit-span").text(profit);
+    }
   })
-})
+});
+
+// 別回答途中、後学の為残し
+// $(function(){
+//   $("#item_price").change(function(){
+//     var price = $('#item_price').val();
+//     var priceI = parseInt(price);
+//     var fee = (priceI / 10);
+//     var profit = (priceI - fee);
+//     $(".fee-span").append(fee);
+//     $(".profit-span").append(profit);
+//   })
+//     if($('#item_price').size()){
+//       $("#item_price").change(function(){
+//         console.log('hello');
+//         $(".fee-span").unwrap();
+//       })
+//     }
+//   });
 
 // ===============================================================
 // 出品ページ

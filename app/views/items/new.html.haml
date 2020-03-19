@@ -80,13 +80,14 @@
             .exmain-check-price-title
               %label.price 販売価格
               %span.exmain-label 必須
+              %span.priceTag ¥
               = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
           .exmain-check-fee
             .exmain-check-fee-tax 販売手数料（10%）
-            %p.fee-span 
+            %span.fee-span
           .exmain-check-profit-box
             .exmain-check-profit 販売利益
-            %p.profit-span
+            %span.profit-span
           .check-button
             = f.submit "出品する", class: "check-button-pay"
             %button.check-button-back

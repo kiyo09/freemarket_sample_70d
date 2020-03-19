@@ -28,6 +28,10 @@ button{
 .span{
   display: inline;
 }
+.priceTag{
+  margin: 5px;
+  line-height: 60px;
+}
 
 input{
   border: 1px solid $gray;
