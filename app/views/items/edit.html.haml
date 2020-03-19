@@ -1,5 +1,5 @@
 .wrapper
-  .content
+  .contentNew
     = render "shared/subHeader" 
     .exmain
       = form_with model: @item, local: true do |f|
@@ -8,21 +8,25 @@
             %label 出品画像
           %p.exmain-image__limit
             最大10枚までアップロードできます
-          .exmain-image__input
-            = f.fields_for :images do |image|
-              .js-file_group{"data-index" => "#{image.index}"}
-                %label.fas.fa-camera
-                %p.image-show
-                  = image.file_field :image, value:"", id:"img-file", class:"js-file"
-                  %span.js-remove　削除
-                  ドラッグアンドドロップ
-                  またはクリックしてファイルをアップロード
+          = f.fields_for :images do |image|
+            .dropzone-container
+              #preview
                 - if @item.persisted?
-                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
-                - if @item.persisted?
-                  .js-file_group{"data-index" => "#{@item.images.count}"}
-                  = file_field_tag :image, name: "item[images_attributes][#{@item.images.count}][src]", class: 'js-file'
-                  %span.js-remove　削除
+                  - @item.images.each_with_index do |image, i|
+                    .img_view
+                      = image_tag image.image.url, data: { index: i }, size: '112x112'
+                      .btn_wrapper
+                        .delete-img-btn 削除
+              .dropzone-area
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  .input_area
+                    = image.file_field :image, id: "upload-image", class: "upload-image", 'data-image': 0
+                  %i.fa.fa-camera
+            .dropzone-container
+              #preview2
+              .dropzone-area2
+                = image.label :image, class: "dropzone-box", for: "upload-image" do
+                  %i.fa.fa-camera
 
         .exmain-item
           .exmain-item__name

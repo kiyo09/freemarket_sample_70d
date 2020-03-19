@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   require 'payjp'
   def index
     @items = Item.includes(:user).limit(6)
-
     @parents = Category.where(ancestry: nil)
 
   end
@@ -85,11 +84,10 @@ class ItemsController < ApplicationController
   end
 
   def update
-    @item.update(item_params)
-    if @item.save
+    if @item.update(item_params)
       redirect_to root_path
     else
-      render :new
+      render :edit
     end
   end
 
