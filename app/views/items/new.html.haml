@@ -14,7 +14,7 @@
                 .exmain-box__main__uploader
                   %label.exmain-box__main__uploader__label<>
                     = f.fields_for :images do |image|
-                      .js-file_group{"data-index" => "#{image.index}"}
+                      .js-file_group{data: {index: "image.index"}}
                         %i.fa.fa-camera
                         = image.file_field :image, class: 'js-file'
 

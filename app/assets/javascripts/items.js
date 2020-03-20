@@ -69,7 +69,7 @@ $(document).ready(function() {
   fileIndex.splice(0, lastIndex);
 
   $('.hidden-destroy').hide();
-
+  
   $('.exmain-box__main').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する

@@ -29,7 +29,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     
     unless @user_detail.valid?
       flash.now[:alert] = @user_detail.errors.full_messages
-      render :new and return
+      # render :new and return
     end
     @user.build_user_detail(@user_detail.attributes)
     if @user.save

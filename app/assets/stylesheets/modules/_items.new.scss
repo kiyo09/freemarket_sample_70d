@@ -370,7 +370,6 @@ html{
 // 複数画像preview
 // ===============================================================
 .exmain-box{
-
   &__main{
     &__previews{
       display: flex;
@@ -396,11 +395,13 @@ html{
           }
         }
       }
+     }
     }
   }
-  .js-remove{
-    color: $blue;
-    text-align: center;
-  }
+
+.js-remove{
+  color: $blue;
+  text-align: center;
+}
 }
 

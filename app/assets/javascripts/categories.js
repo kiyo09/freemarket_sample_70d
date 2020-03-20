@@ -49,18 +49,12 @@ $(function(){
         appendChidrenBox(insertHTML);
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
-        // TODO: 通信失敗時の処理、後から編集実装の人の為残し
         alert('ファイルの取得に失敗しました。');
-        console.log("ajax通信に失敗しました");
-        console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-        console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
-        console.log("errorThrown    : " + errorThrown.message); // 例外情報
-        console.log("URL            : " + url);
+
       })
     }else{
       $('#child_category').remove(); //親カテゴリーが初期値になった時、子以下を削除する
       $('#grandchild_category').remove();
-      // TODO: サイズ実装時にオブジェクト名を変更する
       $('#size_wrapper').remove();
       $('.exmain-detail-brand-input').val('');
     }
@@ -91,13 +85,7 @@ $(function(){
       }
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      // TODO: 通信失敗時の処理、後から編集実装の人の為残し
       alert('ファイルの取得に失敗しました。');
-      console.log("ajax通信に失敗しました");
-      console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
-      console.log("textStatus     : " + textStatus);    // タイムアウト、パースエラー
-      console.log("errorThrown    : " + errorThrown.message); // 例外情報
-      console.log("URL            : " + url);
     })
     }else{
       $('#grandchild_category').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
