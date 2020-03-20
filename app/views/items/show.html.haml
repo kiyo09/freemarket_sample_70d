@@ -30,6 +30,7 @@
             = @item.name
           .item-box__photo
             = image_tag "#{@item.images[0].image.url}", size: "560x346"
+            - if item.buyer_id.presence
             %p.item-box__photo__buy
               SOLD
           .item-box__show

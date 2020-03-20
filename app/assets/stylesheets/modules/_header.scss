@@ -41,16 +41,16 @@
           }
           .searchBox__right{
             position: relative;
-            border: 1px #3CCACE solid;
+            border: 1px $blue solid;
             height: 34px;
             .submitBtn{
               width: 34px;
               height: 34px;
               cursor: pointer;
-              border-top: 1px #3CCACE solid;
-              border-right:  1px #3CCACE solid;
-              border-bottom: 1px #3CCACE solid;
-              background-color: #3CCACE;
+              border-top: 1px $blue solid;
+              border-right:  1px $blue solid;
+              border-bottom: 1px $blue solid;
+              background-color: $blue;
             }
             .searchIcon{
               position: absolute;

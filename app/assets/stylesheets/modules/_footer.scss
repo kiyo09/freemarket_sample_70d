@@ -11,17 +11,17 @@
   .aboveContents{
     text-align: center;
     height: 140px;
-    color: #fff;
+    color: $white;
     &__title{
       font-size: 24px;
       line-height: 1.4;
       position: relative;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: 0 0 5px $lightBlack;
     }
     &__text{
       font-size: 35px;
       line-height: 1.4;
-      text-shadow: 0 0 5px rgba(0,0,0,0.4);
+      text-shadow: 0 0 5px $lightBlack;
     }
     .contentBtn{
       display: flex;
@@ -51,7 +51,7 @@
 .footer{
   padding: 60px 0px;
   text-align: center;
-  color: #fff;
+  color: $white;
   background-color: #272727;
   .footerBox{
     max-width: 840px;
@@ -70,7 +70,7 @@
         list-style: none;
         line-height: 1.4;
         a{
-          color: #fff;
+          color: $white;
           text-decoration: none;
         }
         li{
