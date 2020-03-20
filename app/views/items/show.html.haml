@@ -142,10 +142,10 @@
                 %i.fa.fa-angle-left
                 前の商品
           %li.item-link__next
-            -# - unless @items.last == @item
-            -#   = link_to "#{item_path([@item.id + 1])}" do
-            -#     後の商品
-            -#     %i.fa.fa-angle-right
+            - unless @items.last == @item
+              = link_to "#{item_path([@item.id + 1])}" do
+                後の商品
+                %i.fa.fa-angle-right
         .related-item
           = link_to "#{@item.category.parent.parent.name}をもっと見る", '#'
 
