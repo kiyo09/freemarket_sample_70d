@@ -107,7 +107,7 @@ html{
     height: 100%;
     background-color: $gray;
   .contentNew{
-    width: 730px;
+    width: 750px;
     margin: 0 auto;
     background-color: $white;
     
@@ -383,47 +383,82 @@ html{
 // 出品ページ
 // 複数画像preview
 // ===============================================================
-#form-wrapper {
-  display: flex;
-  position: relative;
-  background-color: $gray;
-  .js-file_group {
-    width: 620px;
-    height: 150px;
-    position: relative;
-    .fa-camera{
-      position: absolute;
-      top: 0;
-      right: 50;
-      left: 310px;
+.exmain-box{
+
+  &__main{
+    &__previews{
+      display: flex;
+      flex-flow: wrap;
+      &__view{
+        margin: 10px 5px;
+      }
     }
-    input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      height: 100%;
-      width: 100%;
-      cursor: pointer;
+    &__uploader{
+    // width: 620px;
+    // height: 150px;
+    .js-file_group{
+      background-color: $gray;
+      position: relative;
+      .js-file{
+        width: 620px;
+        height: 150px;
+        opacity: 0;
+      }
+      i{
+        position: absolute;
+        left: 300px;
+      }
+     }
     }
   }
+
+.js-remove{
+  color: $blue;
+  text-align: center;
+}
 }
 
-#previews {
-  display: flex;
-  flex-wrap: wrap;
-}
-.js-remove-wrapper {
-  color: $blue;
-  margin: 10px 5px;
-  text-align: center;
-  img {
-    display: block;
-  }
-  span {
-    display: block;
-  }
-}
+// #form-wrapper {
+//   display: flex;
+//   position: relative;
+//   background-color: $gray;
+//   .js-file_group {
+//     width: 620px;
+//     height: 150px;
+//     position: relative;
+//     .fa-camera{
+//       position: absolute;
+//       top: 0;
+//       right: 50;
+//       left: 310px;
+//     }
+//     input {
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       opacity: 0;
+//       height: 100%;
+//       width: 100%;
+//       cursor: pointer;
+//     }
+//   }
+// }
+
+// #previews {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+// .js-remove-wrapper {
+//   color: $blue;
+//   margin: 10px 5px;
+//   text-align: center;
+//   img {
+//     display: block;
+//   }
+//   span {
+//     display: block;
+//   }
+// }
 
 // .dropzone-container{
 //   display: block;
