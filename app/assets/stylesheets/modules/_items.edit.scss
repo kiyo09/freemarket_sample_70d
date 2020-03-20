@@ -1,0 +1,29 @@
+#form-wrapper {
+  position: relative;
+  .js-file_group {
+    input {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
+#previews {
+  display: flex;
+}
+.js-remove-wrapper {
+  height: 120px;
+  width: 100px;
+  margin: 10px 0;
+  text-align: center;
+  img {
+    display: block;
+  }
+  span {
+    display: block;
+  }
+}

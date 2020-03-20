@@ -74,10 +74,21 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    item_category = Category.find("#{@item.category_id}")
+    @category_parent_array = Category.roots.pluck(:name)
+    @category_parent_name = item_category.root.name
+    @category_children_siblings = item_category.parent.siblings
+    @category_children_name = item_category.parent.name
+    @category_grandchildren_name = item_category.name
+    @category_grandchildren_siblings = item_category.siblings
   end
 
   def update
-    item.update(item_params)
+    if @item.update(item_params)
+      redirect_to root_path
+    else
+      render :show
+    end
   end
 
 

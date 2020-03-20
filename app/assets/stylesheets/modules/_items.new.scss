@@ -107,7 +107,7 @@ html{
     height: 100%;
     background-color: $gray;
   .contentNew{
-    width: 700px;
+    width: 750px;
     margin: 0 auto;
     background-color: $white;
     
@@ -117,6 +117,7 @@ html{
       &-image{
         width: 730px;
         padding: 40px;
+        overflow: hidden;
         border-bottom: 1px solid $gray;
         &__name{
           font-size: 18px;
@@ -383,114 +384,34 @@ html{
 // 出品ページ
 // 複数画像preview
 // ===============================================================
-
-
-.dropzone-container{
-  display: block;
-  margin: 16px auto 0;
-  display: flex;
-
-  #preview , #preview2{
-    display: flex;
-
-    .img_view {
-      width: 112px;
-      height: 162px;
-      margin: 0 15px 10px 0;
-
-        img{
-          width: 112px;
-          height: 112px;
-        }
-      }
-
-      .btn_wrapper {
-        color: $blue;
-        margin-top: 10px;
-        display: flex;
-        text-align: center;
-        display: block;
-        .btn.delete {
-          width: 50%;
-          height: 50px;
-          line-height: 50px;
-          border: 1px solid $white;
-          background: $gray;
-          color: $blue;
-          cursor: pointer;
-        }
+.exmain-box{
+  &__main{
+    &__previews{
+      display: flex;
+      flex-flow: wrap;
+      &__view{
+        margin: 10px 5px;
       }
     }
-
-  //投稿クリックエリアのCSS
-  .dropzone-area {
-    margin-bottom: 10px;
-    width: 620px;
-
-    .dropzone-box {
-      width: 100%;
-      height: 162px;
-      display: block;
-      display: flex;
-      border: 1px dashed $white;
+    &__uploader{
+    .js-file_group{
+      background-color: $gray;
       position: relative;
-      background: $gray;
-      cursor: pointer;
-
-      p {
-        top: 50%;
-        left: 16px;
-        right: 16px;
-        font-size: 14px;
-        line-height: 1.5;
-        font-weight: bold;
-        -webkit-transform: translate(0, -50%);
-        transform: translate(0, -50%);
-        pointer-events: none;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-        text-align: center;
+      .js-file{
+        width: 620px;
+        height: 150px;
+        opacity: 0;
+      }
+      i{
         position: absolute;
+        left: 300px;
       }
-      .input_area {
-        display: none;
-      }
+     }
     }
   }
-  //投稿クリックエリアのCSS
-  .dropzone-area2{
-    width: 620px;
-    display: none;
-    margin-bottom: 10px;
 
-    .dropzone-box {
-      width: 100%;
-      height: 162px;
-      display: block;
-      display: flex;
-      border: 1px dashed $white;
-      position: relative;
-      background: $gray;
-      cursor: pointer;
-
-      p {
-        top: 50%;
-        left: 16px;
-        right: 16px;
-        font-size: 14px;
-        line-height: 1.5;
-        -webkit-transform: translate(0, -50%);
-        transform: translate(0, -50%);
-        text-align: center;
-        pointer-events: none;
-        font-weight: bold;
-        position: absolute;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-      }
-      .input_area {
-        display: none;
-      }
-    }
-  }
+.js-remove{
+  color: $blue;
+  text-align: center;
+}
 }
