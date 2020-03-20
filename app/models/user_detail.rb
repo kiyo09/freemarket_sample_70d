@@ -14,7 +14,7 @@ class UserDetail < ApplicationRecord
                                   with: /\A[\p{katakana}　ー－&&[^ -~｡-ﾟ]]+\z/,
                                 message: "全角カタカナのみで入力して下さい"
                                 }
-  # validates :birthday,        presence: true
+  validates :birthday,        presence: true
   validates :desination_name, presence: true
   validates :desination_kana, presence: true,
                                 format: {
