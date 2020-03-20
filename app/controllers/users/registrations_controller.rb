@@ -11,6 +11,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
     @user = User.new(sign_up_params)
   
     unless @user.valid?
@@ -25,12 +30,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create_user_detail
     @user = User.new(session["devise.regist_data"]["user"])
+    params[:user_detail][:birthday] = birthday_join
     @user_detail = UserDetail.new(user_detail_params)
-    
+   
     unless @user_detail.valid?
+      
       flash.now[:alert] = @user_detail.errors.full_messages
       render :new and return
     end
+    
     @user.build_user_detail(@user_detail.attributes)
     if @user.save
     sign_in(:user, @user)
@@ -61,6 +69,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def cancel
   #   super
   # end
+  private
+
+  def birthday_join
+    date = params[:user_detail][:birthday]
+    Date.new.date(["birthday(1i)"].to_i,date["birthday(2i)"].to_i,date["birthday(3i)"].to_i)
+  end
 
   protected
 
@@ -86,6 +100,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       :phone_no
       # user_detail_attributes: [:id]
     )
+
+    
   end
 
   # If you have extra params to permit, append them to the sanitizer.
