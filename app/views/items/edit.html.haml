@@ -13,7 +13,7 @@
               .exmain-box__main__previews
                 - if @item.persisted?
                   - @item.images.each_with_index do |image, i|
-                    .exmain-box__main__previews__view{"data-index" => "#{i}"}
+                    .exmain-box__main__previews__view{data: {index: "#{i}"}}
                       .exmain-box__main__previews__view__image
                         = image_tag image.image.url, data: { index: i }, class: 'input_images', width: "120", height: '120'
                         .js-remove.exmain-box__main__previews__view__delete
@@ -23,7 +23,7 @@
                       = image.check_box :_destroy, include_hidden: false, data:{ index: image.index },class: 'hidden-destroy'
               .exmain-box__main__uploader
                 %label.exmain-box__main__uploader__label<>
-                  .js-file_group{"data-index" => "#{@item.images.count}"}
+                  .js-file_group{data: {index: "#{@item.images.count}"}}
                     %i.fa.fa-camera
                     = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_photos_attributes_#{@item.images.count}_image", class: 'js-file'
 
@@ -46,8 +46,8 @@
             %label カテゴリー
             %span.exmain-label 必須
             = f.select :category, options_for_select(@category_parent_array, @category_parent_name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
-            = f.select :category, options_for_select(@category_children_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_children_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "child_category"}
-            = f.select :category, options_for_select(@category_grandchildren_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_grandchildren_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "grandchild_category"}
+            = f.select :category, options_for_select(@category_children_siblings.map{|s| [s.name, s.id, {data: {category: s.id}}]}, @category_children_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "child_category"}
+            = f.select :category, options_for_select(@category_grandchildren_siblings.map{|s| [s.name, s.id, {data: {category: s.id}}]}, @category_grandchildren_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "grandchild_category"}
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
