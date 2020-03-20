@@ -7,27 +7,19 @@ $(function(){
   // 子カテゴリーの表示作成
   function appendChidrenBox(insertHTML){
     var childSelectHtml = '';
-    childSelectHtml = `<div class='exmain-detail-category__added' id= 'children_wrapper'>
-                        <div class='exmain-detail-category__box'>
-                          <select class="exmain-detail-category__box--select" id="child_category" name="">
-                            <option value="---" data-category="---">---</option>
-                            ${insertHTML}
-                          <select>
-                        </div>
-                      </div>`;
+    childSelectHtml = `<select class="exmain-detail-category__box--select" id="child_category" name="">
+                        <option value="---" data-category="---">---</option>
+                        ${insertHTML}
+                      <select>`;
     $('.exmain-detail-category').append(childSelectHtml);
   }
   // 孫カテゴリーの表示作成
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
-    grandchildSelectHtml = `<div class='exmain-detail-category__added' id= 'grandchildren_wrapper'>
-                              <div class='exmain-detail-category__box'>
-                                <select class="exmain-detail-category__box--select" id="grandchild_category" name="item[category_id]">
-                                  <option value="---" data-category="---">---</option>
-                                  ${insertHTML}
-                                </select>
-                              </div>
-                            </div>`;
+    grandchildSelectHtml = `<select class="exmain-detail-category__box--select" id="grandchild_category" name="item[category_id]">
+                              <option value="---" data-category="---">---</option>
+                              ${insertHTML}
+                            </select>`;
     $('.exmain-detail-category').append(grandchildSelectHtml);
   }
 
@@ -43,20 +35,21 @@ $(function(){
         dataType: 'json'
       })
       .done(function(children){  // 送られてきたデータをchildrenに代入
-        var insertHTML = '';
-        children.forEach(function(child){  
-  // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
-          insertHTML += appendOption(child); 
+        $('#child_category').remove();
+        $('#grandchild_category').remove();
+        // TODO: サイズ実装時にオブジェクト名を変更する
+        $('#size_wrapper').remove();
+        $('.exmain-detail-brand-input').val('');
+          var insertHTML = '';
+        children.forEach(function(child){
+        // forEachでchildに一つずつデータを代入｡子のoptionが一つずつ作成される｡
+          insertHTML += appendOption(child);
         });
-        appendChidrenBox(insertHTML); 
-        $(document).on('change', '#category_select', function(){
-  // 通信成功時に親の選択肢を変えたらイベント発火｡子と孫を削除｡selectのidにかけるのではなく､親要素にかけないと残ってしまう
-          $('#children_wrapper').remove(); 
-          $('#grandchildren_wrapper').remove();
-        })
+        appendChidrenBox(insertHTML);
       })
       .fail(function (jqXHR, textStatus, errorThrown) {
         // 通信失敗時の処理、後から編集実装の人の為残し
+        // TODO: 通信失敗時の処理、後から編集実装の人の為残し
         alert('ファイルの取得に失敗しました。');
         console.log("ajax通信に失敗しました");
         console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
@@ -65,10 +58,10 @@ $(function(){
         console.log("URL            : " + url);
       })
     }else{
-      $('#children_wrapper').remove(); //親カテゴリーが初期値になった時、子以下を削除する
-      $('#grandchildren_wrapper').remove();
-      $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
+      $('#child_category').remove(); //親カテゴリーが初期値になった時、子以下を削除する
+      $('#grandchild_category').remove();
+      // TODO: サイズ実装時にオブジェクト名を変更する
+      $('.exmain-detail-brand-input').val('');
     }
   });
 
@@ -86,9 +79,10 @@ $(function(){
     })
     .done(function(grandchildren){
       if (grandchildren.length != 0) {
-        $('#grandchildren_wrapper').remove(); //子が変更された時、孫以下を削除する
+        $('#grandchild_category').remove(); //子が変更された時、孫以下を削除する
+        // TODO: サイズ実装時にオブジェクト名を変更する
         $('#size_wrapper').remove();
-        $('#brand_wrapper').remove();
+        $('.exmain-detail-brand-input').val('');
         var insertHTML = '';
         grandchildren.forEach(function(grandchild){
           insertHTML += appendOption(grandchild);
@@ -97,7 +91,7 @@ $(function(){
       }
     })
     .fail(function (jqXHR, textStatus, errorThrown) {
-      // 通信失敗時の処理、後から編集実装の人の為残し
+      // TODO: 通信失敗時の処理、後から編集実装の人の為残し
       alert('ファイルの取得に失敗しました。');
       console.log("ajax通信に失敗しました");
       console.log("jqXHR          : " + jqXHR.status); // HTTPステータスが取得
@@ -106,9 +100,10 @@ $(function(){
       console.log("URL            : " + url);
     })
     }else{
-      $('#grandchildren_wrapper').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      $('#grandchild_category').remove(); //子カテゴリーが初期値になった時、孫以下を削除する
+      // TODO: サイズ実装時にオブジェクト名を変更する
       $('#size_wrapper').remove();
-      $('#brand_wrapper').remove();
+      $('.exmain-detail-brand-input').val('');
     }
   });
 });

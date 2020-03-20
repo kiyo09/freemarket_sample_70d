@@ -24,9 +24,8 @@
               .exmain-box__main__uploader
                 %label.exmain-box__main__uploader__label<>
                   .js-file_group{"data-index" => "#{@item.images.count}"}
-                    = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_photos_attributes_#{@item.images.count}_image", class: 'js-file'
-                  .exmain-box__main__uploader__icon
                     %i.fa.fa-camera
+                    = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_photos_attributes_#{@item.images.count}_image", class: 'js-file'
 
         .exmain-item
           .exmain-item__name
@@ -46,7 +45,9 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.select :category, Category.roots.pluck(:name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
+            = f.select :category, options_for_select(@category_parent_array, @category_parent_name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
+            = f.select :category, options_for_select(@category_children_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_children_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "child_category"}
+            = f.select :category, options_for_select(@category_grandchildren_siblings.map{|s| [s.name, s.id, {'data-category'=>s.id}]}, @category_grandchildren_name), {:prompt => "---" }, { class: "exmain-detail-category__box--select", id: "grandchild_category"}
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
