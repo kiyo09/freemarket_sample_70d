@@ -26,7 +26,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create_user_detail
     @user = User.new(session["devise.regist_data"]["user"])
     @user_detail = UserDetail.new(user_detail_params)
-    
+    # binding.pry
     unless @user_detail.valid?
       flash.now[:alert] = @user_detail.errors.full_messages
       # render :new and return
