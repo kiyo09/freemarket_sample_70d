@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   require 'payjp'
   def index
     @items = Item.includes(:user).limit(6)
-
     @parents = Category.where(ancestry: nil)
 
   end
@@ -20,6 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def create
+    @category_parent_array = Category.roots.pluck(:name)
     @item = Item.new(item_params)
     if @item.save
       redirect_to root_path
@@ -101,9 +101,9 @@ class ItemsController < ApplicationController
       end
     end
   end
-  
-  def category_children  
-    @category_children = Category.find_by(name: "#{params[:productcategory]}").children 
+
+  def category_children
+    @category_children = Category.find_by(name: "#{params[:productcategory]}").children
   end
   # Ajax通信で送られてきたデータをparamsで受け取り､childrenで子を取得
 

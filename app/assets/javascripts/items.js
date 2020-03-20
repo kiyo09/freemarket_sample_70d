@@ -89,7 +89,6 @@ $(document).ready(function() {
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     }
   });
-
   // 削除ボタンの設定
   $('.exmain-box__main').on('click', '.js-remove', function() {
     const targetIndex = $(this).prev().data('index');
