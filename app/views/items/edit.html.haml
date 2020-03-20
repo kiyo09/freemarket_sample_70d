@@ -8,39 +8,24 @@
             %label 出品画像
           %p.exmain-image__limit
             最大10枚までアップロードできます
-          - index = 0
-          = f.fields_for :images do |image|
-            - if (index += 1) == @item.images.count
-              .dropzone-container
-                #preview
-                  - if @item.persisted?
-                    - @item.images.each_with_index do |image, i|
-                      .img_view
-                        = image_tag image.image.url, data: { index: i }, size: '112x112'
-                        -# = image_tag image.image.url, size: '112x112'
-                        .btn_wrapper
-                          .delete-img-btn 削除
-                .dropzone-area
-                  = image.label :image, class: "dropzone-box", for: "upload-image" do
-                    .input_area
-                      -# = image.file_field :image, name: "item[images_attributes][0][image]", class: "upload-image", 'data-image': 0, type: "file", id: "upload-image"
-
-                      -# - i = 0
-                      -# = f.fields_for :images do |image|
-                      -#   = image.file_field :image, id: "upload-image", class: "upload-image", name: "item[images_attributes][#{i}][image]", 'data-image': i
-                      -#   - i += 1
-
-                      - num = 0
-                      - while num < (index + 1) do
-                        = image.file_field :image, name: "item[images_attributes][#{num}][image]", class: "upload-image", 'data-image': num, type: "file", id: "upload-image"
-                        - num += 1
+          .exmain-box
+            .exmain-box__main
+              .exmain-box__main__previews
+                - if @item.persisted?
+                  - @item.images.each_with_index do |image, i|
+                    .exmain-box__main__previews__view{"data-index" => "#{i}"}
+                      .exmain-box__main__previews__view__image
+                        = image_tag image.image.url, data: { index: i }, class: 'input_images', width: "120", height: '120'
+                        .js-remove.exmain-box__main__previews__view__delete
+                          削除
+                  = f.fields_for :images, @item.images do |image|
+                    - if @item.persisted?
+                      = image.check_box :_destroy, include_hidden: false, data:{ index: image.index },class: 'hidden-destroy'
+              .exmain-box__main__uploader
+                %label.exmain-box__main__uploader__label<>
+                  .js-file_group{"data-index" => "#{@item.images.count}"}
                     %i.fa.fa-camera
-              .dropzone-container
-                #preview2
-                .dropzone-area2{style: "display: none"}
-                  = image.label :image, class: "dropzone-box", for: "upload-image" do
-                    %i.fa.fa-camera
-              - index += 1
+                    = f.file_field :image, name: "item[images_attributes][#{@item.images.count}][image]", id: "item_photos_attributes_#{@item.images.count}_image", class: 'js-file'
 
         .exmain-item
           .exmain-item__name
@@ -105,10 +90,12 @@
               = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
           .exmain-check-fee
             .exmain-check-fee-tax 販売手数料（10%）
-            %p.fee-span -
+            %p.fee-span
+              = @item.price/10
           .exmain-check-profit-box
             .exmain-check-profit 販売利益
-            %p.fee-span -
+            %p.fee-span
+              = @item.price - @item.price/10
           .check-button
             = f.submit "再出品する", class: "check-button-pay"
             %button.check-button-back
