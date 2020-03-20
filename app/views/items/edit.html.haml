@@ -17,19 +17,27 @@
                     - @item.images.each_with_index do |image, i|
                       .img_view
                         = image_tag image.image.url, data: { index: i }, size: '112x112'
+                        -# = image_tag image.image.url, size: '112x112'
                         .btn_wrapper
                           .delete-img-btn 削除
                 .dropzone-area
                   = image.label :image, class: "dropzone-box", for: "upload-image" do
                     .input_area
-                      - i = 0
-                      = f.fields_for :images do |image|
-                        = image.file_field :image, id: "upload-image", class: "upload-image", name: "item[images_attributes][#{i}][image]", 'data-image': i
-                        - i += 1
+                      -# = image.file_field :image, name: "item[images_attributes][0][image]", class: "upload-image", 'data-image': 0, type: "file", id: "upload-image"
+
+                      -# - i = 0
+                      -# = f.fields_for :images do |image|
+                      -#   = image.file_field :image, id: "upload-image", class: "upload-image", name: "item[images_attributes][#{i}][image]", 'data-image': i
+                      -#   - i += 1
+
+                      - num = 0
+                      - while num < (index + 1) do
+                        = image.file_field :image, name: "item[images_attributes][#{num}][image]", class: "upload-image", 'data-image': num, type: "file", id: "upload-image"
+                        - num += 1
                     %i.fa.fa-camera
               .dropzone-container
                 #preview2
-                .dropzone-area2
+                .dropzone-area2{style: "display: none"}
                   = image.label :image, class: "dropzone-box", for: "upload-image" do
                     %i.fa.fa-camera
               - index += 1
