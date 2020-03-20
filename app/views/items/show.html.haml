@@ -8,8 +8,6 @@
         %i.fa.fa-angle-right
       %li.category-show
         = link_to @item.category.parent.parent.name, '#'
-      %li.category
-        = link_to "#{@item.category.name}", '#'
       %li
         %i.fa.fa-angle-right
       %li.category-show
@@ -78,11 +76,11 @@
                   ブランド
                 %td
                   = link_to @item.brand.name, '#'
-              %tr
-                %th
-                  商品のサイズ
-                %td
-                  -if @item.size
+              -if @item.size
+                %tr
+                  %th
+                    商品のサイズ
+                  %td
                     = @item.size.name
               %tr
                 %th
@@ -109,13 +107,14 @@
                   発送日の目安
                 %td
                   = @item.shipping_days.name
-        - unless @item.buyer_id.presence
-          %button.item-buy
-            - if @item.user_id == current_user.id
-              = link_to "編集する", edit_item_path(@item), class: "item-btn__link", id: "item-btn-edit"
-            - else
-              = link_to "購入する", purchase_path(@item), class: "buy-button"
-
+        - if @item.user_id == current_user.id
+          %button.item-btn
+            = link_to "編集する", edit_item_path(@item), class: "item-btn__link", id: "item-btn-edit"
+          %button.item-btn
+            = link_to "削除する", item_path(@item), class: "item-btn__link", id: "item-btn-delete", method: :delete
+        - elsif @item.buyer_id.nil?
+          %button.item-btn
+            = link_to "購入する", purchase_path(@item), class: "item-btn__link", id: "item-btn-buy"
           .item-box__button
             %ul.item-box__button__left
               %li.like-btn

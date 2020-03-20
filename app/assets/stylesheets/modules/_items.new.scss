@@ -90,7 +90,6 @@ select{
 .fa-camera:before {
   font-size: 2em;
   margin: 0 auto;
-  line-height: 150px;
 }
 
 
@@ -200,7 +199,7 @@ html{
       .exmain-detail{
         padding: 40px;
         width: 700px;
-        height: 474px;
+        height: 100%;
         border-bottom: 1px solid $gray;
         &-top{
           color: $darkGray;
@@ -262,7 +261,7 @@ html{
         &-date-input{
           margin-top: 16px;
         }
-      }    
+      }
 
       .exmain-check{
         width: 700px;
@@ -299,20 +298,15 @@ html{
           width: 100%;
           height: 46px;
           display: flex;
+          justify-content: space-between;
+          padding: 12px 0px;
+          margin-top: 16px;
           &-tax{
-            width: 100%;
-            margin: 10px 0;
-            padding: 12px 0px;
-            line-height: 46px;
-            display: inline-block;
           }
           .fee-span{
-            margin-top: 30px;
-            line-height: 46px;
-            display: inline-block;
           }
-         }
-          
+        }
+
         .exmain-check-profit-box{
           height: 46px;
           padding: 12px 0px;
@@ -320,23 +314,14 @@ html{
           display: flex;
           justify-content: space-between;
           .exmain-check-profit{
-            margin: 10px 0;
-            padding: 12px 0px;
-            line-height: 46px;
-            display: inline-block;
           }
           .profit-span {
-              margin-top: 30px;
-              line-height: 46px;
-              display: inline-block;
-              float: right;
-            }
           }
+        }
         .check-button{
           display: flex;
           margin-top: 100px;
           flex-direction: column;
-          
 
           &-pay{
             color: $white;
@@ -394,17 +379,21 @@ html{
       }
     }
     &__uploader{
-    .js-file_group{
-      background-color: $gray;
-      position: relative;
-      .js-file{
-        width: 620px;
-        height: 150px;
-        opacity: 0;
-      }
-      i{
-        position: absolute;
-        left: 300px;
+      &__label{
+        .js-file_group{
+          background-color: $gray;
+          position: relative;
+          i{
+            position: absolute;
+            left: 300px;
+            top: 60px
+          }
+          .js-file{
+            width: 620px;
+            height: 150px;
+            opacity: 0;
+          }
+        }
       }
      }
     }
@@ -415,3 +404,4 @@ html{
   text-align: center;
 }
 }
+

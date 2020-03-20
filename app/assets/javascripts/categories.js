@@ -25,16 +25,17 @@ $(function(){
 
   $(document).on('change', '#category_select', function(){  // 親セレクトボックスの選択肢を変えたらイベント発火
     var productcategory = document.querySelector('#category_select').value;
-  // ↑ productcategoryに選択した親のvalueを代入
+    // ↑ productcategoryに選択した親のvalueを代入
     if (productcategory != ''){
- // ↑ productcategoryが空ではない場合のみAjax通信を行う｡選択肢を初期選択肢'---'に変えると､通信失敗となってしまうため｡
+    // ↑ productcategoryが空ではない場合のみAjax通信を行う｡選択肢を初期選択肢'---'に変えると､通信失敗となってしまうため｡
       $.ajax({
         url: 'category_children',
         type: 'GET',
         data: { productcategory: productcategory },
         dataType: 'json'
       })
-      .done(function(children){  // 送られてきたデータをchildrenに代入
+      .done(function(children){
+        // 子カテゴリ以下を削除した後、送られてきたデータをchildrenに代入
         $('#child_category').remove();
         $('#grandchild_category').remove();
         // TODO: サイズ実装時にオブジェクト名を変更する
@@ -54,7 +55,7 @@ $(function(){
     }else{
       $('#child_category').remove(); //親カテゴリーが初期値になった時、子以下を削除する
       $('#grandchild_category').remove();
-      // TODO: サイズ実装時にオブジェクト名を変更する
+      $('#size_wrapper').remove();
       $('.exmain-detail-brand-input').val('');
     }
   });
@@ -63,7 +64,6 @@ $(function(){
   // document､もしくは親を指定しないと発火しない
   $(document).on('change', '#child_category', function(){
     var productcategory = $('#child_category option:selected').data('category');
-    console.log(productcategory);
     if (productcategory != ''){
     $.ajax ({
       url: 'category_grandchildren',

@@ -53,7 +53,6 @@
               %label ブランド
               %span.exmain-label-gray 任意
               = b.text_field :name, placeholder: "例）シャネル", value: "" ,class: "exmain-detail-brand-input"
-            
           .exmain-detail-status
             %label 商品の状態
             %span.exmain-label 必須
@@ -87,16 +86,17 @@
             .exmain-check-price-title
               %label.price 販売価格
               %span.exmain-label 必須
-              %span.priceTag ¥
               = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
           .exmain-check-fee
             .exmain-check-fee-tax 販売手数料（10%）
-            %span.fee-span
+            %p.fee-span
+              = @item.price/10
           .exmain-check-profit-box
             .exmain-check-profit 販売利益
-            %span.profit-span
+            %p.fee-span
+              = @item.price - @item.price/10
           .check-button
-            = f.submit "出品する", class: "check-button-pay"
+            = f.submit "再出品する", class: "check-button-pay"
             %button.check-button-back
               戻る
           %p.exmain-check-detail
