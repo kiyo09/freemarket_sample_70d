@@ -92,6 +92,21 @@ select{
   margin: 0 auto;
 }
 
+.name-count{
+  float: right;
+  #nameOut{
+    color: red;
+    display: none;
+  }
+}
+.description-count{
+  float: right;
+  #descriptionOut{
+    color: red;
+    display: none;
+  }
+}
+
 
 // ===============================================================
 // メイン
