@@ -320,6 +320,10 @@ html{
           }
           .fee-span{
           }
+          .fee-span::before{
+            content: "¥";
+          }
+
         }
 
         .exmain-check-profit-box{
@@ -331,6 +335,9 @@ html{
           .exmain-check-profit{
           }
           .profit-span {
+          }
+          .profit-span::before{
+            content: "¥";
           }
         }
         .check-button{
