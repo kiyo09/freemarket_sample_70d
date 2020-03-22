@@ -85,3 +85,6 @@ gem 'ancestry'
 gem 'jquery-rails'
 gem 'erb2haml'
 gem 'payjp'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
