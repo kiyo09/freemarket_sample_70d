@@ -4,8 +4,7 @@
 // ===============================================================
 
 $(function(){
-  $("#item_price").on('keyup', function(e){
-    e.preventDefault();
+  $("#item_price").on('keyup', function(){
     var price = $("#item_price").val();
     if( 300 <= price && price <= 9999999) {
     var fee = Math.floor(price / 10);
