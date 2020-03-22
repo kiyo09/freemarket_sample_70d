@@ -72,6 +72,8 @@ a {
       }
     }
     &__show{
+      margin: auto;
+      width: 560px;
       text-align:center
     }
       ul{
@@ -143,6 +145,7 @@ a {
           border-radius: 20px;
           border: 1px solid orange;
           padding: 6px 10px;
+          margin: 0;
         }
       }
       &__right{
@@ -151,6 +154,7 @@ a {
           border-radius: 5px;
           border: 1px solid;
           padding: 6px 10px;
+          margin: 0;
           a{
             color: $black;
           }
