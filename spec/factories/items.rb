@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :item do
+    user_id               {"1"}
     id                    {"1"}
     name                  {"take"}
     description           {"この商品は格別です。"}

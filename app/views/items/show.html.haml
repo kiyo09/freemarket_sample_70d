@@ -30,7 +30,7 @@
             = image_tag "#{@item.images[0].image.url}", size: "560x346"
             - if @item.buyer_id.presence
               %p.item-box__photo__buy
-                SOLD
+              SOLD
           .item-box__show
             - @item.images.each do |image|
               = image_tag "#{image.image.url}", size: "100x100", class: "item-showImage"

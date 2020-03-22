@@ -1,6 +1,7 @@
 .single
   .single__header
     = link_to image_tag('logo-white',class: 'mercari'),"#"
+  -# = render "devise/shared/error_messages", resource: @user
   .single__progress
     %ul.single_stat
       %li.single_stat_list_class_red
@@ -13,7 +14,6 @@
 .title
   %h2 会員情報入力
 = form_for(@user, url: user_registration_path) do |f|
-  = render "devise/shared/error_messages", resource: @user
   .class
     .field
       = f.label :nickname, "ニックネーム"
