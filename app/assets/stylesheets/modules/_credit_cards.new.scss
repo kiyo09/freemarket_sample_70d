@@ -151,6 +151,20 @@ html{
                   margin-top: 8px;
                   display: flex;
                   justify-content: flex-end;
+                  &__mark{
+                    border-radius: 50%;
+                    background-color: $blue;
+                    color: $white;
+                    width: 20px;
+                    height: 20px;
+                    line-height: 20px;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 16px;
+                  }
+                  &__text{
+                    color: $blue;
+                  }
                 }
               }
               &__add{

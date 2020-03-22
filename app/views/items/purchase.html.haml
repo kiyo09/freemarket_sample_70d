@@ -30,6 +30,7 @@
           -else
             %br
               クレジットカード
+            = image_tag "#{@customer_card.brand}.svg"
             %br
             = "**** **** **** #{@customer_card.last4}"
             %br

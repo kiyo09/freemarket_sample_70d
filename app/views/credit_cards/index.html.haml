@@ -6,11 +6,11 @@
         = link_to 'FURIMA', root_path
       %li
         %i.fa.fa-angle-right
-      %li.category
+      %li.category-show
         = link_to 'マイページ', user_path(current_user.id)
       %li
         %i.fa.fa-angle-right
-      %li.category
+      %li.category-show
         = link_to 'クレジットカード登録', new_credit_card_path
 
   .content
@@ -25,9 +25,8 @@
               クレジットカード一覧
             .card-info__list
               %form.card-info__list__payment
-                -# FIXME: カードに対応したsvgを引っ張る
                 .card-info__list__payment__svg
-                  = image_tag "visa.svg", size: "50x30"
+                  = image_tag "#{@customer_card.brand}.svg", size: "50x30"
                 .card-info__list__payment__number
                   = "**** **** **** #{@customer_card.last4}"
                 .card-info__list__payment__expire

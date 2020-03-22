@@ -34,8 +34,6 @@ class ItemsController < ApplicationController
 
   # 購入確認
   def purchase
-    # FIXME: itemテーブルから画像取得
-    # @image = @item.images.first
     card = CreditCard.where(user_id: current_user.id).first
     if card.present?
       customer = Payjp::Customer.retrieve(card.customer_id)

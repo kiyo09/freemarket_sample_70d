@@ -6,11 +6,11 @@
         = link_to 'FURIMA', root_path
       %li
         %i.fa.fa-angle-right
-      %li.category
+      %li.category-show
         = link_to 'マイページ', user_path(current_user.id)
       %li
         %i.fa.fa-angle-right
-      %li.category
+      %li.category-show
         = link_to 'クレジットカード登録', new_credit_card_path
 
   .content
@@ -29,21 +29,18 @@
                 = text_field_tag "number", "", class: 'card-number--input', type: "text", id: 'card_number', maxlength: "16", placeholder: "半角数字のみ"
                 .registration-error{type: "hidden", value: "必須項目です"}
                 %ul.card-list
-                  -# assets/imagesにimageを設置しており、それをimage_tagで呼び出しています。
                   %li.card-list--item{ style: "margin-left: 0;"}
-                    = image_tag "visa.svg", width:"49", height:"20"
+                    = image_tag "Visa.svg", width:"49", height:"20"
                   %li.card-list--item
-                    = image_tag "master.svg", width:"34", height:"20"
-                  -# %li.card-list--item
-                  -#   = image_tag "saison-card.svg", width:"30", height:"20"
+                    = image_tag "MasterCard.svg", width:"34", height:"20"
                   %li.card-list--item
-                    = image_tag "jcb.svg", width:"32", height:"20"
+                    = image_tag "JCB.svg", width:"32", height:"20"
                   %li.card-list--item
-                    = image_tag "american_express.svg", width:"21", height:"20"
+                    = image_tag "American Express.svg", width:"21", height:"20"
                   %li.card-list--item
-                    = image_tag "diners_club.svg", width:"32", height:"20"
+                    = image_tag "Diners Club.svg", width:"32", height:"20"
                   %li.card-list--item 
-                    = image_tag "discover.svg", width:"32", height:"20"
+                    = image_tag "Discover.svg", width:"32", height:"20"
 
               .card-form__box__expire
                 %label.box-group--label 有効期限

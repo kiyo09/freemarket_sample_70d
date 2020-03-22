@@ -8,14 +8,4 @@
         購入完了しました
       .exmain__container
         = link_to 'トップページへ戻る', root_path
-  .footer
-    .footer-content
-      .footer-content-main
-        %p.footer-content-main-privacy プライバシーポリシー
-        %p.footer-content-main-term フリマ利用規約
-        %p.footer-content-main-trade 特定商取引に関する表記
-      .footer-icon
-        = image_tag("logo.png", height: "40", width: "100", alt: "logo")
-      %p.footer-copyright
-        © Furima, Inc.
-
+  = render "shared/subFooter"
