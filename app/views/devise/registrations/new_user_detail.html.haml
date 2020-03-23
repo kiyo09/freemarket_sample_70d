@@ -35,14 +35,14 @@
 
     .Description
       = f.label :birthday, "生年月日"
-      .Description--birthday
+      .Description__birthday
         = f.date_select :birthday, {prompt: "---", start_year: Time.now.year, end_year:1950, use_month_numbers: true}, {class: 'time-box'}
-      .Description--birthday--label
-        %p
+      .Description__birthday--label
+        .Description__birthday--label--year
           年
-        %p
+        .Description__birthday--label--month
           月
-        %p
+        .Description__birthday--label--day
           日
 
     .Description

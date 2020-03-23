@@ -45,21 +45,33 @@
   background-color: white;
   text-align:center;
   padding: 9px 80px 9px;
-  &--birthday{
+  &__birthday{
     display: flex;
     justify-content: space-between;
     padding-right: 20px;
-    position: relative;
     .time-box{
       width: 30%;
     }
     &--label{
       display: flex;
       justify-content: space-between;
-      position: absolute;
       width: 540px;
       padding-left: 160px;
-      top: 630px;
+      position: relative;
+      &--year{
+        position: absolute;
+        bottom: 10px;
+      }
+      &--month{
+        position: absolute;
+        bottom: 10px;
+        right: 180px;
+      }
+      &--day{
+        position: absolute;
+        bottom: 10px;
+        right: 0px;
+      }
     }
   }
 }
