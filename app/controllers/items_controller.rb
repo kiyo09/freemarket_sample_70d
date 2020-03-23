@@ -53,11 +53,50 @@ class ItemsController < ApplicationController
     else
       @item = Item.find(params[:id])
       Payjp.api_key = Rails.application.credentials.PAYJP_SECRET_KEY
-      charge = Payjp::Charge.create(
-      amount: @item.price,
-      customer: card.customer_id,
-      currency: 'jpy'
-      )
+
+      begin
+        # Use Payjp's library to make requests...
+        charge = Payjp::Charge.create(
+        amount: @item.price,
+        customer: card.customer_id,
+        currency: 'jpy'
+        )
+
+      rescue Payjp::CardError => e
+        # Since it's a decline, Payjp::CardError will be caught
+        body = e.json_body
+        err  = body[:error]
+        puts "Status is: #{e.http_status}"
+        puts "Type is: #{err[:type]}"
+        puts "Code is: #{err[:code]}"
+        # param is '' in this case
+        puts "Param is: #{err[:param]}"
+        puts "Message is: #{err[:message]}"
+        render :purchase
+      rescue Payjp::InvalidRequestError => e
+        # Invalid parameters were supplied to Payjp's API
+      rescue Payjp::AuthenticationError => e
+        # Authentication with Payjp's API failed
+        # (maybe you changed API keys recently)
+      rescue Payjp::APIConnectionError => e
+        # Network関連でエラーが発生した場合の例外
+        # ex1, PAY.JPが障害中などでサーバーとのコネクションが切れた場合
+        # ex2, api.pay.jpの名前解決に失敗した場合
+        # ex3, リクエストからレスポンス受信までに90秒以上経過した場合
+        # => 3の場合リクエストが成功している可能性があるため、成否を確認下さい
+        # => 3の秒数は`Payjp.read_timeout = 100`のように任意に設定可能です
+      rescue Payjp::APIError => e
+        # 上記以外の特殊なケースの例外
+        # ex, レスポンスのボディがJSON形式でない場合(PAY.JP障害時など)
+        # ex, レスポンスのHTTPステータスが400,401,402,404以外の場合
+      rescue Payjp::PayjpError => e
+        # PayjpErrorは上記5種類の独自例外クラスの親クラスです
+        # 本SDK内ではこの例外を直接raiseしておりません
+        # 上記5種類の独自例外クラスを包括的にrescueする目的でご利用下さい
+      rescue => e
+        # Something else happened, completely unrelated to Payjp
+      end
+
       Item.where(id: @item.id).update_all(buyer_id: current_user.id)
       redirect_to action: 'done'
     end

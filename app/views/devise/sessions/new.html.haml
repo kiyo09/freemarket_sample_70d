@@ -1,21 +1,16 @@
 .single
   .single_login
-  = link_to image_tag('logo-white',class: 'mercari'),"#"
+  = link_to image_tag('logo-white',class: 'furima'), root_path
 
 = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
   .class
     .field
       = f.label :Eメール
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "会員登録時のメールアドレス"
     .field
       = f.label :パスワード
       %br/
-      = f.password_field :password, autocomplete: "current-password"
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :パスワード保存しますか？
+      = f.password_field :password, autocomplete: "current-password", placeholder: "会員登録時の7文字以上のパスワード"
     .actions
       = f.submit "ログイン", class: "button"
-  = render "devise/shared/links"

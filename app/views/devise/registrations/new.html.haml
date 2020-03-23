@@ -1,13 +1,12 @@
 .single
   .single__header
-    = link_to image_tag('logo-white',class: 'mercari'),"#"
-  -# = render "devise/shared/error_messages", resource: @user
+    = link_to image_tag('logo-white',class: 'furima'),root_path
   .single__progress
     %ul.single_stat
       %li.single_stat_list_class_red
         会員情報
       %li.single_stat_list
-        電話番号認証
+        個人情報
       %li.single_stat_list
         完了
 
@@ -18,11 +17,11 @@
     .field
       = f.label :nickname, "ニックネーム"
       %br/
-      = f.text_field :nickname
+      = f.text_field :nickname, placeholder: "例）フリマ太郎"
     .field
       = f.label :email, "メールアドレス"
       %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email"
+      = f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "PC・携帯どちらでも可"
     .field
       = f.label :password, "パスワード"
 
@@ -30,12 +29,11 @@
         %em
           (#{@minimum_password_length} characters minimum)
       %br/
-      = f.password_field :password, autocomplete: "new-password"
+      = f.password_field :password, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
     .field
       = f.label :password_confirmation, "パスワード(確認)"
       %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password"
+      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "7文字以上の半角英数字"
     .actions
       = f.submit "次へ進む", class: "button"
-  = render "devise/shared/links"
 
