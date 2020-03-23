@@ -22,11 +22,11 @@
 | first_name_kana | string | null: false |
 | last_name | string | null: false |
 | last_name_kana | string | null: false |
-| birthday | integer | null: false |
+| birthday | date | null: false |
 | destination_name | string | null: false |
 | destination_kana | string | null: false |
 | post_code | integer | null: false |
-| prefectures | string | null: false |
+| prefectures | integer | null: false |
 | mayor | string | null: false |
 | address | string | null: false |
 | building | text |  |
