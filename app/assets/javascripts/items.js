@@ -4,14 +4,16 @@
 // ===============================================================
 
 $(function(){
-  $("#item_price").on('keyup', function(e){
-    e.preventDefault();
+  $("#item_price").on('keyup', function(){
     var price = $("#item_price").val();
     if( 300 <= price && price <= 9999999) {
     var fee = Math.floor(price / 10);
     var profit = (price - fee);
     $(".fee-span").text(fee);
     $(".profit-span").text(profit);
+    }else{
+    $(".fee-span").text('');
+    $(".profit-span").text('');
     }
   })
 });
@@ -33,6 +35,57 @@ $(function(){
 //       })
 //     }
 //   });
+
+// ===============================================================
+// 出品ページ
+// 商品名、説明エラー文
+// ===============================================================
+
+$(function(){
+  // 商品名のカウント、エラー表示
+  $("#item_name").on('keyup', function(){
+    var count = $('#item_name').val().length;
+    $('#nameCount').html(count);
+    if (count > 40){
+      changeCss("red","inline-block")
+    }
+    else if(count == 40){
+      changeCss("blue","none")
+    }
+    else{
+      changeCss("black","none")
+    }
+  })
+  // 商品説明のカウント、エラー表示
+  $("#item_description").on('keyup', function(){
+    var count = $('#item_description').val().length;
+    $('#descriptionCount').html(count);
+    if (count > 1000){
+      changeDescriptionCss("red","inline-block")
+    }
+    else if(count == 1000){
+      changeDescriptionCss("blue","none")
+    }
+    else{
+      changeDescriptionCss("black","none")
+    }
+  })
+});
+
+// CSSの関数
+function changeCss(c,d){
+  $('.name-count').css("color", c);
+  $('#nameOut').css("display", d);
+}
+function changeDescriptionCss(c,d){
+  $('.description-count').css("color", c);
+  $('#descriptionOut').css("display", d);
+}
+
+
+
+
+
 
 // ===============================================================
 // 出品ページ

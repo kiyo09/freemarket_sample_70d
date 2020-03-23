@@ -1,0 +1,4 @@
+- if model.errors.any?
+  .items_alert
+    - model.errors.full_messages.each do |message|
+      %p= message

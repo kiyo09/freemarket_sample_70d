@@ -3,6 +3,7 @@
     = render "shared/subHeader" 
     .exmain
       = form_with model: @item, local: true do |f|
+        = render 'layouts/itemsError_messages', model: f.object
         .exmain-image
           .exmain-image__name
             %label 出品画像
@@ -24,11 +25,19 @@
             %span.exmain-label 必須
           .exmain-item__name-input
             = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form__group__name"
+          .name-count
+            %span#nameOut 文字数オーバーです
+            %span#nameCount 0
+            %span /40  
           .exmain-item__explain
             %label 商品の説明
             %span.exmain-label 必須
           .exmain-item__explain-input
             = f.text_area :description, placeholder:"商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "input-explain",cows: "40", rows: "7"
+          .description-count
+            %span#descriptionOut 文字数オーバーです
+            %span#descriptionCount 0
+            %span /1000
 
         .exmain-detail
           .exmain-detail-top
