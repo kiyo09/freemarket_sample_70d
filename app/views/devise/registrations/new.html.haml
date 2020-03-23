@@ -13,6 +13,8 @@
 
 .title
   %h2 会員情報入力
+  = link_to 'Facebookで登録', user_facebook_omniauth_authorize_path, method: :post
+  = link_to 'Googleで登録', user_google_oauth2_omniauth_authorize_path, method: :post
 = form_for(@user, url: user_registration_path) do |f|
   .class
     .field
