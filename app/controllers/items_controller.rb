@@ -19,10 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @category_parent_array = Category.roots.pluck(:name)
     @item = Item.new(item_params)
-    @item.images.build()
-    @item.build_brand
     if @item.save
       redirect_to root_path
     else
