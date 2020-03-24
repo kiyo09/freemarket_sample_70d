@@ -6,8 +6,8 @@
         = link_to 'FURIMA', root_path
       %li
         %i.fa.fa-angle-right
-      %li.category
-        = link_to 'マイページ', '/users/show'
+      %li.category-show
+        = link_to 'マイページ', user_path(current_user.id)
 
   .content
     .user-mypage
@@ -16,7 +16,8 @@
         .user-mypage__content__icon
           .user-mypage__content__icon__image
             = image_tag("icon_camera", class: 'iconImage')
-          %h2.user-mypage__content__icon__name name
+          %h2.user-mypage__content__icon__name
+            = current_user.nickname
           %h2.user-mypage__content__icon__status
             %span 評価 0
             %span 出品数 0

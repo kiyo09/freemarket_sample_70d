@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     get 'user_detail', to: 'users/registrations#new_user_detail'
     post 'user_detail', to: 'users/registrations#create_user_detail'
   end
-  get 'users/show'
+  # get 'users/show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'items#index'
   resources :items do
