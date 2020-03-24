@@ -155,3 +155,9 @@ $(document).ready(function() {
     if ($('.js-file').length == 0) $('.exmain-box__main__uploader__label').prepend(buildFileField(fileIndex[0]));
   });
 });
+
+$(function(){
+  $(".item-box__show img").hover(function(){
+    $(".item-box__photo img").attr("src", $(this).attr('src'));
+  })
+})
