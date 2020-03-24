@@ -17,14 +17,14 @@
                     = f.fields_for :images do |image|
                       .js-file_group{data: {index: "image.index"}}
                         %i.fa.fa-camera
-                        = image.file_field :image, class: 'js-file'
+                        = image.file_field :image, class: 'js-file',required: true
 
         .exmain-item
           .exmain-item__name
             %label 商品名
             %span.exmain-label 必須
           .exmain-item__name-input
-            = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form__group__name"
+            = f.text_field :name, placeholder:"商品名（必須 40文字まで)",class: "form__group__name",required: true
           .name-count
             %span#nameOut 文字数オーバーです
             %span#nameCount 0
@@ -33,7 +33,7 @@
             %label 商品の説明
             %span.exmain-label 必須
           .exmain-item__explain-input
-            = f.text_area :description, placeholder:"商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "input-explain",cows: "40", rows: "7"
+            = f.text_area :description, placeholder:"商品の説明(必須1,000文字以内(色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "input-explain",cows: "40", rows: "7",required: true
           .description-count
             %span#descriptionOut 文字数オーバーです
             %span#descriptionCount 0
@@ -45,7 +45,7 @@
           .exmain-detail-category
             %label カテゴリー
             %span.exmain-label 必須
-            = f.select :category, Category.roots.pluck(:name), {:prompt => "---" }, { class: "exmain-detail-category-input", id: "category_select" }
+            = f.select :category, Category.roots.pluck(:name), {prompt: "---"}, {class: "exmain-detail-category-input", id: "category_select",required: true}
           .exmain-detail-brand
             = f.fields_for :brand do |b|
               %label ブランド
@@ -56,8 +56,7 @@
             %label 商品の状態
             %span.exmain-label 必須
           .exmain-detail-status-input
-            = f.collection_select :status_id, Status.all, :id, :name, prompt: "---"
-        .exmain-deliver
+            = f.collection_select :status_id, Status.all, :id, :name, {prompt: "---"},{class: "exmain-detail-status-input_type", id: "status_input",required: true}
           .exmain-deliver-top
             %label 配送について
             .exmain-deliver-top-qa
@@ -65,17 +64,17 @@
             %label 配送料の負担
             %span.exmain-label 必須
           .exmain-deliver-fee-input
-            = f.collection_select :fee_side_id, FeeSide.all, :id, :name, prompt: "---"
+            = f.collection_select :fee_side_id, FeeSide.all, :id, :name, {prompt: "---"},{class: "exmain-detail-deliver-input_type", id: "deliver_input",required: true}
           .exmain-deliver-region
             %label 配送元の地域
             %span.exmain-label 必須
           .exmain-deliver-region-input
-            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, prompt: "---"
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "---"},{class: "exmain-detail-region-input_type", id: "region_input",required: true}
           .exmain-deliver-date
             %label 配送までの日数
             %span.exmain-label 必須
           .exmain-deliver-date-input
-            = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, prompt: "---"
+            = f.collection_select :shipping_days_id, ShippingDays.all, :id, :name, {prompt: "---"},{class: "exmain-detail-date-input_type", id: "date_input",required: true}
 
         .exmain-check
           %label.exmain-check-top
@@ -86,7 +85,7 @@
               %label.price 販売価格
               %span.exmain-label 必須
               %span.priceTag ¥
-              = f.number_field :price, placeholder:" ",class: "exmain-check-price-title"
+              = f.number_field :price, placeholder:" ",class: "exmain-check-price-title",required: true
           .exmain-check-fee
             .exmain-check-fee-tax 販売手数料（10%）
             %span.fee-span
@@ -94,7 +93,7 @@
             .exmain-check-profit 販売利益
             %span.profit-span
           .check-button
-            = f.submit "出品する", class: "check-button-pay"
+            = f.submit "出品する", class: "check-button-pay",required: true
             %button.check-button-back
               戻る
           %p.exmain-check-detail
