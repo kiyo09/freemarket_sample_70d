@@ -205,3 +205,17 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
+  # activerecord:
+  #   models:
+  #     image: 画像
+  #   attributes:
+  #     image:
+  #       image: 画像
+
+  # activerecord:
+  #   models:
+  #     status: 商品の状態
+  #   attributes:
+  #     status:
+  #       status: 商品の状態
