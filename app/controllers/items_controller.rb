@@ -192,6 +192,7 @@ class ItemsController < ApplicationController
   end
 
   def redirect_show_from_purchase
+    @item = Item.find(params[:id])
     if (@item.user_id == current_user.id) || (@item.buyer_id.present?)
       redirect_to item_path, alert: "不正なリクエストです"
     end
