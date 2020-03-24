@@ -16,7 +16,7 @@ class CreditCardsController < ApplicationController
   # クレジットカード情報登録画面
   def new
     if @creditCard
-      redirect_to credit_cards_path unless @creditCard
+      redirect_to credit_cards_path
     end
   end
 
