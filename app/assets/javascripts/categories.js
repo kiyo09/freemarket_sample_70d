@@ -17,7 +17,7 @@ $(function(){
   function appendGrandchidrenBox(insertHTML){
     var grandchildSelectHtml = '';
     grandchildSelectHtml = `<select class="exmain-detail-category__box--select" id="grandchild_category" name="item[category_id]">
-                              <option value="---" data-category="---">---</option>
+                              <option value="" data-category="---">---</option>
                               ${insertHTML}
                             </select>`;
     $('.exmain-detail-category').append(grandchildSelectHtml);
