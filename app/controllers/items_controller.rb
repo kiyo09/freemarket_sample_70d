@@ -8,9 +8,8 @@ class ItemsController < ApplicationController
 
   require 'payjp'
   def index
-    @items = Item.includes(:user).limit(3)
+    @items = Item.includes(:user).order("id DESC").limit(3)
     @parents = Category.where(ancestry: nil)
-
   end
 
   def new
