@@ -1,6 +1,7 @@
 class CreditCardsController < ApplicationController
   require 'payjp'
   before_action :set_card
+  before_action :redirect_login
 
   def index
     card = current_user.credit_card
@@ -58,4 +59,11 @@ class CreditCardsController < ApplicationController
   def set_card
     @creditCard = CreditCard.where(user_id: current_user.id).first if CreditCard.where(user_id: current_user.id).present?
   end
+
+  def redirect_login
+    unless user_signed_in?
+      redirect_to new_user_session_path, alert: "ログインしてください"
+    end
+  end
+
 end

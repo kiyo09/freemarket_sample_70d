@@ -2,6 +2,9 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :destroy, :update, :purchase]
   before_action :set_category, except: [:create, :destroy, :category_grandchildren]
+  before_action :redirect_login, except: [:index, :show]
+  before_action :redirect_show_from_purchase, only: [:purchase, :pay]
+  before_action :redirect_show_from_edit, only: [:edit, :update, :destroy]
 
   require 'payjp'
   def index
@@ -98,8 +101,7 @@ class ItemsController < ApplicationController
       end
 
       if e
-        binding.pry
-        redirect_to purchase_path, alert: "カード情報を確認してください"
+        redirect_to purchase_path, alert: "購入に失敗しました。カード情報を確認してください"
       elsif Item.where(id: @item.id).update_all(buyer_id: current_user.id)
         redirect_to action: 'done'
       else
@@ -131,7 +133,7 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to root_path
     else
-      render :show
+      redirect_to edit_item_path, alert: "更新に失敗しました"
     end
   end
 
@@ -185,5 +187,22 @@ class ItemsController < ApplicationController
     @category = Category.all.order("id ASC").limit(13)
   end
 
+  def redirect_login
+    unless user_signed_in?
+      redirect_to new_user_session_path, alert: "ログインしてください"
+    end
+  end
+
+  def redirect_show_from_purchase
+    if (@item.user_id == current_user.id) || (@item.buyer_id.present?)
+      redirect_to item_path, alert: "不正なリクエストです"
+    end
+  end
+
+  def redirect_show_from_edit
+    unless @item.user_id == current_user.id
+      redirect_to item_path, alert: "不正なリクエストです"
+    end
+  end
 
 end
