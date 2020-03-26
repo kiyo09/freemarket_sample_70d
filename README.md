@@ -1,17 +1,40 @@
 # README
+## アプリケーション概要
+TECH:CAMP最終課題フリマアプリです。３人のチームでアジャイル開発を行いました。
 [![Image from Gyazo](https://i.gyazo.com/0d7b08888383510541e0228df6334ffd.jpg)](https://gyazo.com/0d7b08888383510541e0228df6334ffd)
 
+## 機能一覧
+●ユーザー登録、ログイン機能(ウィザード形式)
 
+●商品出品機能
 
+●商品購入機能
 
+●クレジットカード登録機能(PayJP)
 
+#使用技術
+###■言語
+バックエンド
+Ruby 2.5.1
 
+フロントエンド
+jquery-rails 4.3.5
 
+###◼︎フレームワーク
+Ruby on Rails 5.2.4.1
 
+###◼︎データベース
+MySQL 0.5.3
 
+###◼︎インフラ
+AWS EC2
 
+AWS S3
 
+###デプロイ
+Capistranoによる自動デプロイ
 
+# DB設計
 ## usersテーブル
 
 |Column|Type|Options|
@@ -123,8 +146,3 @@
 
 ### Association
 - has_many :items
-
-
-
-
-test
